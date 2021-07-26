@@ -1,0 +1,146 @@
+<CC007A>
+  <SynIdeMES1>{{ SynIdeMES1 }}</SynIdeMES1>
+  <SynVerNumMES2>{{ SynVerNumMES2 }}</SynVerNumMES2>
+  <!--<MesSenMES3>{{ MesSenMES3 }}</MesSenMES3>-->
+  {#- Optional: #}
+  <SenIdeCodQuaMES4>{{ SenIdeCodQuaMES4 }}</SenIdeCodQuaMES4>
+  <MesRecMES6>{{ MesRecMES6 }}</MesRecMES6>
+  {#- Optional: #}
+  <RecIdeCodQuaMES7>{{ RecIdeCodQuaMES7 }}</RecIdeCodQuaMES7>
+  <DatOfPreMES9>{{ DatOfPreMES9 }}</DatOfPreMES9>
+  <TimOfPreMES10>{{ TimOfPreMES10 }}</TimOfPreMES10>
+  <IntConRefMES11>{{ IntConRefMES11 }}</IntConRefMES11>
+  {#- Optional: #}
+  <RecRefMES12>{{ RecRefMES12 }}</RecRefMES12>
+  {#- Optional: #}
+  <RecRefQuaMES13>{{ RecRefQuaMES13 }}</RecRefQuaMES13>
+  {#- Optional: #}
+  <AppRefMES14>{{ AppRefMES14 }}</AppRefMES14>
+  {#- Optional: #}
+  <PriMES15>{{ PriMES15 }}</PriMES15>
+  {#- Optional: #}
+  <AckReqMES16>{{ AckReqMES16 }}</AckReqMES16>
+  {#- Optional: #}
+  <ComAgrIdMES17>{{ ComAgrIdMES17 }}</ComAgrIdMES17>
+  {#- Optional: #}
+  <TesIndMES18>{{ TesIndMES18 }}</TesIndMES18>
+  <MesIdeMES19>{{ MesIdeMES19 }}</MesIdeMES19>
+  <MesTypMES20>{{ MesTypMES20 }}</MesTypMES20>
+  {#- Optional: #}
+  <ComAccRefMES21>{{ ComAccRefMES21 }}</ComAccRefMES21>
+  {#- Optional: #}
+  <MesSeqNumMES22>{{ MesSeqNumMES22 }}</MesSeqNumMES22>
+  {#- Optional: #}
+  <FirAndLasTraMES23>{{ FirAndLasTraMES23 }}</FirAndLasTraMES23>
+  <HEAHEA>
+    <DocNumHEA5>{{ DocNumHEA5 }}</DocNumHEA5>
+    {#- Optional: #}
+    <CusSubPlaHEA66>{{ CusSubPlaHEA66 }}</CusSubPlaHEA66>
+    <ArrNotPlaHEA60>{{ ArrNotPlaHEA60 }}</ArrNotPlaHEA60>
+    {#- Optional: #}
+    <ArrNotPlaHEA60LNG>{{ ArrNotPlaHEA60LNG }}</ArrNotPlaHEA60LNG>
+    {#- Optional: #}
+    <ArrAgrLocCodHEA62>{{ ArrAgrLocCodHEA62 }}</ArrAgrLocCodHEA62>
+    {#- Optional: #}
+    <ArrAgrLocOfGooHEA63>{{ ArrAgrLocOfGooHEA63 }}</ArrAgrLocOfGooHEA63>
+    {#- Optional: #}
+    <ArrAgrLocOfGooHEA63LNG>{{ ArrAgrLocOfGooHEA63LNG }}</ArrAgrLocOfGooHEA63LNG>
+    {#- Optional: #}
+    <ArrAutLocOfGooHEA65>{{ ArrAutLocOfGooHEA65 }}</ArrAutLocOfGooHEA65>
+    <SimProFlaHEA132>{{ SimProFlaHEA132 }}</SimProFlaHEA132>
+    <ArrNotDatHEA141>{{ ArrNotDatHEA141 }}</ArrNotDatHEA141>
+    {#- Optional: #}
+    <DiaLanIndAtDesHEA255>{{ DiaLanIndAtDesHEA255 }}</DiaLanIndAtDesHEA255>
+  </HEAHEA>
+  <TRADESTRD>
+    {#- Optional: #}
+    <NamTRD7>{{ NamTRD7 }}</NamTRD7>
+    {#- Optional: #}
+    <StrAndNumTRD22>{{ StrAndNumTRD22 }}</StrAndNumTRD22>
+    {#- Optional: #}
+    <PosCodTRD23>{{ PosCodTRD23 }}</PosCodTRD23>
+    {#- Optional: #}
+    <CitTRD24>{{ CitTRD24 }}</CitTRD24>
+    {#- Optional: #}
+    <CouTRD25>{{ CouTRD25 }}</CouTRD25>
+    {#- Optional: #}
+    <NADLNGRD>{{ NADLNGRD }}</NADLNGRD>
+    {#- Optional: #}
+    <TINTRD59>{{ TINTRD59 }}</TINTRD59>
+  </TRADESTRD>
+  <CUSOFFPREOFFRES>
+    <RefNumRES1>{{ RefNumRES1 }}</RefNumRES1>
+  </CUSOFFPREOFFRES>
+  {#- 0 to 9 repetitions: #}
+  {%- for i in range(0, 9) %}
+  <ENROUEVETEV>
+    <PlaTEV10>{{ PlaTEV10 }}</PlaTEV10>
+    {#- Optional: #}
+    <PlaTEV10LNG>{{ PlaTEV10LNG }}</PlaTEV10LNG>
+    <CouTEV13>{{ CouTEV13 }}</CouTEV13>
+    <CTLCTL>
+      <AlrInNCTCTL29>{{ AlrInNCTCTL29 }}</AlrInNCTCTL29>
+    </CTLCTL>
+    {#- Optional: #}
+    <INCINC>
+      {#- Optional: #}
+      <IncFlaINC3>{{ IncFlaINC3 }}</IncFlaINC3>
+      {#- Optional: #}
+      <IncInfINC4>{{ IncInfINC4 }}</IncInfINC4>
+      {#- Optional: #}
+      <IncInfINC4LNG>{{ IncInfINC4LNG }}</IncInfINC4LNG>
+      {#- Optional: #}
+      <EndDatINC6>{{ EndDatINC6 }}</EndDatINC6>
+      {#- Optional: #}
+      <EndAutINC7>{{ EndAutINC7 }}</EndAutINC7>
+      {#- Optional: #}
+      <EndAutINC7LNG>{{ EndAutINC7LNG }}</EndAutINC7LNG>
+      {#- Optional: #}
+      <EndPlaINC10>{{ EndPlaINC10 }}</EndPlaINC10>
+      {#- Optional: #}
+      <EndPlaINC10LNG>{{ EndPlaINC10LNG }}</EndPlaINC10LNG>
+      {#- Optional: #}
+      <EndCouINC12>{{ EndCouINC12 }}</EndCouINC12>
+    </INCINC>
+    {#- Optional: #}
+    <SEAINFSF1>
+      <SeaNumSF12>{{ SeaNumSF12 }}</SeaNumSF12>
+      {#- 1 to 9999 repetitions: #}
+      {%- for i in range(0, 9999) %}
+      <SEAIDSI1>
+        <SeaIdeSI11>{{ SeaIdeSI11 }}</SeaIdeSI11>
+        {#- Optional: #}
+        <SeaIdeSI11LNG>{{ SeaIdeSI11LNG }}</SeaIdeSI11LNG>
+      </SEAIDSI1>
+      {%- endfor %}
+    </SEAINFSF1>
+    {#- Optional: #}
+    <TRASHP>
+      {#- Optional: #}
+      <NewTraMeaIdeSHP26>{{ NewTraMeaIdeSHP26 }}</NewTraMeaIdeSHP26>
+      {#- Optional: #}
+      <NewTraMeaIdeSHP26LNG>{{ NewTraMeaIdeSHP26LNG }}</NewTraMeaIdeSHP26LNG>
+      {#- Optional: #}
+      <NewTraMeaNatSHP54>{{ NewTraMeaNatSHP54 }}</NewTraMeaNatSHP54>
+      {#- Optional: #}
+      <EndDatSHP60>{{ EndDatSHP60 }}</EndDatSHP60>
+      {#- Optional: #}
+      <EndAutSHP61>{{ EndAutSHP61 }}</EndAutSHP61>
+      {#- Optional: #}
+      <EndAutSHP61LNG>{{ EndAutSHP61LNG }}</EndAutSHP61LNG>
+      {#- Optional: #}
+      <EndPlaSHP63>{{ EndPlaSHP63 }}</EndPlaSHP63>
+      {#- Optional: #}
+      <EndPlaSHP63LNG>{{ EndPlaSHP63LNG }}</EndPlaSHP63LNG>
+      {#- Optional: #}
+      <EndCouSHP65>{{ EndCouSHP65 }}</EndCouSHP65>
+      {#- 0 to 99 repetitions: #}
+      {%- for i in range(0, 99) -%}
+      <CONNR3>
+        <ConNumNR31>{{ ConNumNR31 }}</ConNumNR31>
+      </CONNR3>
+      {%- endfor %}
+    </TRASHP>
+  </ENROUEVETEV>
+  {%- endfor %}
+</CC007A>

@@ -1,0 +1,4 @@
+->         /                app.Routes
+->         /                health.Routes
+
+GET        /admin/metrics   com.kenshoo.play.metrics.MetricsController.metrics

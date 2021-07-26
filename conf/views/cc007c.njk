@@ -1,0 +1,135 @@
+<ncts:CC007C PhaseID="NCTS5.0" xmlns:ncts="http://ncts.dgtaxud.ec">
+  <messageSender>token</messageSender>
+  <messageRecipient>token</messageRecipient>
+  <preparationDateAndTime>2007-10-26T07:36:28</preparationDateAndTime>
+  <messageIdentification>token</messageIdentification>
+  <messageType>CD975C</messageType>
+  {#- Optional: #}
+  <correlationIdentifier>token</correlationIdentifier>
+  <TransitOperation>
+    <MRN>token</MRN>
+    <arrivalNotificationDateAndTime>2014-06-09T16:15:04+01:00</arrivalNotificationDateAndTime>
+    <simplifiedProcedure>1</simplifiedProcedure>
+    <incidentFlag>1</incidentFlag>
+  </TransitOperation>
+  {#- 0 to 9 repetitions: #}
+  <Authorisation>
+    <sequenceNumber>token</sequenceNumber>
+    <type>token</type>
+    <referenceNumber>token</referenceNumber>
+  </Authorisation>
+  <CustomsOfficeOfDestinationActual>
+    <referenceNumber>tokentok</referenceNumber>
+  </CustomsOfficeOfDestinationActual>
+  <TraderAtDestination>
+    <identificationNumber>token</identificationNumber>
+    {#- Optional: #}
+    <communicationLanguageAtDestination>token</communicationLanguageAtDestination>
+  </TraderAtDestination>
+  <Consignment>
+    <LocationOfGoods>
+      <typeOfLocation>token</typeOfLocation>
+      <qualifierOfIdentification>token</qualifierOfIdentification>
+      {#- Optional: #}
+      <authorisationNumber>token</authorisationNumber>
+      {#- Optional: #}
+      <additionalIdentifier>token</additionalIdentifier>
+      {#- Optional: #}
+      <UNLocode>token</UNLocode>
+      {#- Optional: #}
+      <CustomsOffice>
+        <referenceNumber>tokentok</referenceNumber>
+      </CustomsOffice>
+      {#- Optional: #}
+      <GNSS>
+        <latitude>token</latitude>
+        <longitude>token</longitude>
+      </GNSS>
+      {#- Optional: #}
+      <EconomicOperator>
+        <identificationNumber>token</identificationNumber>
+      </EconomicOperator>
+      {#- Optional: #}
+      <Address>
+        <streetAndNumber>token</streetAndNumber>
+        {#- Optional: #}
+        <postcode>token</postcode>
+        <city>token</city>
+        <country>to</country>
+      </Address>
+      {#- Optional: #}
+      <PostcodeAddress>
+        {#- Optional: #}
+        <houseNumber>token</houseNumber>
+        <postcode>token</postcode>
+        <country>to</country>
+      </PostcodeAddress>
+      {#- Optional: #}
+      <ContactPerson>
+        <name>token</name>
+        <phoneNumber>token</phoneNumber>
+        {#- Optional: #}
+        <eMailAddress>string</eMailAddress>
+      </ContactPerson>
+    </LocationOfGoods>
+    {#- 0 to 9 repetitions: #}
+    <Incident>
+      <sequenceNumber>token</sequenceNumber>
+      <code>token</code>
+      <text>token</text>
+      {#- Optional: #}
+      <Endorsement>
+        <date>2013-05-22+01:00</date>
+        <authority>token</authority>
+        <place>token</place>
+        <country>to</country>
+      </Endorsement>
+      <Location>
+        <qualifierOfIdentification>token</qualifierOfIdentification>
+        {#- Optional: #}
+        <UNLocode>token</UNLocode>
+        <country>to</country>
+        {#- Optional: #}
+        <GNSS>
+          <latitude>token</latitude>
+          <longitude>token</longitude>
+        </GNSS>
+        {#- Optional: #}
+        <Address>
+          <streetAndNumber>token</streetAndNumber>
+          {#- Optional: #}
+          <postcode>token</postcode>
+          <city>token</city>
+        </Address>
+      </Location>
+      {#- 0 to 9999 repetitions: #}
+      <TransportEquipment>
+        <sequenceNumber>token</sequenceNumber>
+        {#- Optional: #}
+        <containerIdentificationNumber>token</containerIdentificationNumber>
+        {#- Optional: #}
+        <numberOfSeals>token</numberOfSeals>
+        {#- 0 to 99 repetitions: #}
+        <Seal>
+          <sequenceNumber>token</sequenceNumber>
+          <identifier>token</identifier>
+        </Seal>
+        {#- 0 to 9999 repetitions: #}
+        <GoodsReference>
+          <sequenceNumber>token</sequenceNumber>
+          <declarationGoodsItemNumber>token</declarationGoodsItemNumber>
+        </GoodsReference>
+      </TransportEquipment>
+      {#- Optional: #}
+      <Transhipment>
+        <containerIndicator>0</containerIndicator>
+        {#- Optional: #}
+        <TransportMeans>
+          <typeOfIdentification>token</typeOfIdentification>
+          <identificationNumber>token</identificationNumber>
+          <nationality>to</nationality>
+        </TransportMeans>
+      </Transhipment>
+    </Incident>
+  </Consignment>
+</ncts:CC007C>
