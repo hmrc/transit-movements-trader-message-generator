@@ -31,19 +31,19 @@ sealed abstract class MessageType(
 
 object MessageType {
   case object CC007A
-      extends MessageType("CC007A", "cc007a.njk", TemplateArgGenerators.cc007aGen)
+      extends MessageType("CC007A", "cc007a.njk", Phase4Generators.cc007aGen)
   case object CC007C
-      extends MessageType("CC007C", "cc007c.njk", TemplateArgGenerators.cc007cGen)
+      extends MessageType("CC007C", "cc007c.njk", Phase5Generators.cc007cGen)
 
   case object CC015B
-      extends MessageType("CC015B", "cc015b.njk", TemplateArgGenerators.cc015bGen)
+      extends MessageType("CC015B", "cc015b.njk", Phase4Generators.cc015bGen)
   case object CC015C
-      extends MessageType("CC015C", "cc015c.njk", TemplateArgGenerators.cc015cGen)
+      extends MessageType("CC015C", "cc015c.njk", Phase5Generators.cc015cGen)
 
   case object CC044A
-      extends MessageType("CC044A", "cc044a.njk", TemplateArgGenerators.cc044aGen)
+      extends MessageType("CC044A", "cc044a.njk", Phase4Generators.cc044aGen)
   case object CC044C
-      extends MessageType("CC044C", "cc044c.njk", TemplateArgGenerators.cc044cGen)
+      extends MessageType("CC044C", "cc044c.njk", Phase5Generators.cc044cGen)
 
   val values: Set[MessageType] = ListSet(
     CC007A,
