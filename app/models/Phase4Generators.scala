@@ -24,14 +24,37 @@ import wolfendale.scalacheck.regexp.RegexpGen
 
 object Phase4Generators extends TemplateArgGenerators {
   val date8 = RegexpGen.from(
-    "[1-2][0-9]{3}[0][1-9][0][1-9]|[1-2][0-9]{3}[0][1-9][1|2][0-9]|[1-2][0-9]{3}[0][1-9][3][0|1]|[1-2][0-9]{3}[1][0-2][0][1-9]|[1-2][0-9]{3}[1][0-2][1|2][0-9]|[1-2][0-9]{3}[1][0-2][3][0|1]"
+    """[1-2][0-9]{3}[0][1-9][0][1-9]|[1-2][0-9]{3}[0][1-9](1|2)[0-9]|[1-2][0-9]{3}[0][1-9][3](0|1)|[1-2][0-9]{3}[1][0-2][0][1-9]|[1-2][0-9]{3}[1][0-2](1|2)[0-9]|(1-2][0-9]{3}[1][0-2][3][0|1)"""
   )
 
   val time4 = RegexpGen.from(
-    "[0-1]{1}[0-9]{1}[0-5]{1}[0-9]{1}|[2]{1}[0-3]{1}[0-5]{1}[0-9]{1}"
+    """[0-1]{1}[0-9]{1}[0-5]{1}[0-9]{1}|[2]{1}[0-3]{1}[0-5]{1}[0-9]{1}"""
   )
 
-  def phase4AddressGen(
+  def addressGen(
+    nameField: String,
+    streetField: String,
+    postCodeField: String,
+    cityField: String,
+    countryField: String,
+    languageCodeField: String
+  ): ArgGen = for {
+    name         <- alphaNum(35)
+    street       <- alphaNum(35)
+    postCode     <- alphaNum(9)
+    city         <- alphaNum(35)
+    country      <- alphaExactly(2)
+    languageCode <- alphaExactly(2)
+  } yield Json.obj(
+    nameField         -> name,
+    streetField       -> street,
+    postCodeField     -> postCode,
+    cityField         -> city,
+    countryField      -> country,
+    languageCodeField -> languageCode
+  )
+
+  def addressGen(
     nameField: String,
     streetField: String,
     postCodeField: String,
@@ -39,30 +62,23 @@ object Phase4Generators extends TemplateArgGenerators {
     countryField: String,
     languageCodeField: String,
     tinField: String
-  ) = for {
-    name         <- alphaNum(35)
-    street       <- alphaNum(35)
-    postCode     <- alphaNum(9)
-    city         <- alphaNum(35)
-    country      <- alphaExactly(2)
-    languageCode <- alphaExactly(2)
-    tin          <- alphaNum(17)
-  } yield Json.obj(
-    nameField         -> name,
-    streetField       -> street,
-    postCodeField     -> postCode,
-    cityField         -> city,
-    countryField      -> country,
-    languageCodeField -> languageCode,
-    tinField          -> tin
-  )
+  ): ArgGen = for {
+    tin <- alphaNum(17)
+    addressFields <- addressGen(
+      nameField,
+      streetField,
+      postCodeField,
+      cityField,
+      countryField,
+      languageCodeField
+    )
+  } yield addressFields ++ Json.obj(tinField -> tin)
 
-  val phase4CommonFieldsGen: ArgGen = for {
+  def phase4CommonFieldsGen(senderPrefix: String): ArgGen = for {
     SynIdeMES1    <- Gen.const("UNOC")
     SynVerNumMES2 <- Gen.const("3")
-    MesSenMES3 <- (Gen.oneOf(Seq("ARR", "DEP")), num(4), num(1)).mapN {
-      case (prefix, movementNum, correlationId) =>
-        s"MDTP-$prefix-${leftPad(movementNum, 23, '0')}-${leftPad(correlationId, 2, '0')}"
+    MesSenMES3 <- (num(4), num(1)).mapN { case (movementNum, correlationId) =>
+      s"MDTP-$senderPrefix-${leftPad(movementNum, 23, '0')}-${leftPad(correlationId, 2, '0')}"
     }
     SenIdeCodQuaMES4  <- alphaNum(4)
     MesRecMES6        <- alphaNum(35)
@@ -106,7 +122,7 @@ object Phase4Generators extends TemplateArgGenerators {
     "FirAndLasTraMES23" -> FirAndLasTraMES23
   )
 
-  val tradesTrdFieldsGen: ArgGen = phase4AddressGen(
+  val tradesTrdFieldsGen: ArgGen = addressGen(
     "NamTRD7",
     "StrAndNumTRD22",
     "PosCodTRD23",
@@ -265,7 +281,7 @@ object Phase4Generators extends TemplateArgGenerators {
   )
 
   val traPriPc1FieldsGen: ArgGen = for {
-    addressFields <- phase4AddressGen(
+    addressFields <- addressGen(
       "NamPC17",
       "StrAndNumPC122",
       "PosCodPC123",
@@ -279,7 +295,7 @@ object Phase4Generators extends TemplateArgGenerators {
     "HITPC126" -> HITPC126
   )
 
-  val traConCo1FieldsGen: ArgGen = phase4AddressGen(
+  val traConCo1FieldsGen: ArgGen = addressGen(
     "NamCO17",
     "StrAndNumCO122",
     "PosCodCO123",
@@ -289,7 +305,7 @@ object Phase4Generators extends TemplateArgGenerators {
     "TINCO159"
   )
 
-  val traConCe1FieldsGen: ArgGen = phase4AddressGen(
+  val traConCe1FieldsGen: ArgGen = addressGen(
     "NamCE17",
     "StrAndNumCE122",
     "PosCodCE123",
@@ -343,7 +359,7 @@ object Phase4Generators extends TemplateArgGenerators {
     "ExpFroCouMT25" -> ExpFroCouMT25
   )
 
-  val traConCo2FieldsGen: ArgGen = phase4AddressGen(
+  val traConCo2FieldsGen: ArgGen = addressGen(
     "NamCO27",
     "StrAndNumCO222",
     "PosCodCO223",
@@ -353,7 +369,7 @@ object Phase4Generators extends TemplateArgGenerators {
     "TINCO259"
   )
 
-  val traConCe2FieldsGen: ArgGen = phase4AddressGen(
+  val traConCe2FieldsGen: ArgGen = addressGen(
     "NamCE27",
     "StrAndNumCE222",
     "PosCodCE223",
@@ -363,7 +379,7 @@ object Phase4Generators extends TemplateArgGenerators {
     "TINCE259"
   )
 
-  val traCorSecGoo021FieldsGen: ArgGen = phase4AddressGen(
+  val traCorSecGoo021FieldsGen: ArgGen = addressGen(
     "NamTRACORSECGOO025",
     "StrNumTRACORSECGOO027",
     "PosCodTRACORSECGOO026",
@@ -373,7 +389,7 @@ object Phase4Generators extends TemplateArgGenerators {
     "TINTRACORSECGOO028"
   )
 
-  val traConSecGoo013FieldsGen: ArgGen = phase4AddressGen(
+  val traConSecGoo013FieldsGen: ArgGen = addressGen(
     "NamTRACONSECGOO017",
     "StrNumTRACONSECGOO019",
     "PosCodTRACONSECGOO018",
@@ -383,7 +399,7 @@ object Phase4Generators extends TemplateArgGenerators {
     "TINTRACONSECGOO020"
   )
 
-  val carTra100FieldsGen: ArgGen = phase4AddressGen(
+  val carTra100FieldsGen: ArgGen = addressGen(
     "NamCARTRA121",
     "StrAndNumCARTRA254",
     "PosCodCARTRA121",
@@ -393,7 +409,7 @@ object Phase4Generators extends TemplateArgGenerators {
     "TINCARTRA254"
   )
 
-  val traCorSec037FieldsGen: ArgGen = phase4AddressGen(
+  val traCorSec037FieldsGen: ArgGen = addressGen(
     "NamTRACORSEC041",
     "StrNumTRACORSEC043",
     "PosCodTRACORSEC042",
@@ -403,7 +419,7 @@ object Phase4Generators extends TemplateArgGenerators {
     "TINTRACORSEC044"
   )
 
-  val traConSec029FieldsGen: ArgGen = phase4AddressGen(
+  val traConSec029FieldsGen: ArgGen = addressGen(
     "NameTRACONSEC033",
     "StrNumTRACONSEC035",
     "PosCodTRACONSEC034",
@@ -414,7 +430,7 @@ object Phase4Generators extends TemplateArgGenerators {
   )
 
   val cc007aGen: ArgGen = for {
-    commonFields           <- phase4CommonFieldsGen
+    commonFields           <- phase4CommonFieldsGen("ARR")
     tradesTrdFields        <- tradesTrdFieldsGen
     enRouEveTevFields      <- enRouEveTevFieldsGen
     seaInfSf1Fields        <- seaInfSf1FieldsGen
@@ -446,7 +462,7 @@ object Phase4Generators extends TemplateArgGenerators {
   )
 
   val cc015bGen: ArgGen = for {
-    commonFields             <- phase4CommonFieldsGen
+    commonFields             <- phase4CommonFieldsGen("DEP")
     traPriPc1Fields          <- traPriPc1FieldsGen
     traConCo1Fields          <- traConCo1FieldsGen
     traConCe1Fields          <- traConCe1FieldsGen
@@ -589,7 +605,7 @@ object Phase4Generators extends TemplateArgGenerators {
     )
 
   val cc044aGen: ArgGen = for {
-    commonFields             <- phase4CommonFieldsGen
+    commonFields             <- phase4CommonFieldsGen("ARR")
     tradesTrdFields          <- tradesTrdFieldsGen
     unlRemRemFields          <- unlRemRemFieldsGen
     resOfCon534Fields        <- resOfCon534FieldsGen
@@ -632,5 +648,252 @@ object Phase4Generators extends TemplateArgGenerators {
       "ConNumNR21"               -> ConNumNR21
     )
 
+  val guaQueFieldsGen: ArgGen = for {
+    QueIdeQUE1   <- num(1)
+    PerFroQUE2   <- date8
+    PerToDatQUE3 <- date8
+  } yield Json.obj(
+    "QueIdeQUE1"   -> QueIdeQUE1,
+    "PerFroQUE2"   -> PerFroQUE2,
+    "PerToDatQUE3" -> PerToDatQUE3
+  )
 
+  val traPrioTgFieldsGen: ArgGen = addressGen(
+    "NamOTG7",
+    "StrAndNumOTG22",
+    "PosCodOTG23",
+    "CitOTG24",
+    "CouOTG25",
+    "NADLNGOTG",
+    "TINOTG59"
+  )
+
+  val usaUsaFieldsGen: ArgGen = for {
+    DocNumUSA1   <- alphaNum(21)
+    CovAmoUSA2   <- (num1(13), num(2)).mapN(_ + "." + _)
+    CurUSA3      <- alphaNum(3)
+    LocDatUSA4   <- date8
+    ArrDatUSA5   <- date8
+    DatOfRelUSA6 <- date8
+  } yield Json.obj(
+    "DocNumUSA1"   -> DocNumUSA1,
+    "CovAmoUSA2"   -> CovAmoUSA2,
+    "CurUSA3"      -> CurUSA3,
+    "LocDatUSA4"   -> LocDatUSA4,
+    "ArrDatUSA5"   -> ArrDatUSA5,
+    "DatOfRelUSA6" -> DatOfRelUSA6
+  )
+
+  val expExpFieldsGen: ArgGen = for {
+    ExpEXP1    <- (num1(13), num(2)).mapN(_ + "." + _)
+    ExpCouEXP2 <- alphaNum(8)
+    BalEXP3    <- (num1(13), num(2)).mapN(_ + "." + _)
+    CurEXP4    <- alphaNumExactly(3)
+  } yield Json.obj(
+    "ExpEXP1"    -> ExpEXP1,
+    "ExpCouEXP2" -> ExpCouEXP2,
+    "BalEXP3"    -> BalEXP3,
+    "CurEXP4"    -> CurEXP4
+  )
+
+  val guaOthAddFieldsGen: ArgGen = for {
+    AddTypADD11 <- alphaExactly(1)
+    guaOthAddressFields <- addressGen(
+      "NamADD12",
+      "StrAndNumADD13",
+      "PosCodADD22",
+      "CitADD15",
+      "CouADD14",
+      "NADLNGGOA"
+    )
+    ConPerADD16 <- alphaNum(35)
+    PhoNumADD17 <- alphaNum(35)
+    FaxNumADD18 <- alphaNum(35)
+    TelNumADD19 <- alphaNum(35)
+    MaiAddADD20 <- alphaNum(70)
+    LanCodADD21 <- alphaExactly(2)
+  } yield guaOthAddressFields ++ Json.obj(
+    "AddTypADD11" -> AddTypADD11,
+    "ConPerADD16" -> ConPerADD16,
+    "PhoNumADD17" -> PhoNumADD17,
+    "FaxNumADD18" -> FaxNumADD18,
+    "TelNumADD19" -> TelNumADD19,
+    "MaiAddADD20" -> MaiAddADD20,
+    "LanCodADD21" -> LanCodADD21
+  )
+
+  val guarnrFieldsGen: ArgGen = for {
+    guarnrAddressFields <- addressGen(
+      "NamRNR735",
+      "StrAndNumRNR736",
+      "PosCodRNR737",
+      "CitRNR738",
+      "CouRNR745",
+      "NADLNGGGR",
+      "TINRNR746"
+    )
+    guaOthAddFields <- guaOthAddFieldsGen
+    ConPerRNR739    <- alphaNum(35)
+    PhoNumRNR740    <- alphaNum(35)
+    FaxNumRNR741    <- alphaNum(35)
+    TelNumRNR742    <- alphaNum(35)
+    MaiAddRNR743    <- alphaNum(70)
+    LanCodRNR744    <- alphaExactly(2)
+  } yield guarnrAddressFields ++ guaOthAddFields ++ Json.obj(
+    "ConPerRNR739" -> ConPerRNR739,
+    "PhoNumRNR740" -> PhoNumRNR740,
+    "FaxNumRNR741" -> FaxNumRNR741,
+    "TelNumRNR742" -> TelNumRNR742,
+    "MaiAddRNR743" -> MaiAddRNR743,
+    "LanCodRNR744" -> LanCodRNR744
+  )
+
+  val guaComGuaGds2FieldsGen: ArgGen = for {
+    ComCodGDS210    <- alphaNum(22)
+    SenGooCodGDS213 <- num(2)
+    GooDesGDS211    <- alphaNum(280)
+    GooDesGDS211LNG <- alphaExactly(2)
+  } yield Json.obj(
+    "ComCodGDS210"    -> ComCodGDS210,
+    "SenGooCodGDS213" -> SenGooCodGDS213,
+    "GooDesGDS211"    -> GooDesGDS211,
+    "GooDesGDS211LNG" -> GooDesGDS211LNG
+  )
+
+  val comGuaCmpFieldsGen: ArgGen = for {
+    guaComGuaGds2Fields  <- guaComGuaGds2FieldsGen
+    RefAmoCMP11          <- (num1(13), num(2)).mapN(_ + "." + _)
+    PerOfRefAmoCMP12     <- num(3)
+    GuaAmoCMP13          <- (num1(13), num(2)).mapN(_ + "." + _)
+    CurCMP14             <- alphaNumExactly(3)
+    NumOfCerCMP15        <- alphaNum(8)
+    ValDatCMP16          <- date8
+    InvDatCMP17          <- date8
+    InvReaCodCMP18       <- alphaNumExactly(3)
+    InvReaCMP19          <- alphaNum(350)
+    InvReaCMP19LNG       <- alphaExactly(2)
+    LiaLibDatCMP21       <- date8
+    LimValCMP22          <- num(1)
+    ResUseCMP23          <- num(1)
+    NotValForECCMG2      <- num(1)
+    NotValForOthConPVLD2 <- alphaExactly(2)
+  } yield guaComGuaGds2Fields ++ Json.obj(
+    "RefAmoCMP11"          -> RefAmoCMP11,
+    "PerOfRefAmoCMP12"     -> PerOfRefAmoCMP12,
+    "GuaAmoCMP13"          -> GuaAmoCMP13,
+    "CurCMP14"             -> CurCMP14,
+    "NumOfCerCMP15"        -> NumOfCerCMP15,
+    "ValDatCMP16"          -> ValDatCMP16,
+    "InvDatCMP17"          -> InvDatCMP17,
+    "InvReaCodCMP18"       -> InvReaCodCMP18,
+    "InvReaCMP19"          -> InvReaCMP19,
+    "InvReaCMP19LNG"       -> InvReaCMP19LNG,
+    "LiaLibDatCMP21"       -> LiaLibDatCMP21,
+    "LimValCMP22"          -> LimValCMP22,
+    "ResUseCMP23"          -> ResUseCMP23,
+    "NotValForECCMG2"      -> NotValForECCMG2,
+    "NotValForOthConPVLD2" -> NotValForOthConPVLD2
+  )
+
+  val guaGrtGds3FieldsGen: ArgGen = for {
+    ComCodGDS311    <- alphaNum(22)
+    SenGooGDS314    <- num(2)
+    GooDesGDS312    <- alphaNum(280)
+    GooDesGDS312LNG <- alphaExactly(2)
+  } yield Json.obj(
+    "ComCodGDS311"    -> ComCodGDS311,
+    "SenGooGDS314"    -> SenGooGDS314,
+    "GooDesGDS312"    -> GooDesGDS312,
+    "GooDesGDS312LNG" -> GooDesGDS312LNG
+  )
+
+  val indGuaByGnrFieldsGen: ArgGen = for {
+    guaGrtGds3Fields    <- guaGrtGds3FieldsGen
+    GuaAmoGNR11         <- (num1(13), num(2)).mapN(_ + "." + _)
+    CurGNR12            <- alphaNumExactly(3)
+    RefNumEPT22         <- alphaNumExactly(8)
+    RefNumEST22         <- alphaExactly(8)
+    NotValForECVLD1     <- num(1)
+    NoValForOthConPMIT2 <- alphaExactly(2)
+  } yield guaGrtGds3Fields ++ Json.obj(
+    "GuaAmoGNR11"         -> GuaAmoGNR11,
+    "CurGNR12"            -> CurGNR12,
+    "RefNumEPT22"         -> RefNumEPT22,
+    "RefNumEST22"         -> RefNumEST22,
+    "NotValForECVLD1"     -> NotValForECVLD1,
+    "NoValForOthConPMIT2" -> NoValForOthConPMIT2
+  )
+
+  val indGuaVouFieldsGen: ArgGen = for {
+    DatOfIssVOU745       <- date8
+    ExpDatVOU746         <- date8
+    HarCopGivToPriVOU747 <- num(1)
+    LimValVOU748         <- num(1)
+    TIRCarVOU749         <- num(1)
+    VouAmoVOU750         <- (num1(13), num(2)).mapN(_ + "." + _)
+    CurVOU751            <- alphaNumExactly(3)
+  } yield Json.obj(
+    "DatOfIssVOU745"       -> DatOfIssVOU745,
+    "ExpDatVOU746"         -> ExpDatVOU746,
+    "HarCopGivToPriVOU747" -> HarCopGivToPriVOU747,
+    "LimValVOU748"         -> LimValVOU748,
+    "TIRCarVOU749"         -> TIRCarVOU749,
+    "VouAmoVOU750"         -> VouAmoVOU750,
+    "CurVOU751"            -> CurVOU751
+  )
+
+  val guaRef2FieldsGen: ArgGen = for {
+    guaQueFields      <- guaQueFieldsGen
+    traPrioTgFields   <- traPrioTgFieldsGen
+    usaUsaFields      <- usaUsaFieldsGen
+    expExpFields      <- expExpFieldsGen
+    guarnrFields      <- guarnrFieldsGen
+    comGuaCmpFields   <- comGuaCmpFieldsGen
+    indGuaByGnrFields <- indGuaByGnrFieldsGen
+    indGuaVouFields   <- indGuaVouFieldsGen
+    GuaRefNumGRNREF21 <- alphaNum(24)
+    AccDatREF24       <- date8
+    GuaTypREF22       <- alphaNumExactly(1)
+    GuaMonCodREF23    <- num(1)
+  } yield guaQueFields ++ traPrioTgFields ++ usaUsaFields ++ expExpFields ++ guarnrFields ++ comGuaCmpFields ++ indGuaByGnrFields ++ indGuaVouFields ++ Json
+    .obj(
+      "GuaRefNumGRNREF21" -> GuaRefNumGRNREF21,
+      "AccDatREF24"       -> AccDatREF24,
+      "GuaTypREF22"       -> GuaTypREF22,
+      "GuaMonCodREF23"    -> GuaMonCodREF23
+    )
+
+  val cd034aGen: ArgGen = for {
+    commonFields  <- phase4CommonFieldsGen("GUA")
+    guaRef2Fields <- guaRef2FieldsGen
+    TINRC159      <- alphaNum(17)
+    CouCodGRT764  <- alphaExactly(2)
+    RefNumEPR1    <- alphaNumExactly(8)
+    RefNumSIM1    <- alphaNumExactly(8)
+    RefNumRCV1    <- alphaNumExactly(8)
+    AccCodCOD729 <- alphaExactly(4)
+  } yield commonFields ++ guaRef2Fields ++ Json.obj(
+    "TINRC159"     -> TINRC159,
+    "CouCodGRT764" -> CouCodGRT764,
+    "RefNumEPR1"   -> RefNumEPR1,
+    "RefNumSIM1"   -> RefNumSIM1,
+    "RefNumRCV1"   -> RefNumRCV1,
+    "AccCodCOD729" -> AccCodCOD729
+  )
+
+  val cd037aGen: ArgGen = for {
+    commonFields  <- phase4CommonFieldsGen("GUA")
+    guaRef2Fields <- guaRef2FieldsGen
+    TINRC159      <- alphaNum(17)
+    RefNumRNT1    <- alphaNumExactly(8)
+    RefNumEPR1    <- alphaNumExactly(8)
+    RefNumSIM1    <- alphaNumExactly(8)
+    RefNumRCV1    <- alphaNumExactly(8)
+  } yield commonFields ++ guaRef2Fields ++ Json.obj(
+    "TINRC159"   -> TINRC159,
+    "RefNumRNT1" -> RefNumRNT1,
+    "RefNumEPR1" -> RefNumEPR1,
+    "RefNumSIM1" -> RefNumSIM1,
+    "RefNumRCV1" -> RefNumRCV1
+  )
 }

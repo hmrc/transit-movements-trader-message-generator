@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.00">
+  <!--=========================================-->
+  <!--===== CD037A -->
+  <!--===== XSD version v1.00  -->
+  <!--=========================================-->
+  <!--===== Includes =====-->
+  <xs:include schemaLocation="doc.xsd" />
+  <xs:include schemaLocation="simple_types.xsd" />
+  <!--===== Root Element =====-->
+  <xs:element name="CD037A" type="CD037AType" />
+  <!--===== MESSAGE Content =====-->
+  <xs:complexType name="CD037AType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SynIdeMES1" type="Alpha_4" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SynVerNumMES2" type="Numeric_1_-8" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MesSenMES3" type="Alphanumeric_Max35" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SenIdeCodQuaMES4" type="Alphanumeric_Max4_-5" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MesRecMES6" type="Alphanumeric_Max35" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RecIdeCodQuaMES7" type="Alphanumeric_Max4_-5" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DatOfPreMES9" type="Numeric_Min6Max8" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TimOfPreMES10" type="Numeric_4" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="IntConRefMES11" type="Alphanumeric_Max14" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RecRefMES12" type="Alphanumeric_Max14" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RecRefQuaMES13" type="Alphanumeric_2_-6" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AppRefMES14" type="Alphanumeric_Max14" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PriMES15" type="Alpha_1" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AckReqMES16" type="Numeric_1" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ComAgrIdMES17" type="Alphanumeric_Max35" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TesIndMES18" type="Numeric_1" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MesIdeMES19" type="Alphanumeric_Max14" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MesTypMES20" type="Alphanumeric_Max6" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ComAccRefMES21" type="Alphanumeric_Max35" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TRAPRIRC1" type="TRAPRIRC1Type" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CUSTOFFGUARNT" type="CUSTOFFGUARNTType" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CUSOFFREQ" type="CUSOFFREQType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AUTFORGUASIM" type="AUTFORGUASIMType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CUSOFFRECRCV" type="CUSOFFRECRCVType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GUAREF2" type="GUAREF2Type" minOccurs="1" maxOccurs="99">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TRAPRIRC1Type">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TINRC159" type="Alphanumeric_Max17" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CUSTOFFGUARNTType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RefNumRNT1" type="Alphanumeric_8" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CUSOFFREQType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RefNumEPR1" type="Alphanumeric_8" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AUTFORGUASIMType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RefNumSIM1" type="Alphanumeric_8" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CUSOFFRECRCVType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RefNumRCV1" type="Alphanumeric_8" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GUAREF2Type">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="GuaRefNumGRNREF21" type="Alphanumeric_Max24" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AccDatREF24" type="Numeric_8" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GuaTypREF22" type="Alphanumeric_1" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GuaMonCodREF23" type="Numeric_1_-50" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GUAQUE" type="GUAQUEType" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TRAPRIOTG" type="TRAPRIOTGType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="USAUSA" type="USAUSAType" minOccurs="0" maxOccurs="9999">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EXPEXP" type="EXPEXPType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GUARNR" type="GUARNRType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="COMGUACMP" type="COMGUACMPType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="INDGUABYGNR" type="INDGUABYGNRType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="INDGUAVOU" type="INDGUAVOUType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GUAQUEType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="QueIdeQUE1" type="Numeric_1_-46" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PerFroQUE2" type="Numeric_8" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PerToDatQUE3" type="Numeric_8_-22" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TRAPRIOTGType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="NamOTG7" type="Alphanumeric_Max35" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StrAndNumOTG22" type="Alphanumeric_Max35" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PosCodOTG23" type="Alphanumeric_Max9_-3" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CitOTG24" type="Alphanumeric_Max35" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CouOTG25" type="Alpha_2_-1" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NADLNGOTG" type="Alpha_2" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TINOTG59" type="Alphanumeric_Max17" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="USAUSAType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="DocNumUSA1" type="Alphanumeric_Max21" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CovAmoUSA2" type="Decimal_Max16" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CurUSA3" type="Alphanumeric_Max3_-49" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LocDatUSA4" type="Numeric_8" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ArrDatUSA5" type="Numeric_8" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DatOfRelUSA6" type="Numeric_8" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXPEXPType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ExpEXP1" type="Decimal_Max16" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExpCouEXP2" type="Alphanumeric_Max8" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BalEXP3" type="Decimal_Max16" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CurEXP4" type="Alphanumeric_3_-48" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GUARNRType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="NamRNR735" type="Alphanumeric_Max35" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StrAndNumRNR736" type="Alphanumeric_Max35" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PosCodRNR737" type="Alphanumeric_Max9_-3" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CitRNR738" type="Alphanumeric_Max35" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CouRNR745" type="Alpha_2_-33" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NADLNGGGR" type="Alpha_2" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ConPerRNR739" type="Alphanumeric_Max35" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PhoNumRNR740" type="Alphanumeric_Max35" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FaxNumRNR741" type="Alphanumeric_Max35" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TelNumRNR742" type="Alphanumeric_Max35" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MaiAddRNR743" type="Alphanumeric_Max70" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LanCodRNR744" type="Alpha_2" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TINRNR746" type="Alphanumeric_Max17" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GUAOTHADD" type="GUAOTHADDType" minOccurs="0" maxOccurs="99">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GUAOTHADDType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AddTypADD11" type="Alpha_1_-47" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NamADD12" type="Alphanumeric_Max35" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StrAndNumADD13" type="Alphanumeric_Max35" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PosCodADD22" type="Alphanumeric_Max9_-3" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CitADD15" type="Alphanumeric_Max35" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CouADD14" type="Alpha_2_-33" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NADLNGGOA" type="Alpha_2" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ConPerADD16" type="Alphanumeric_Max35" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PhoNumADD17" type="Alphanumeric_Max35" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FaxNumADD18" type="Alphanumeric_Max35" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TelNumADD19" type="Alphanumeric_Max35" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MaiAddADD20" type="Alphanumeric_Max70" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LanCodADD21" type="Alpha_2" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="COMGUACMPType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RefAmoCMP11" type="Decimal_Max16" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PerOfRefAmoCMP12" type="Numeric_Max3" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GuaAmoCMP13" type="Decimal_Max16" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CurCMP14" type="Alphanumeric_3_-48" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NumOfCerCMP15" type="Alphanumeric_Max8" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ValDatCMP16" type="Numeric_8" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="InvDatCMP17" type="Numeric_8" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="InvReaCodCMP18" type="Alphanumeric_3" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="InvReaCMP19" type="Alphanumeric_Max350" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="InvReaCMP19LNG" type="Alpha_2" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LiaLibDatCMP21" type="Numeric_8" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LimValCMP22" type="Numeric_1" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ResUseCMP23" type="Numeric_1" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GUACOMGUAGDS2" type="GUACOMGUAGDS2Type" minOccurs="0" maxOccurs="99">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="VALLIMECCMG" type="VALLIMECCMGType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="VALLIMNONECVLD" type="VALLIMNONECVLDType" minOccurs="0" maxOccurs="99">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GUACOMGUAGDS2Type">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ComCodGDS210" type="Alphanumeric_Max22" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SenGooCodGDS213" type="Numeric_Max2" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GooDesGDS211" type="Alphanumeric_Max280" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GooDesGDS211LNG" type="Alpha_2" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VALLIMECCMGType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="NotValForECCMG2" type="Numeric_1" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VALLIMNONECVLDType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="NotValForOthConPVLD2" type="Alpha_2_-26" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="INDGUABYGNRType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="GuaAmoGNR11" type="Decimal_Max16" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CurGNR12" type="Alphanumeric_3_-48" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GUAGRTGDS3" type="GUAGRTGDS3Type" minOccurs="1" maxOccurs="99">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CUSTOFFDEPEPT2" type="CUSTOFFDEPEPT2Type" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CUSTOFFDESEST2" type="CUSTOFFDESEST2Type" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="VALLIMECVLD" type="VALLIMECVLDType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="VALLIMNONECMIT" type="VALLIMNONECMITType" minOccurs="0" maxOccurs="99">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GUAGRTGDS3Type">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ComCodGDS311" type="Alphanumeric_Max22" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SenGooGDS314" type="Numeric_Max2" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GooDesGDS312" type="Alphanumeric_Max280" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GooDesGDS312LNG" type="Alpha_2" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CUSTOFFDEPEPT2Type">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RefNumEPT22" type="Alphanumeric_8" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CUSTOFFDESEST2Type">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RefNumEST22" type="Alphanumeric_8" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VALLIMECVLDType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="NotValForECVLD1" type="Numeric_1" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VALLIMNONECMITType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="NoValForOthConPMIT2" type="Alpha_2_-26" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="INDGUAVOUType">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="DatOfIssVOU745" type="Numeric_8" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExpDatVOU746" type="Numeric_8" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="HarCopGivToPriVOU747" type="Numeric_1" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LimValVOU748" type="Numeric_1" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TIRCarVOU749" type="Numeric_1" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="VouAmoVOU750" type="Decimal_Max16" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CurVOU751" type="Alphanumeric_3_-48" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

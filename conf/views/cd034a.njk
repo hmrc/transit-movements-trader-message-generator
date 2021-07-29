@@ -1,0 +1,72 @@
+<CD034A>
+  <SynIdeMES1>{{ SynIdeMES1 }}</SynIdeMES1>
+  <SynVerNumMES2>{{ SynVerNumMES2 }}</SynVerNumMES2>
+  <MesSenMES3>{{ MesSenMES3 }}</MesSenMES3>
+  {#- Optional: #}
+  <SenIdeCodQuaMES4>{{ SenIdeCodQuaMES4 }}</SenIdeCodQuaMES4>
+  <MesRecMES6>{{ MesRecMES6 }}</MesRecMES6>
+  {#- Optional: #}
+  <RecIdeCodQuaMES7>{{ RecIdeCodQuaMES7 }}</RecIdeCodQuaMES7>
+  <DatOfPreMES9>{{ DatOfPreMES9 }}</DatOfPreMES9>
+  <TimOfPreMES10>{{ TimOfPreMES10 }}</TimOfPreMES10>
+  <IntConRefMES11>{{ IntConRefMES11 }}</IntConRefMES11>
+  {#- Optional: #}
+  <RecRefMES12>{{ RecRefMES12 }}</RecRefMES12>
+  {#- Optional: #}
+  <RecRefQuaMES13>{{ RecRefQuaMES13 }}</RecRefQuaMES13>
+  {#- Optional: #}
+  <AppRefMES14>{{ AppRefMES14 }}</AppRefMES14>
+  {#- Optional: #}
+  <PriMES15>{{ PriMES15 }}</PriMES15>
+  {#- Optional: #}
+  <AckReqMES16>{{ AckReqMES16 }}</AckReqMES16>
+  {#- Optional: #}
+  <ComAgrIdMES17>{{ ComAgrIdMES17 }}</ComAgrIdMES17>
+  {#- Optional: #}
+  <TesIndMES18>{{ TesIndMES18 }}</TesIndMES18>
+  <MesIdeMES19>{{ MesIdeMES19 }}</MesIdeMES19>
+  <MesTypMES20>{{ MesTypMES20 }}</MesTypMES20>
+  {#- Optional: #}
+  <ComAccRefMES21>{{ ComAccRefMES21 }}</ComAccRefMES21>
+  {#- Optional: #}
+  <TRAPRIRC1>
+    <TINRC159>{{ TINRC159 }}</TINRC159>
+  </TRAPRIRC1>
+  {#- Optional: #}
+  <COUGRT>
+    <CouCodGRT764>{{ CouCodGRT764 }}</CouCodGRT764>
+  </COUGRT>
+  {#- Optional: #}
+  <CUSOFFREQ>
+    <RefNumEPR1>{{ RefNumEPR1 }}</RefNumEPR1>
+  </CUSOFFREQ>
+  {#- Optional: #}
+  <AUTFORGUASIM>
+    <RefNumSIM1>{{ RefNumSIM1 }}</RefNumSIM1>
+  </AUTFORGUASIM>
+  {#- Optional: #}
+  <CUSOFFRECRCV>
+    <RefNumRCV1>{{ RefNumRCV1 }}</RefNumRCV1>
+  </CUSOFFRECRCV>
+  {#- 1 to 99 repetitions: #}
+  {%- for i in range(0, 99) %}
+  <GUAREF2>
+    <GuaRefNumGRNREF21>{{ GuaRefNumGRNREF21 }}</GuaRefNumGRNREF21>
+    <GUAQUE>
+      <QueIdeQUE1>{{ QueIdeQUE1 }}</QueIdeQUE1>
+      {#- Optional: #}
+      <PerFroQUE2>{{ PerFroQUE2 }}</PerFroQUE2>
+      {#- Optional: #}
+      <PerToDatQUE3>{{ PerToDatQUE3 }}</PerToDatQUE3>
+    </GUAQUE>
+    {#- Optional: #}
+    <TRAPRIOTG>
+      <TINOTG59>{{ TINOTG59 }}</TINOTG59>
+    </TRAPRIOTG>
+    {#- Optional: #}
+    <ACCDOC728>
+      <AccCodCOD729>{{ AccCodCOD729 }}</AccCodCOD729>
+    </ACCDOC728>
+  </GUAREF2>
+  {%- endfor %}
+</CD034A>

@@ -1,0 +1,238 @@
+<CD037A>
+  <SynIdeMES1>{{ SynIdeMES1 }}</SynIdeMES1>
+  <SynVerNumMES2>{{ SynVerNumMES2 }}</SynVerNumMES2>
+  <MesSenMES3>{{ MesSenMES3 }}</MesSenMES3>
+  {#- Optional: #}
+  <SenIdeCodQuaMES4>{{ SenIdeCodQuaMES4 }}</SenIdeCodQuaMES4>
+  <MesRecMES6>{{ MesRecMES6 }}</MesRecMES6>
+  {#- Optional: #}
+  <RecIdeCodQuaMES7>{{ RecIdeCodQuaMES7 }}</RecIdeCodQuaMES7>
+  <DatOfPreMES9>{{ DatOfPreMES9 }}</DatOfPreMES9>
+  <TimOfPreMES10>{{ TimOfPreMES10 }}</TimOfPreMES10>
+  <IntConRefMES11>{{ IntConRefMES11 }}</IntConRefMES11>
+  {#- Optional: #}
+  <RecRefMES12>{{ RecRefMES12 }}</RecRefMES12>
+  {#- Optional: #}
+  <RecRefQuaMES13>{{ RecRefQuaMES13 }}</RecRefQuaMES13>
+  {#- Optional: #}
+  <AppRefMES14>{{ AppRefMES14 }}</AppRefMES14>
+  {#- Optional: #}
+  <PriMES15>{{ PriMES15 }}</PriMES15>
+  {#- Optional: #}
+  <AckReqMES16>{{ AckReqMES16 }}</AckReqMES16>
+  {#- Optional: #}
+  <ComAgrIdMES17>{{ ComAgrIdMES17 }}</ComAgrIdMES17>
+  {#- Optional: #}
+  <TesIndMES18>{{ TesIndMES18 }}</TesIndMES18>
+  <MesIdeMES19>{{ MesIdeMES19 }}</MesIdeMES19>
+  <MesTypMES20>{{ MesTypMES20 }}</MesTypMES20>
+  {#- Optional: #}
+  <ComAccRefMES21>{{ ComAccRefMES21 }}</ComAccRefMES21>
+  {#- Optional: #}
+  <TRAPRIRC1>
+    <TINRC159>{{ TINRC159 }}</TINRC159>
+  </TRAPRIRC1>
+  <CUSTOFFGUARNT>
+    <RefNumRNT1>{{ RefNumRNT1 }}</RefNumRNT1>
+  </CUSTOFFGUARNT>
+  {#- Optional: #}
+  <CUSOFFREQ>
+    <RefNumEPR1>{{ RefNumEPR1 }}</RefNumEPR1>
+  </CUSOFFREQ>
+  {#- Optional: #}
+  <AUTFORGUASIM>
+    <RefNumSIM1>{{ RefNumSIM1 }}</RefNumSIM1>
+  </AUTFORGUASIM>
+  {#- Optional: #}
+  <CUSOFFRECRCV>
+    <RefNumRCV1>{{ RefNumRCV1 }}</RefNumRCV1>
+  </CUSOFFRECRCV>
+  {#- 1 to 99 repetitions: #}
+  {%- for i in range(0, 1) %}
+  <GUAREF2>
+    <GuaRefNumGRNREF21>{{ GuaRefNumGRNREF21 }}</GuaRefNumGRNREF21>
+    <AccDatREF24>{{ AccDatREF24 }}</AccDatREF24>
+    <GuaTypREF22>{{ GuaTypREF22 }}</GuaTypREF22>
+    <GuaMonCodREF23>{{ GuaMonCodREF23 }}</GuaMonCodREF23>
+    <GUAQUE>
+      <QueIdeQUE1>{{ QueIdeQUE1 }}</QueIdeQUE1>
+      {#- Optional: #}
+      <PerFroQUE2>{{ PerFroQUE2 }}</PerFroQUE2>
+      {#- Optional: #}
+      <PerToDatQUE3>{{ PerToDatQUE3 }}</PerToDatQUE3>
+    </GUAQUE>
+    {#- Optional: #}
+    <TRAPRIOTG>
+      <NamOTG7>{{ NamOTG7 }}</NamOTG7>
+      <StrAndNumOTG22>{{ StrAndNumOTG22 }}</StrAndNumOTG22>
+      <PosCodOTG23>{{ PosCodOTG23 }}</PosCodOTG23>
+      <CitOTG24>{{ CitOTG24 }}</CitOTG24>
+      <CouOTG25>{{ CouOTG25 }}</CouOTG25>
+      {#- Optional: #}
+      <NADLNGOTG>{{ NADLNGOTG }}</NADLNGOTG>
+      <TINOTG59>{{ TINOTG59 }}</TINOTG59>
+    </TRAPRIOTG>
+    {#- 0 to 9999 repetitions: #}
+    {%- for i in range(0, 9999) %}
+    <USAUSA>
+      <DocNumUSA1>{{ DocNumUSA1 }}</DocNumUSA1>
+      <CovAmoUSA2>{{ CovAmoUSA2 }}</CovAmoUSA2>
+      <CurUSA3>{{ CurUSA3 }}</CurUSA3>
+      <LocDatUSA4>{{ LocDatUSA4 }}</LocDatUSA4>
+      {#- Optional: #}
+      <ArrDatUSA5>{{ ArrDatUSA5 }}</ArrDatUSA5>
+      {#- Optional: #}
+      <DatOfRelUSA6>{{ DatOfRelUSA6 }}</DatOfRelUSA6>
+    </USAUSA>
+    {%- endfor %}
+    {#- Optional: #}
+    <EXPEXP>
+      <ExpEXP1>{{ ExpEXP1 }}</ExpEXP1>
+      <ExpCouEXP2>{{ ExpCouEXP2 }}</ExpCouEXP2>
+      {#- Optional: #}
+      <BalEXP3>{{ BalEXP3 }}</BalEXP3>
+      <CurEXP4>{{ CurEXP4 }}</CurEXP4>
+    </EXPEXP>
+    {#- Optional: #}
+    <GUARNR>
+      <NamRNR735>{{ NamRNR735 }}</NamRNR735>
+      <StrAndNumRNR736>{{ StrAndNumRNR736 }}</StrAndNumRNR736>
+      <PosCodRNR737>{{ PosCodRNR737 }}</PosCodRNR737>
+      <CitRNR738>{{ CitRNR738 }}</CitRNR738>
+      <CouRNR745>{{ CouRNR745 }}</CouRNR745>
+      {#- Optional: #}
+      <NADLNGGGR>{{ NADLNGGGR }}</NADLNGGGR>
+      {#- Optional: #}
+      <ConPerRNR739>{{ ConPerRNR739 }}</ConPerRNR739>
+      {#- Optional: #}
+      <PhoNumRNR740>{{ PhoNumRNR740 }}</PhoNumRNR740>
+      {#- Optional: #}
+      <FaxNumRNR741>{{ FaxNumRNR741 }}</FaxNumRNR741>
+      {#- Optional: #}
+      <TelNumRNR742>{{ TelNumRNR742 }}</TelNumRNR742>
+      {#- Optional: #}
+      <MaiAddRNR743>{{ MaiAddRNR743 }}</MaiAddRNR743>
+      {#- Optional: #}
+      <LanCodRNR744>{{ LanCodRNR744 }}</LanCodRNR744>
+      {#- Optional: #}
+      <TINRNR746>{{ TINRNR746 }}</TINRNR746>
+      {#- 0 to 99 repetitions: #}
+      {%- for i in range(0, 99) %}
+      <GUAOTHADD>
+        <AddTypADD11>{{ AddTypADD11 }}</AddTypADD11>
+        <NamADD12>{{ NamADD12 }}</NamADD12>
+        <StrAndNumADD13>{{ StrAndNumADD13 }}</StrAndNumADD13>
+        <PosCodADD22>{{ PosCodADD22 }}</PosCodADD22>
+        <CitADD15>{{ CitADD15 }}</CitADD15>
+        <CouADD14>{{ CouADD14 }}</CouADD14>
+        {#- Optional: #}
+        <NADLNGGOA>{{ NADLNGGOA }}</NADLNGGOA>
+        {#- Optional: #}
+        <ConPerADD16>{{ ConPerADD16 }}</ConPerADD16>
+        {#- Optional: #}
+        <PhoNumADD17>{{ PhoNumADD17 }}</PhoNumADD17>
+        {#- Optional: #}
+        <FaxNumADD18>{{ FaxNumADD18 }}</FaxNumADD18>
+        {#- Optional: #}
+        <TelNumADD19>{{ TelNumADD19 }}</TelNumADD19>
+        {#- Optional: #}
+        <MaiAddADD20>{{ MaiAddADD20 }}</MaiAddADD20>
+        {#- Optional: #}
+        <LanCodADD21>{{ LanCodADD21 }}</LanCodADD21>
+      </GUAOTHADD>
+      {%- endfor %}
+    </GUARNR>
+    {#- Optional: #}
+    <COMGUACMP>
+      {#- Optional: #}
+      <RefAmoCMP11>{{ RefAmoCMP11 }}</RefAmoCMP11>
+      {#- Optional: #}
+      <PerOfRefAmoCMP12>{{ PerOfRefAmoCMP12 }}</PerOfRefAmoCMP12>
+      {#- Optional: #}
+      <GuaAmoCMP13>{{ GuaAmoCMP13 }}</GuaAmoCMP13>
+      <CurCMP14>{{ CurCMP14 }}</CurCMP14>
+      <NumOfCerCMP15>{{ NumOfCerCMP15 }}</NumOfCerCMP15>
+      <ValDatCMP16>{{ ValDatCMP16 }}</ValDatCMP16>
+      {#- Optional: #}
+      <InvDatCMP17>{{ InvDatCMP17 }}</InvDatCMP17>
+      {#- Optional: #}
+      <InvReaCodCMP18>{{ InvReaCodCMP18 }}</InvReaCodCMP18>
+      {#- Optional: #}
+      <InvReaCMP19>{{ InvReaCMP19 }}</InvReaCMP19>
+      {#- Optional: #}
+      <InvReaCMP19LNG>{{ InvReaCMP19LNG }}</InvReaCMP19LNG>
+      {#- Optional: #}
+      <LiaLibDatCMP21>{{ LiaLibDatCMP21 }}</LiaLibDatCMP21>
+      <LimValCMP22>{{ LimValCMP22 }}</LimValCMP22>
+      <ResUseCMP23>{{ ResUseCMP23 }}</ResUseCMP23>
+      {#- 0 to 99 repetitions: #}
+      {%- for i in range(0, 99) %}
+      <GUACOMGUAGDS2>
+        {#- Optional: #}
+        <ComCodGDS210>{{ ComCodGDS210 }}</ComCodGDS210>
+        {#- Optional: #}
+        <SenGooCodGDS213>{{ SenGooCodGDS213 }}</SenGooCodGDS213>
+        <GooDesGDS211>{{ GooDesGDS211 }}</GooDesGDS211>
+        {#- Optional: #}
+        <GooDesGDS211LNG>{{ GooDesGDS211LNG }}</GooDesGDS211LNG>
+      </GUACOMGUAGDS2>
+      {%- endfor %}
+      {#- Optional: #}
+      <VALLIMECCMG>
+        <NotValForECCMG2>{{ NotValForECCMG2 }}</NotValForECCMG2>
+      </VALLIMECCMG>
+      {#- 0 to 99 repetitions: #}
+      {%- for i in range(0, 99) %}
+      <VALLIMNONECVLD>
+        <NotValForOthConPVLD2>{{ NotValForOthConPVLD2 }}</NotValForOthConPVLD2>
+      </VALLIMNONECVLD>
+      {%- endfor %}
+    </COMGUACMP>
+    {#- Optional: #}
+    <INDGUABYGNR>
+      <GuaAmoGNR11>{{ GuaAmoGNR11 }}</GuaAmoGNR11>
+      <CurGNR12>{{ CurGNR12 }}</CurGNR12>
+      {#- 1 to 99 repetitions: #}
+      {%- for i in range(0, 99) %}
+      <GUAGRTGDS3>
+        {#- Optional: #}
+        <ComCodGDS311>{{ ComCodGDS311 }}</ComCodGDS311>
+        {#- Optional: #}
+        <SenGooGDS314>{{ SenGooGDS314 }}</SenGooGDS314>
+        <GooDesGDS312>{{ GooDesGDS312 }}</GooDesGDS312>
+        {#- Optional: #}
+        <GooDesGDS312LNG>{{ GooDesGDS312LNG }}</GooDesGDS312LNG>
+      </GUAGRTGDS3>
+      {%- endfor %}
+      <CUSTOFFDEPEPT2>
+        <RefNumEPT22>{{ RefNumEPT22 }}</RefNumEPT22>
+      </CUSTOFFDEPEPT2>
+      <CUSTOFFDESEST2>
+        <RefNumEST22>{{ RefNumEST22 }}</RefNumEST22>
+      </CUSTOFFDESEST2>
+      {#- Optional: #}
+      <VALLIMECVLD>
+        <NotValForECVLD1>{{ NotValForECVLD1 }}</NotValForECVLD1>
+      </VALLIMECVLD>
+      {%- for i in range(0, 99) %}
+      {#- 0 to 99 repetitions: #}
+      <VALLIMNONECMIT>
+        <NoValForOthConPMIT2>{{ NoValForOthConPMIT2 }}</NoValForOthConPMIT2>
+      </VALLIMNONECMIT>
+      {%- endfor %}
+    </INDGUABYGNR>
+    {#- Optional: #}
+    <INDGUAVOU>
+      <DatOfIssVOU745>{{ DatOfIssVOU745 }}</DatOfIssVOU745>
+      <ExpDatVOU746>{{ ExpDatVOU746 }}</ExpDatVOU746>
+      <HarCopGivToPriVOU747>{{ HarCopGivToPriVOU747 }}</HarCopGivToPriVOU747>
+      <LimValVOU748>{{ LimValVOU748 }}</LimValVOU748>
+      <TIRCarVOU749>{{ TIRCarVOU749 }}</TIRCarVOU749>
+      {#- Optional: #}
+      <VouAmoVOU750>{{ VouAmoVOU750 }}</VouAmoVOU750>
+      {#- Optional: #}
+      <CurVOU751>{{ CurVOU751 }}</CurVOU751>
+    </INDGUAVOU>
+  </GUAREF2>
+  {%- endfor %}
+</CD037A>
