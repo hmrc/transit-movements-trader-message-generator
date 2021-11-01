@@ -22,8 +22,8 @@ import play.api.libs.json.JsObject
 abstract class TemplateArgGenerators {
   type ArgGen = Gen[JsObject]
 
-  def alphaNum(maxLen: Int) = for {
-    len <- Gen.choose(1, maxLen)
+  def alphaNum(maxLen: Int, minLen: Int = 1) = for {
+    len <- Gen.choose(minLen, maxLen)
     str <- Gen.stringOfN(len, Gen.alphaNumChar)
   } yield str
 
@@ -31,7 +31,7 @@ abstract class TemplateArgGenerators {
     Gen.stringOfN(len, Gen.alphaNumChar)
 
   def alphaExactly(len: Int) =
-    Gen.stringOfN(len, Gen.alphaChar)
+    alphaNum(len, len)
 
   def num(len: Int) =
     Gen.stringOfN(len, Gen.numChar)

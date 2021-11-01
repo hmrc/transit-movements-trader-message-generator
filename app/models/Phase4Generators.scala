@@ -83,7 +83,7 @@ object Phase4Generators extends TemplateArgGenerators {
     SenIdeCodQuaMES4  <- alphaNum(4)
     MesRecMES6        <- alphaNum(35)
     RecIdeCodQuaMES7  <- alphaNum(4)
-    DatOfPreMES9      <- num(8)
+    DatOfPreMES9      <- date8
     TimOfPreMES10     <- time4
     IntConRefMES11    <- alphaNum(14)
     RecRefMES12       <- alphaNum(14)
@@ -271,7 +271,7 @@ object Phase4Generators extends TemplateArgGenerators {
   val resOfConRocFieldsGen: ArgGen = for {
     DesROC2          <- alphaNum(140)
     DesROC2LNG       <- alphaExactly(2)
-    ConIndROC1       <- alphaNum(2)
+    ConIndROC1       <- alphaExactly(2)
     PoiToTheAttROC51 <- alphaNum(35)
   } yield Json.obj(
     "DesROC2"          -> DesROC2,
@@ -517,7 +517,7 @@ object Phase4Generators extends TemplateArgGenerators {
     CodPlUnHEA357            <- alphaNum(35)
     CodPlUnHEA357LNG         <- alphaExactly(2)
     TINTRA59                 <- alphaNum(17)
-    RefNumEPT1               <- alphaNumExactly(8)
+    RefNumEPT1               <- alphaNumExactly(6)
     RefNumRNS1               <- alphaNumExactly(8)
     ArrTimTRACUS085          <- num(12)
     RefNumEST1               <- alphaNumExactly(8)

@@ -124,11 +124,11 @@
     <RefNumRES1>{{ RefNumRES1 }}</RefNumRES1>
   </CUSOFFPREOFFRES>
   {#- 0 to 9 repetitions: #}
-  {%- for i in range(0, 0) %}
+  {%- for i in range(0, 9) %}
   <ENROUEVETEV>
     <PlaTEV10>{{ PlaTEV10 }}</PlaTEV10>
     {#- Optional: #}
-    {%- for i in range(0, 0) %}
+    {%- for i in range(0, 1) %}
     <PlaTEV10LNG>{{ PlaTEV10LNG }}</PlaTEV10LNG>
     {%- endfor %}
     <CouTEV13>{{ CouTEV13 }}</CouTEV13>
@@ -136,52 +136,52 @@
       <AlrInNCTCTL29>{{ AlrInNCTCTL29 }}</AlrInNCTCTL29>
     </CTLCTL>
     {#- Optional: #}
-    {%- for i in range(0, 0) %}
+    {%- for i in range(0, 1) %}
     <INCINC>
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <IncFlaINC3>{{ IncFlaINC3 }}</IncFlaINC3>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <IncInfINC4>{{ IncInfINC4 }}</IncInfINC4>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <IncInfINC4LNG>{{ IncInfINC4LNG }}</IncInfINC4LNG>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <EndDatINC6>{{ EndDatINC6 }}</EndDatINC6>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <EndAutINC7>{{ EndAutINC7 }}</EndAutINC7>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <EndAutINC7LNG>{{ EndAutINC7LNG }}</EndAutINC7LNG>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <EndPlaINC10>{{ EndPlaINC10 }}</EndPlaINC10>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <EndPlaINC10LNG>{{ EndPlaINC10LNG }}</EndPlaINC10LNG>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <EndCouINC12>{{ EndCouINC12 }}</EndCouINC12>
       {%- endfor %}
     </INCINC>
     {%- endfor %}
     {#- Optional: #}
-    {%- for i in range(0, 0) %}
+    {%- for i in range(0, 1) %}
     <SEAINFSF1>
       <SeaNumSF12>{{ SeaNumSF12 }}</SeaNumSF12>
       {#- 1 to 9999 repetitions: #}
-      {%- for i in range(0, 1) %}
+      {%- for i in range(0, 999) %}
       <SEAIDSI1>
         <SeaIdeSI11>{{ SeaIdeSI11 }}</SeaIdeSI11>
         {#- Optional: #}
@@ -193,10 +193,10 @@
     </SEAINFSF1>
     {%- endfor %}
     {#- Optional: #}
-    {%- for i in range(0, 0) %}
+    {%- for i in range(0, 1) %}
     <TRASHP>
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <NewTraMeaIdeSHP26>{{ NewTraMeaIdeSHP26 }}</NewTraMeaIdeSHP26>
       {%- endfor %}
       {#- Optional: #}
@@ -232,7 +232,7 @@
       <EndCouSHP65>{{ EndCouSHP65 }}</EndCouSHP65>
       {%- endfor %}
       {#- 0 to 99 repetitions: #}
-      {%- for i in range(0, 0) -%}
+      {%- for i in range(0, 99) -%}
       <CONNR3>
         <ConNumNR31>{{ ConNumNR31 }}</ConNumNR31>
       </CONNR3>

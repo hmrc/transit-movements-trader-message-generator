@@ -255,7 +255,7 @@
   </TRAAUTCONTRA>
   {%- endfor %}
   <CUSOFFDEPEPT>
-    <RefNumEPT1>{{ RefNumEPT1 }}</RefNumEPT1>
+    <RefNumEPT1>GB{{ RefNumEPT1 }}</RefNumEPT1>
   </CUSOFFDEPEPT>
   {#- 0 to 9 repetitions: #}
   {%- for i in range(0, 0) %}
@@ -306,16 +306,16 @@
   {#- 1 to 9 repetitions: #}
   {%- for i in range(0, 1) %}
   <GUAGUA>
-    <GuaTypGUA1>{{ GuaTypGUA1 }}</GuaTypGUA1>
+    <GuaTypGUA1>1</GuaTypGUA1>
     {#- 0 to 99 repetitions: #}
-    {%- for i in range(0, 0) %}
+    {%- for i in range(0, 1) %}
     <GUAREFREF>
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <GuaRefNumGRNREF1>{{ GuaRefNumGRNREF1 }}</GuaRefNumGRNREF1>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <OthGuaRefREF4>{{ OthGuaRefREF4 }}</OthGuaRefREF4>
       {%- endfor %}
       {#- Optional: #}
@@ -403,48 +403,48 @@
     </PREADMREFAR2>
     {%- endfor %}
     {#- 0 to 99 repetitions: #}
-    {%- for i in range(0, 0) %}
+    {%- for i in range(0, 2) %}
     <PRODOCDC2>
       <DocTypDC21>{{ DocTypDC21 }}</DocTypDC21>
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <DocRefDC23>{{ DocRefDC23 }}</DocRefDC23>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <DocRefDCLNG>{{ DocRefDCLNG }}</DocRefDCLNG>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <ComOfInfDC25>{{ ComOfInfDC25 }}</ComOfInfDC25>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <ComOfInfDC25LNG>{{ ComOfInfDC25LNG }}</ComOfInfDC25LNG>
       {%- endfor %}
     </PRODOCDC2>
     {%- endfor %}
     {#- 0 to 99 repetitions: #}
-    {%- for i in range(0, 0) %}
+    {%- for i in range(0, 5) %}
     <SPEMENMT2>
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <AddInfMT21>{{ AddInfMT21 }}</AddInfMT21>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <AddInfMT21LNG>{{ AddInfMT21LNG }}</AddInfMT21LNG>
+      {%- for i in range(0, 1) %}
+      <AddInfMT21LNG>EN</AddInfMT21LNG>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <AddInfCodMT23>{{ AddInfCodMT23 }}</AddInfCodMT23>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <ExpFroECMT24>{{ ExpFroECMT24 }}</ExpFroECMT24>
       {%- endfor %}
       {#- Optional: #}
-      {%- for i in range(0, 0) %}
+      {%- for i in range(0, 1) %}
       <ExpFroCouMT25>{{ ExpFroCouMT25 }}</ExpFroCouMT25>
       {%- endfor %}
     </SPEMENMT2>
