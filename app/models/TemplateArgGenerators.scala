@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,11 +27,19 @@ abstract class TemplateArgGenerators {
     str <- Gen.stringOfN(len, Gen.alphaNumChar)
   } yield str
 
+  def alpha(maxLen: Int, minLen: Int = 1) = for {
+    len <- Gen.choose(minLen, maxLen)
+    str <- Gen.stringOfN(len, Gen.alphaChar)
+  } yield str
+
+  def alphaNumCSV(maxLen: Int, maxListLength: Int, minLen: Int = 1): Gen[String] =
+    Gen.oneOf(Seq("15501523082774,15501523082773"))
+
   def alphaNumExactly(len: Int) =
     Gen.stringOfN(len, Gen.alphaNumChar)
 
   def alphaExactly(len: Int) =
-    alphaNum(len, len)
+    alpha(len, len)
 
   def num(len: Int) =
     Gen.stringOfN(len, Gen.numChar)

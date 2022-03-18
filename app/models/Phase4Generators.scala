@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -94,7 +94,7 @@ object Phase4Generators extends TemplateArgGenerators {
     ComAgrIdMES17     <- alphaNum(35)
     TesIndMES18       <- num(1)
     MesIdeMES19       <- alphaNum(14)
-    MesTypMES20       <- alphaNum(6)
+    MesTypMES20       <- alphaExactly(6)
     ComAccRefMES21    <- alphaNum(35)
     MesSeqNumMES22    <- num(2)
     FirAndLasTraMES23 <- alphaExactly(1)
@@ -233,10 +233,10 @@ object Phase4Generators extends TemplateArgGenerators {
   )
 
   val pacGs2FieldsGen: ArgGen = for {
-    MarNumOfPacGS21    <- alphaNum(42)
+    MarNumOfPacGS21    <- alphaNumCSV(21,2)
     MarNumOfPacGS21LNG <- alphaExactly(2)
     KinOfPacGS23       <- alphaNum(3)
-    NumOfPacGS24       <- num(5)
+    NumOfPacGS24       <- Gen.const(2)
     NumOfPieGS25       <- num(5)
   } yield Json.obj(
     "MarNumOfPacGS21"    -> MarNumOfPacGS21,
