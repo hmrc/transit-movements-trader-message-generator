@@ -16,7 +16,9 @@
 
 package models
 
+import cats.implicits.catsSyntaxTuple2Semigroupal
 import org.scalacheck.Gen
+import org.scalacheck.cats.implicits.genInstances
 import play.api.libs.json.JsObject
 
 abstract class TemplateArgGenerators {
@@ -40,6 +42,9 @@ abstract class TemplateArgGenerators {
 
   def alphaExactly(len: Int) =
     alpha(len, len)
+
+  def decimalNumber(totalDigits: Int, fractionDigits: Int) =
+    (num1(totalDigits - fractionDigits), num(fractionDigits)).mapN(_ + "." + _)
 
   def num(len: Int) =
     Gen.stringOfN(len, Gen.numChar)
