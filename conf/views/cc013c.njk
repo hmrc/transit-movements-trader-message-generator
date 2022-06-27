@@ -1,7 +1,7 @@
 <ncts:CC013C PhaseID="NCTS5.0" xmlns:ncts="http://ncts.dgtaxud.ec">
   <messageSender>{{ messageSender }}</messageSender>
   <messageRecipient>{{ messageRecipient }}</messageRecipient>
-  <preparationDateAndTime>{{ dateTime }}</preparationDateAndTime>
+  <preparationDateAndTime>{{ preparationDateAndTime }}</preparationDateAndTime>
   <messageIdentification>{{ messageIdentification }}</messageIdentification>
   <messageType>{{ messageType }}</messageType>
   {#- Optional: #}
@@ -648,6 +648,8 @@
             {%- endfor %}
         </AdditionalInformation>
         {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
         <TransportCharges>
             <methodOfPayment>{{ methodOfPayment }}</methodOfPayment>
         </TransportCharges>
