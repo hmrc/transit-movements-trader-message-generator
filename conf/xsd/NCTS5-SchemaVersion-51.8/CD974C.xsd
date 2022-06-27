@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ncts.dgtaxud.ec" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" targetNamespace="http://ncts.dgtaxud.ec" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="51.8.0" vc:minVersion="1.1">
+  <!--================================================================================-->
+  <!--===== IE974: C_AVA_REQ                                                          -->
+  <!--===== NCA AVAILABILITY REQUEST                                                  -->
+  <!--===== NCTS P5 Phase Definition                                                  -->
+  <!--===== XSD Version 51.8.0                                                        -->
+  <!--================================================================================-->
+  <!--================================================================================-->
+  <!--===== Includes                                                                  -->
+  <!--================================================================================-->
+  <xs:include schemaLocation="ctypes.xsd" />
+  <xs:include schemaLocation="htypes.xsd" />
+  <!--================================================================================-->
+  <!--===== Root Element                                                              -->
+  <!--================================================================================-->
+  <xs:element name="CD974C" type="CD974CType" />
+  <!--================================================================================-->
+  <!--===== Root Element Content                                                      -->
+  <!--================================================================================-->
+  <xs:complexType name="CD974CType">
+    <xs:sequence>
+      <xs:group ref="MESSAGE" />
+      <xs:element name="Header" type="HeaderType05">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="HEADER" />
+            <optionality value="R" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="PhaseID" type="phaseIDtype" />
+  </xs:complexType>
+</xs:schema>

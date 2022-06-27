@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ncts.dgtaxud.ec" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" targetNamespace="http://ncts.dgtaxud.ec" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="51.8.0" vc:minVersion="1.1">
+  <!--================================================================================-->
+  <!--===== IE142: C_ENQ_REQ                                                          -->
+  <!--===== ENQUIRY REQUEST                                                           -->
+  <!--===== NCTS P5 Phase Definition                                                  -->
+  <!--===== XSD Version 51.8.0                                                        -->
+  <!--================================================================================-->
+  <!--================================================================================-->
+  <!--===== Includes                                                                  -->
+  <!--================================================================================-->
+  <xs:include schemaLocation="ctypes.xsd" />
+  <xs:include schemaLocation="htypes.xsd" />
+  <!--================================================================================-->
+  <!--===== Root Element                                                              -->
+  <!--================================================================================-->
+  <xs:element name="CD142C" type="CD142CType" />
+  <!--================================================================================-->
+  <!--===== Root Element Content                                                      -->
+  <!--================================================================================-->
+  <xs:complexType name="CD142CType">
+    <xs:sequence>
+      <xs:group ref="MESSAGE" />
+      <xs:element name="TransitOperation" type="TransitOperationType43">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="TRANSIT OPERATION" />
+            <optionality value="R" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CustomsOfficeOfDeparture" type="CustomsOfficeOfDepartureType03">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="CUSTOMS OFFICE OF DEPARTURE" />
+            <optionality value="R" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CustomsOfficeOfRequest" type="CustomsOfficeOfRequestType01">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="CUSTOMS OFFICE OF REQUEST" />
+            <optionality value="R" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CustomsOfficeOfEnquiryAtDeparture" type="CustomsOfficeOfEnquiryAtDepartureType02">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="CUSTOMS OFFICE OF ENQUIRY AT DEPARTURE" />
+            <optionality value="R" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Enquiry" type="EnquiryType02">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="ENQUIRY" />
+            <optionality value="R" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Consignment" minOccurs="0" type="ConsignmentType17">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="CONSIGNMENT" />
+            <optionality value="D" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="PhaseID" type="phaseIDtype" />
+  </xs:complexType>
+</xs:schema>
