@@ -1,5 +1,4 @@
 <ncts:CC015C PhaseID="NCTS5.0" xmlns:ncts="http://ncts.dgtaxud.ec">
-  <messageSender>{{ messageSender }}</messageSender>
   <messageRecipient>{{ messageRecipient }}</messageRecipient>
   <preparationDateAndTime>{{ preparationDateAndTime }}</preparationDateAndTime>
   <messageIdentification>{{ messageIdentification }}</messageIdentification>
@@ -9,12 +8,19 @@
   <correlationIdentifier>{{ correlationIdentifier }}</correlationIdentifier>
   {%- endfor %}
   <TransitOperation>
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
     <LRN>{{ LRN }}</LRN>
+    {%- endfor %}
     <declarationType>{{ declarationType }}</declarationType>
     <additionalDeclarationType>{{ additionalDeclarationType }}</additionalDeclarationType>
     {#- Optional: #}
     {%- for i in range(0, 0) %}
     <TIRCarnetNumber>{{ TIRCarnetNumber }}</TIRCarnetNumber>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <presentationOfTheGoodsDateAndTime>{{ presentationOfTheGoodsDateAndTime }}</presentationOfTheGoodsDateAndTime>
     {%- endfor %}
     <security>{{ security }}</security>
     <reducedDatasetIndicator>{{ reducedDatasetIndicator }}</reducedDatasetIndicator>
@@ -29,45 +35,42 @@
     <bindingItinerary>{{ bindingItinerary }}</bindingItinerary>
     {#- Optional: #}
     {%- for i in range(0, 0) %}
-    <limitDate>{{ date }}</limitDate>
+    <limitDate>{{ limitDate }}</limitDate>
     {%- endfor %}
   </TransitOperation>
   {#- 0 to 9 repetitions: #}
   {%- for i in range(0, 0) %}
   <Authorisation>
     <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-    <type>{{ type01 }}</type>
-    <referenceNumber>{{ referenceNumber02 }}</referenceNumber>
+    <type>{{ type }}</type>
+    <referenceNumber>{{ referenceNumber }}</referenceNumber>
   </Authorisation>
   {%- endfor %}
   <CustomsOfficeOfDeparture>
-    <referenceNumber>{{ referenceNumber01 }}</referenceNumber>
+    <referenceNumber>{{ referenceNumber }}</referenceNumber>
   </CustomsOfficeOfDeparture>
   <CustomsOfficeOfDestinationDeclared>
-    <referenceNumber>{{ referenceNumber01 }}</referenceNumber>
+    <referenceNumber>{{ referenceNumber }}</referenceNumber>
   </CustomsOfficeOfDestinationDeclared>
   {#- 0 to 9 repetitions: #}
   {%- for i in range(0, 0) %}
   <CustomsOfficeOfTransitDeclared>
     <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-    <referenceNumber>{{ referenceNumber01 }}</referenceNumber>
-    {#- Optional: #}
-    {%- for i in range(0, 0) %}
-    <arrivalDateAndTimeEstimated>{{ dateTime }}</arrivalDateAndTimeEstimated>
-    {%- endfor %}
+    <referenceNumber>{{ referenceNumber }}</referenceNumber>
+    <arrivalDateAndTimeEstimated>{{ arrivalDateAndTimeEstimated }}</arrivalDateAndTimeEstimated>
   </CustomsOfficeOfTransitDeclared>
   {%- endfor %}
   {#- 0 to 9 repetitions: #}
   {%- for i in range(0, 0) %}
   <CustomsOfficeOfExitForTransitDeclared>
     <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-    <referenceNumber>{{ referenceNumber01 }}</referenceNumber>
+    <referenceNumber>{{ referenceNumber }}</referenceNumber>
   </CustomsOfficeOfExitForTransitDeclared>
   {%- endfor %}
   <HolderOfTheTransitProcedure>
     {#- Optional: #}
     {%- for i in range(0, 0) %}
-    <identificationNumber>{{ identificationNumber01 }}</identificationNumber>
+    <identificationNumber>{{ identificationNumber }}</identificationNumber>
     {%- endfor %}
     {#- Optional: #}
     {%- for i in range(0, 0) %}
@@ -80,41 +83,41 @@
     {#- Optional: #}
     {%- for i in range(0, 0) %}
     <Address>
-      <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <postcode>{{ postcode }}</postcode>
-      {%- endfor %}
-      <city>{{ city }}</city>
-      <country>{{ country }}</country>
+        <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <postcode>{{ postcode }}</postcode>
+        {%- endfor %}
+        <city>{{ city }}</city>
+        <country>{{ country }}</country>
     </Address>
     {%- endfor %}
     {#- Optional: #}
     {%- for i in range(0, 0) %}
     <ContactPerson>
-      <name>{{ name }}</name>
-      <phoneNumber>{{ phoneNumber }}</phoneNumber>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <eMailAddress>{{ eMailAddress }}</eMailAddress>
-      {%- endfor %}
+        <name>{{ name }}</name>
+        <phoneNumber>{{ phoneNumber }}</phoneNumber>
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <eMailAddress>{{ eMailAddress }}</eMailAddress>
+        {%- endfor %}
     </ContactPerson>
     {%- endfor %}
   </HolderOfTheTransitProcedure>
   {#- Optional: #}
   {%- for i in range(0, 0) %}
   <Representative>
-    <identificationNumber>{{ identificationNumber01 }}</identificationNumber>
-    <status>{{ status02 }}</status>
+    <identificationNumber>{{ identificationNumber }}</identificationNumber>
+    <status>{{ status }}</status>
     {#- Optional: #}
     {%- for i in range(0, 0) %}
     <ContactPerson>
-      <name>{{ name }}</name>
-      <phoneNumber>{{ phoneNumber }}</phoneNumber>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <eMailAddress>{{ eMailAddress }}</eMailAddress>
-      {%- endfor %}
+        <name>{{ name }}</name>
+        <phoneNumber>{{ phoneNumber }}</phoneNumber>
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <eMailAddress>{{ eMailAddress }}</eMailAddress>
+        {%- endfor %}
     </ContactPerson>
     {%- endfor %}
   </Representative>
@@ -124,30 +127,15 @@
   <Guarantee>
     <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
     <guaranteeType>{{ guaranteeType }}</guaranteeType>
-    {#- Optional: #}
-    {%- for i in range(0, 0) %}
     <otherGuaranteeReference>{{ otherGuaranteeReference }}</otherGuaranteeReference>
-    {%- endfor %}
     {#- 0 to 99 repetitions: #}
     {%- for i in range(0, 0) %}
     <GuaranteeReference>
-      <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <GRN>{{ GRN }}</GRN>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <accessCode>{{ accessCode }}</accessCode>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <amountToBeCovered>{{ amountToBeCovered }}</amountToBeCovered>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <currency>{{ currency }}</currency>
-      {%- endfor %}
+        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+        <GRN>{{ GRN }}</GRN>
+        <accessCode>{{ accessCode }}</accessCode>
+        <amountToBeCovered>{{ amountToBeCovered }}</amountToBeCovered>
+        <currency>{{ currency }}</currency>
     </GuaranteeReference>
     {%- endfor %}
   </Guarantee>
@@ -181,348 +169,26 @@
     {#- Optional: #}
     {%- for i in range(0, 0) %}
     <Carrier>
-      <identificationNumber>{{ identificationNumber01 }}</identificationNumber>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <ContactPerson>
-        <name>{{ name }}</name>
-        <phoneNumber>{{ phoneNumber }}</phoneNumber>
+        <identificationNumber>{{ identificationNumber }}</identificationNumber>
         {#- Optional: #}
         {%- for i in range(0, 0) %}
-        <eMailAddress>{{ eMailAddress }}</eMailAddress>
+        <ContactPerson>
+            <name>{{ name }}</name>
+            <phoneNumber>{{ phoneNumber }}</phoneNumber>
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <eMailAddress>{{ eMailAddress }}</eMailAddress>
+            {%- endfor %}
+        </ContactPerson>
         {%- endfor %}
-      </ContactPerson>
-      {%- endfor %}
     </Carrier>
     {%- endfor %}
     {#- Optional: #}
     {%- for i in range(0, 0) %}
     <Consignor>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <identificationNumber>{{ identificationNumber01 }}</identificationNumber>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <name>{{ name }}</name>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <Address>
-        <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
         {#- Optional: #}
         {%- for i in range(0, 0) %}
-        <postcode>{{ postcode }}</postcode>
-        {%- endfor %}
-        <city>{{ city }}</city>
-        <country>{{ country }}</country>
-      </Address>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <ContactPerson>
-        <name>{{ name }}</name>
-        <phoneNumber>{{ phoneNumber }}</phoneNumber>
-        {#- Optional: #}
-        {%- for i in range(0, 0) %}
-        <eMailAddress>{{ eMailAddress }}</eMailAddress>
-        {%- endfor %}
-      </ContactPerson>
-      {%- endfor %}
-    </Consignor>
-    {%- endfor %}
-    {#- Optional: #}
-    {%- for i in range(0, 0) %}
-    <Consignee>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <identificationNumber>{{ identificationNumber01 }}</identificationNumber>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <name>{{ name }}</name>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <Address>
-        <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
-        {#- Optional: #}
-        {%- for i in range(0, 0) %}
-        <postcode>{{ postcode }}</postcode>
-        {%- endfor %}
-        <city>{{ city }}</city>
-        <country>{{ country }}</country>
-      </Address>
-      {%- endfor %}
-    </Consignee>
-    {%- endfor %}
-    {#- 0 to 99 repetitions: #}
-    {%- for i in range(0, 0) %}
-    <AdditionalSupplyChainActor>
-      <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-      <role>{{ role02 }}</role>
-      <identificationNumber>{{ identificationNumber01 }}</identificationNumber>
-    </AdditionalSupplyChainActor>
-    {%- endfor %}
-    {#- 0 to 9999 repetitions: #}
-    {%- for i in range(0, 0) %}
-    <TransportEquipment>
-      <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <containerIdentificationNumber>{{ containerIdentificationNumber }}</containerIdentificationNumber>
-      {%- endfor %}
-      <numberOfSeals>{{ numberOfSeals }}</numberOfSeals>
-      {#- 0 to 99 repetitions: #}
-      {%- for i in range(0, 0) %}
-      <Seal>
-        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-        <identifier>{{ identifier }}</identifier>
-      </Seal>
-      {%- endfor %}
-      {#- 0 to 9999 repetitions: #}
-      {%- for i in range(0, 0) %}
-      <GoodsReference>
-        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-        <declarationGoodsItemNumber>{{ declarationGoodsItemNumber }}</declarationGoodsItemNumber>
-      </GoodsReference>
-      {%- endfor %}
-    </TransportEquipment>
-    {%- endfor %}
-    {#- Optional: #}
-    {%- for i in range(0, 0) %}
-    <LocationOfGoods>
-      <typeOfLocation>{{ typeOfLocation }}</typeOfLocation>
-      <qualifierOfIdentification>{{ qualifierOfIdentification }}</qualifierOfIdentification>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <authorisationNumber>{{ authorisationNumber }}</authorisationNumber>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <additionalIdentifier>{{ additionalIdentifier }}</additionalIdentifier>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <UNLocode>{{ UNLocode }}</UNLocode>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <CustomsOffice>
-        <referenceNumber>{{ referenceNumber01 }}</referenceNumber>
-      </CustomsOffice>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <GNSS>
-        <latitude>{{ latitude }}</latitude>
-        <longitude>{{ longitude }}</longitude>
-      </GNSS>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <EconomicOperator>
-        <identificationNumber>{{ identificationNumber01 }}</identificationNumber>
-      </EconomicOperator>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <Address>
-        <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
-        {#- Optional: #}
-        {%- for i in range(0, 0) %}
-        <postcode>{{ postcode }}</postcode>
-        {%- endfor %}
-        <city>{{ city }}</city>
-        <country>{{ country }}</country>
-      </Address>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <PostcodeAddress>
-        {#- Optional: #}
-        {%- for i in range(0, 0) %}
-        <houseNumber>{{ houseNumber }}</houseNumber>
-        {%- endfor %}
-        <postcode>{{ postcode }}</postcode>
-        <country>{{ country }}</country>
-      </PostcodeAddress>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <ContactPerson>
-        <name>{{ name }}</name>
-        <phoneNumber>{{ phoneNumber }}</phoneNumber>
-        {#- Optional: #}
-        {%- for i in range(0, 0) %}
-        <eMailAddress>{{ eMailAddress }}</eMailAddress>
-        {%- endfor %}
-      </ContactPerson>
-      {%- endfor %}
-    </LocationOfGoods>
-    {%- endfor %}
-    {#- 0 to 999 repetitions: #}
-    {%- for i in range(0, 0) %}
-    <DepartureTransportMeans>
-      <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <typeOfIdentification>{{ typeOfIdentification }}</typeOfIdentification>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <identificationNumber>{{ identificationNumber02 }}</identificationNumber>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <nationality>{{ nationality }}</nationality>
-      {%- endfor %}
-    </DepartureTransportMeans>
-    {%- endfor %}
-    {#- 0 to 99 repetitions: #}
-    {%- for i in range(0, 0) %}
-    <CountryOfRoutingOfConsignment>
-      <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-      <country>{{ country }}</country>
-    </CountryOfRoutingOfConsignment>
-    {%- endfor %}
-    {#- 0 to 9 repetitions: #}
-    {%- for i in range(0, 0) %}
-    <ActiveBorderTransportMeans>
-      <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <customsOfficeAtBorderReferenceNumber>{{ customsOfficeAtBorderReferenceNumber }}</customsOfficeAtBorderReferenceNumber>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <typeOfIdentification>{{ typeOfIdentification }}</typeOfIdentification>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <identificationNumber>{{ identificationNumber02 }}</identificationNumber>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <nationality>{{ nationality }}</nationality>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <conveyanceReferenceNumber>{{ conveyanceReferenceNumber }}</conveyanceReferenceNumber>
-      {%- endfor %}
-    </ActiveBorderTransportMeans>
-    {%- endfor %}
-    {#- Optional: #}
-    {%- for i in range(0, 0) %}
-    <PlaceOfLoading>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <UNLocode>{{ UNLocode }}</UNLocode>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <country>{{ country }}</country>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <location>{{ location }}</location>
-      {%- endfor %}
-    </PlaceOfLoading>
-    {%- endfor %}
-    {#- Optional: #}
-    {%- for i in range(0, 0) %}
-    <PlaceOfUnloading>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <UNLocode>{{ UNLocode }}</UNLocode>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <country>{{ country }}</country>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <location>{{ location }}</location>
-      {%- endfor %}
-    </PlaceOfUnloading>
-    {%- endfor %}
-    {#- 0 to 9999 repetitions: #}
-    {%- for i in range(0, 0) %}
-    <PreviousDocument>
-      <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-      <type>{{ type02 }}</type>
-      <referenceNumber>{{ referenceNumber03 }}</referenceNumber>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <complementOfInformation>{{ complementOfInformation }}</complementOfInformation>
-      {%- endfor %}
-    </PreviousDocument>
-    {%- endfor %}
-    {#- 0 to 99 repetitions: #}
-    {%- for i in range(0, 0) %}
-    <SupportingDocument>
-      <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-      <type>{{ type02 }}</type>
-      <referenceNumber>{{ referenceNumber03 }}</referenceNumber>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <documentLineItemNumber>{{ documentLineItemNumber }}</documentLineItemNumber>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <complementOfInformation>{{ complementOfInformation }}</complementOfInformation>
-      {%- endfor %}
-    </SupportingDocument>
-    {%- endfor %}
-    {#- 0 to 99 repetitions: #}
-    {%- for i in range(0, 0) %}
-    <TransportDocument>
-      <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-      <type>{{ type02 }}</type>
-      <referenceNumber>{{ referenceNumber03 }}</referenceNumber>
-    </TransportDocument>
-    {%- endfor %}
-    {#- 0 to 99 repetitions: #}
-    {%- for i in range(0, 0) %}
-    <AdditionalReference>
-      <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-      <type>{{ type02 }}</type>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <referenceNumber>i{{ referenceNumber03 }}</referenceNumber>
-      {%- endfor %}
-    </AdditionalReference>
-    {%- endfor %}
-    {#- 0 to 99 repetitions: #}
-    {%- for i in range(0, 0) %}
-    <AdditionalInformation>
-      <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-      <code>{{ code }}</code>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <text>{{ text }}</text>
-      {%- endfor %}
-    </AdditionalInformation>
-    {%- endfor %}
-    {#- 1 to 999 repetitions: #}
-    {%- for i in range(0, 9) %}
-    <HouseConsignment>
-      <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <countryOfDispatch>{{ countryOfDispatch }}</countryOfDispatch>
-      {%- endfor %}
-      <grossMass>{{ grossMass }}</grossMass>
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <referenceNumberUCR>{{ referenceNumberUCR }}</referenceNumberUCR>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <Consignor>
-        {#- Optional: #}
-        {%- for i in range(0, 0) %}
-        <identificationNumber>{{ identificationNumber01 }}</identificationNumber>
+        <identificationNumber>{{ identificationNumber }}</identificationNumber>
         {%- endfor %}
         {#- Optional: #}
         {%- for i in range(0, 0) %}
@@ -531,34 +197,33 @@
         {#- Optional: #}
         {%- for i in range(0, 0) %}
         <Address>
-          <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <postcode>{{ postcode }}</postcode>
-          {%- endfor %}
-          <city>{{ city }}</city>
-          <country>{{ country }}</country>
+            <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <postcode>{{ postcode }}</postcode>
+            {%- endfor %}
+            <city>{{ city }}</city>
+            <country>{{ country }}</country>
         </Address>
         {%- endfor %}
         {#- Optional: #}
         {%- for i in range(0, 0) %}
         <ContactPerson>
-          <name>{{ name }}</name>
-          <phoneNumber>{{ phoneNumber }}</phoneNumber>
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <eMailAddress>{{ eMailAddress }}</eMailAddress>
-          {%- endfor %}
+            <name>{{ name }}</name>
+            <phoneNumber>{{ phoneNumber }}</phoneNumber>
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <eMailAddress>{{ eMailAddress }}</eMailAddress>
+            {%- endfor %}
         </ContactPerson>
         {%- endfor %}
-      </Consignor>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <Consignee>
+    </Consignor>
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <Consignee>
         {#- Optional: #}
         {%- for i in range(0, 0) %}
-        <identificationNumber>{{ identificationNumber01 }}</identificationNumber>
+        <identificationNumber>{{ identificationNumber }}</identificationNumber>
         {%- endfor %}
         {#- Optional: #}
         {%- for i in range(0, 0) %}
@@ -567,106 +232,334 @@
         {#- Optional: #}
         {%- for i in range(0, 0) %}
         <Address>
-          <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <postcode>{{ postcode }}</postcode>
-          {%- endfor %}
-          <city>{{ city }}</city>
-          <country>{{ country }}</country>
+            <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <postcode>{{ postcode }}</postcode>
+            {%- endfor %}
+            <city>{{ city }}</city>
+            <country>{{ country }}</country>
         </Address>
         {%- endfor %}
-      </Consignee>
-      {%- endfor %}
-      {#- 0 to 99 repetitions: #}
-      {%- for i in range(0, 0) %}
-      <AdditionalSupplyChainActor>
+    </Consignee>
+    {%- endfor %}
+    {#- 0 to 99 repetitions: #}
+    {%- for i in range(0, 0) %}
+    <AdditionalSupplyChainActor>
         <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-        <role>{{ role02 }}</role>
-        <identificationNumber>{{ identificationNumber01 }}</identificationNumber>
-      </AdditionalSupplyChainActor>
-      {%- endfor %}
-      {#- 0 to 999 repetitions: #}
-      {%- for i in range(0, 0) %}
-      <DepartureTransportMeans>
+        <role>{{ role }}</role>
+        <identificationNumber>{{ identificationNumber }}</identificationNumber>
+    </AdditionalSupplyChainActor>
+    {%- endfor %}
+    {#- 0 to 9999 repetitions: #}
+    {%- for i in range(0, 0) %}
+    <TransportEquipment>
         <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <containerIdentificationNumber>{{ containerIdentificationNumber }}</containerIdentificationNumber>
+        {%- endfor %}
+        <numberOfSeals>{{ numberOfSeals }}</numberOfSeals>
+        {#- 0 to 99 repetitions: #}
+        {%- for i in range(0, 0) %}
+        <Seal>
+           <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+           <identifier>{{ identifier }}</identifier>
+        </Seal>
+        {%- endfor %}
+        {#- 0 to 9999 repetitions: #}
+        {%- for i in range(0, 0) %}
+        <GoodsReference>
+            <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+            <declarationGoodsItemNumber>{{ declarationGoodsItemNumber }}</declarationGoodsItemNumber>
+        </GoodsReference>
+        {%- endfor %}
+    </TransportEquipment>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <LocationOfGoods>
+        <typeOfLocation>{{ typeOfLocation }}</typeOfLocation>
+        <qualifierOfIdentification>{{ qualifierOfIdentification }}</qualifierOfIdentification>
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <authorisationNumber>{{ authorisationNumber }}</authorisationNumber>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+            <additionalIdentifier>{{ additionalIdentifier }}</additionalIdentifier>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+            <UNLocode>{{ UNLocode }}</UNLocode>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <CustomsOffice>
+            <referenceNumber>{{ referenceNumber }}</referenceNumber>
+        </CustomsOffice>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <GNSS>
+            <latitude>{{ latitude }}</latitude>
+            <longitude>{{ longitude }}</longitude>
+        </GNSS>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <EconomicOperator>
+            <identificationNumber>{{ identificationNumber }}</identificationNumber>
+        </EconomicOperator>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <Address>
+            <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <postcode>{{ postcode }}</postcode>
+            {%- endfor %}
+            <city>{{ city }}</city>
+            <country>{{ country }}</country>
+        </Address>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <PostcodeAddress>
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <houseNumber>{{ houseNumber }}</houseNumber>
+            {%- endfor %}
+            <postcode>{{ postcode }}</postcode>
+            <country>{{ country }}</country>
+        </PostcodeAddress>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <ContactPerson>
+            <name>{{ name }}</name>
+            <phoneNumber>{{ phoneNumber }}</phoneNumber>
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <eMailAddress>{{ eMailAddress }}</eMailAddress>
+            {%- endfor %}
+        </ContactPerson>
+        {%- endfor %}
+    </LocationOfGoods>
+    {%- endfor %}
+    {#- 0 to 999 repetitions: #}
+    {%- for i in range(0, 0) %}
+    <DepartureTransportMeans>
+        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
         <typeOfIdentification>{{ typeOfIdentification }}</typeOfIdentification>
-        <identificationNumber>{{ identificationNumber02 }}</identificationNumber>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <identificationNumber>{{ identificationNumber }}</identificationNumber>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
         <nationality>{{ nationality }}</nationality>
-      </DepartureTransportMeans>
-      {%- endfor %}
-      {#- 0 to 99 repetitions: #}
-      {%- for i in range(0, 0) %}
-      <PreviousDocument>
+        {%- endfor %}
+    </DepartureTransportMeans>
+    {%- endfor %}
+    {#- 0 to 99 repetitions: #}
+    {%- for i in range(0, 0) %}
+    <CountryOfRoutingOfConsignment>
         <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-        <type>{{ type02 }}</type>
-        <referenceNumber>{{ referenceNumber03 }}</referenceNumber>
+        <country>{{ country }}</country>
+    </CountryOfRoutingOfConsignment>
+    {%- endfor %}
+    {#- 0 to 9 repetitions: #}
+    {%- for i in range(0, 0) %}
+    <ActiveBorderTransportMeans>
+        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
         {#- Optional: #}
         {%- for i in range(0, 0) %}
-        <complementOfInformation>{{ complementOfInformation }}</complementOfInformation>
+        <customsOfficeAtBorderReferenceNumber>{{ customsOfficeAtBorderReferenceNumber }}</customsOfficeAtBorderReferenceNumber>
         {%- endfor %}
-      </PreviousDocument>
-      {%- endfor %}
-      {#- 0 to 99 repetitions: #}
-      {%- for i in range(0, 0) %}
-      <TransportDocument>
-        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-        <type>{{ type02 }}</type>
-        <referenceNumber>{{ referenceNumber03 }}</referenceNumber>
-      </TransportDocument>
-      {%- endfor %}
-      {#- 0 to 99 repetitions: #}
-      {%- for i in range(0, 0) %}
-      <AdditionalReference>
-        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-        <type>{{ type02 }}</type>
         {#- Optional: #}
         {%- for i in range(0, 0) %}
-        <referenceNumber>{{ referenceNumber03 }}</referenceNumber>
+        <typeOfIdentification>{{ typeOfIdentification }}</typeOfIdentification>
         {%- endfor %}
-      </AdditionalReference>
-      {%- endfor %}
-      {#- Optional: #}
-      {%- for i in range(0, 0) %}
-      <TransportCharges>
-        <methodOfPayment>{{ methodOfPayment }}</methodOfPayment>
-      </TransportCharges>
-      {%- endfor %}
-      {#- 1 to 9999 repetitions: #}
-      {%- for i in range(0, 9999) %}
-      <ConsignmentItem>
-        <goodsItemNumber>{{ goodsItemNumber }}</goodsItemNumber>
-        <declarationGoodsItemNumber>{{ declarationGoodsItemNumber }}</declarationGoodsItemNumber>
         {#- Optional: #}
         {%- for i in range(0, 0) %}
-        <declarationType>{{ declarationType }}</declarationType>
+        <identificationNumber>{{ identificationNumber }}</identificationNumber>
         {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <nationality>{{ nationality }}</nationality>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <conveyanceReferenceNumber>{{ conveyanceReferenceNumber }}</conveyanceReferenceNumber>
+        {%- endfor %}
+    </ActiveBorderTransportMeans>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <PlaceOfLoading>
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <UNLocode>{{ UNLocode }}</UNLocode>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <country>{{ country }}</country>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <location>{{ location }}</location>
+        {%- endfor %}
+    </PlaceOfLoading>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <PlaceOfUnloading>
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <UNLocode>{{ UNLocode }}</UNLocode>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <country>{{ country }}</country>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <location>{{ location }}</location>
+        {%- endfor %}
+    </PlaceOfUnloading>
+    {%- endfor %}
+    {#- 0 to 9999 repetitions: #}
+    {%- for i in range(0, 0) %}
+    <PreviousDocument>
+       <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+       <type>{{ type }}</type>
+       <referenceNumber>{{ referenceNumber }}</referenceNumber>
+       {#- Optional: #}
+       {%- for i in range(0, 0) %}
+       <complementOfInformation>{{ complementOfInformation }}</complementOfInformation>
+       {%- endfor %}
+    </PreviousDocument>
+    {%- endfor %}
+    {#- 0 to 99 repetitions: #}
+    {%- for i in range(0, 0) %}
+    <SupportingDocument>
+         <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+         <type>{{ type }}</type>
+         <referenceNumber>{{ referenceNumber }}</referenceNumber>
+         {#- Optional: #}
+         {%- for i in range(0, 0) %}
+         <documentLineItemNumber>{{ documentLineItemNumber }}</documentLineItemNumber>
+         {%- endfor %}
+         {#- Optional: #}
+         {%- for i in range(0, 0) %}
+         <complementOfInformation>{{ complementOfInformation }}</complementOfInformation>
+         {%- endfor %}
+    </SupportingDocument>
+    {%- endfor %}
+    {#- 0 to 99 repetitions: #}
+    {%- for i in range(0, 0) %}
+    <TransportDocument>
+        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+        <type>{{ type }}</type>
+        <referenceNumber>{{ referenceNumber }}</referenceNumber>
+    </TransportDocument>
+    {%- endfor %}
+    {#- 0 to 99 repetitions: #}
+    {%- for i in range(0, 0) %}
+    <AdditionalReference>
+        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+        <type>{{ type }}</type>
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <referenceNumber>{{ referenceNumber }}</referenceNumber>
+        {%- endfor %}
+    </AdditionalReference>
+    {%- endfor %}
+    {#- 0 to 99 repetitions: #}
+    {%- for i in range(0, 0) %}
+    <AdditionalInformation>
+        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+        <code>{{ code }}</code>
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <text>{{ text }}</text>
+        {%- endfor %}
+    </AdditionalInformation>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <TransportCharges>
+         <methodOfPayment>{{ methodOfPayment }}</methodOfPayment>
+    </TransportCharges>
+    {%- endfor %}
+    {#- 0 to 99 repetitions: #}
+    {%- for i in range(0, 0) %}
+    <HouseConsignment>
+        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
         {#- Optional: #}
         {%- for i in range(0, 0) %}
         <countryOfDispatch>{{ countryOfDispatch }}</countryOfDispatch>
         {%- endfor %}
-        {#- Optional: #}
-        {%- for i in range(0, 0) %}
-        <countryOfDestination>{{ countryOfDestination }}</countryOfDestination>
-        {%- endfor %}
+        <grossMass>{{ grossMass }}</grossMass>
         {#- Optional: #}
         {%- for i in range(0, 0) %}
         <referenceNumberUCR>{{ referenceNumberUCR }}</referenceNumberUCR>
         {%- endfor %}
         {#- Optional: #}
         {%- for i in range(0, 0) %}
+        <Consignor>
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <identificationNumber>{{ identificationNumber }}</identificationNumber>
+            {%- endfor %}
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <name>{{ name }}</name>
+            {%- endfor %}
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <Address>
+                <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
+                {#- Optional: #}
+                {%- for i in range(0, 0) %}
+                <postcode>{{ postcode }}</postcode>
+                {%- endfor %}
+                <city>{{ city }}</city>
+                <country>{{ country }}</country>
+            </Address>
+            {%- endfor %}
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <ContactPerson>
+                <name>{{ name }}</name>
+                <phoneNumber>{{ phoneNumber }}</phoneNumber>
+                {#- Optional: #}
+                {%- for i in range(0, 0) %}
+                <eMailAddress>{{ eMailAddress }}</eMailAddress>
+                {%- endfor %}
+            </ContactPerson>
+            {%- endfor %}
+        </Consignor>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
         <Consignee>
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <identificationNumber>{{ identificationNumber01 }}</identificationNumber>
-          {%- endfor %}
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <name>{{ name }}</name>
-          {%- endfor %}
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <Address>
+           {#- Optional: #}
+           {%- for i in range(0, 0) %}
+           <identificationNumber>{{ identificationNumber }}</identificationNumber>
+           {%- endfor %}
+           {#- Optional: #}
+           {%- for i in range(0, 0) %}
+           <name>{{ name }}</name>
+           {%- endfor %}
+           {#- Optional: #}
+           {%- for i in range(0, 0) %}
+           <Address>
             <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
             {#- Optional: #}
             {%- for i in range(0, 0) %}
@@ -681,145 +574,250 @@
         {#- 0 to 99 repetitions: #}
         {%- for i in range(0, 0) %}
         <AdditionalSupplyChainActor>
-          <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-          <role>{{ role02 }}</role>
-          <identificationNumber>{{ identificationNumber01 }}</identificationNumber>
+            <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+            <role>{{ role }}</role>
+            <identificationNumber>{{ identificationNumber }}</identificationNumber>
         </AdditionalSupplyChainActor>
         {%- endfor %}
-        <Commodity>
-          <descriptionOfGoods>{{ descriptionOfGoods }}</descriptionOfGoods>
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <cusCode>{{ cusCode }}</cusCode>
-          {%- endfor %}
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <CommodityCode>
-            <harmonizedSystemSubHeadingCode>{{ harmonizedSystemSubHeadingCode }}</harmonizedSystemSubHeadingCode>
-            {#- Optional: #}
-            {%- for i in range(0, 0) %}
-            <combinedNomenclatureCode>{{ combinedNomenclatureCode }}</combinedNomenclatureCode>
-            {%- endfor %}
-          </CommodityCode>
-          {%- endfor %}
-          {#- 0 to 99 repetitions: #}
-          {%- for i in range(0, 0) %}
-          <DangerousGoods>
+        {#- 0 to 999 repetitions: #}
+        {%- for i in range(0, 0) %}
+        <DepartureTransportMeans>
             <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-            <UNNumber>{{ UNNumber }}</UNNumber>
-          </DangerousGoods>
-          {%- endfor %}
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <GoodsMeasure>
-            {#- Optional: #}
-            {%- for i in range(0, 0) %}
-            <grossMass>{{ grossMass }}</grossMass>
-            {%- endfor %}
-            {#- Optional: #}
-            {%- for i in range(0, 0) %}
-            <netMass>{{ netMass }}</netMass>
-            {%- endfor %}
-            {#- Optional: #}
-            {%- for i in range(0, 0) %}
-            <supplementaryUnits>{{ supplementaryUnits }}</supplementaryUnits>
-            {%- endfor %}
-          </GoodsMeasure>
-          {%- endfor %}
-        </Commodity>
-        {#- 1 to 99 repetitions: #}
-        {%- for i in range(0, 1) %}
-        <Packaging>
-          <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-          <typeOfPackages>{{ typeOfPackages }}</typeOfPackages>
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <numberOfPackages>{{ numberOfPackages }}</numberOfPackages>
-          {%- endfor %}
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <shippingMarks>{{ shippingMarks }}</shippingMarks>
-          {%- endfor %}
-        </Packaging>
+            <typeOfIdentification>{{ typeOfIdentification }}</typeOfIdentification>
+            <identificationNumber>{{ identificationNumber }}</identificationNumber>
+            <nationality>{{ nationality }}</nationality>
+        </DepartureTransportMeans>
         {%- endfor %}
         {#- 0 to 99 repetitions: #}
         {%- for i in range(0, 0) %}
         <PreviousDocument>
-          <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-          <type>{{ type02 }}</type>
-          <referenceNumber>{{ referenceNumber03 }}</referenceNumber>
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <goodsItemNumber>{{ goodsItemNumber }}</goodsItemNumber>
-          {%- endfor %}
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <typeOfPackages>{{ typeOfPackages }}</typeOfPackages>
-          {%- endfor %}
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <numberOfPackages>{{ numberOfPackages }}</numberOfPackages>
-          {%- endfor %}
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <measurementUnitAndQualifier>{{ measurementUnitAndQualifier }}</measurementUnitAndQualifier>
-          {%- endfor %}
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <quantity>{{ quantity }}</quantity>
-          {%- endfor %}
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <complementOfInformation>{{ complementOfInformation }}</complementOfInformation>
-          {%- endfor %}
+            <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+            <type>{{ type }}</type>
+            <referenceNumber>{{ referenceNumber }}</referenceNumber>
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <complementOfInformation>{{ complementOfInformation }}</complementOfInformation>
+            {%- endfor %}
         </PreviousDocument>
         {%- endfor %}
         {#- 0 to 99 repetitions: #}
         {%- for i in range(0, 0) %}
         <SupportingDocument>
-          <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-          <type>{{ type02 }}</type>
-          <referenceNumber>{{ referenceNumber03 }}</referenceNumber>
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <documentLineItemNumber>{{ documentLineItemNumber }}</documentLineItemNumber>
-          {%- endfor %}
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <complementOfInformation>{{ complementOfInformation }}</complementOfInformation>
-          {%- endfor %}
+              <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+              <type>{{ type }}</type>
+              <referenceNumber>{{ referenceNumber }}</referenceNumber>
+              {#- Optional: #}
+              {%- for i in range(0, 0) %}
+              <documentLineItemNumber>{{ documentLineItemNumber }}</documentLineItemNumber>
+              {%- endfor %}
+              {#- Optional: #}
+              {%- for i in range(0, 0) %}
+              <complementOfInformation>{{ complementOfInformation }}</complementOfInformation>
+              {%- endfor %}
         </SupportingDocument>
         {%- endfor %}
         {#- 0 to 99 repetitions: #}
         {%- for i in range(0, 0) %}
+        <TransportDocument>
+            <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+            <type>{{ type }}</type>
+            <referenceNumber>{{ referenceNumber }}</referenceNumber>
+        </TransportDocument>
+        {%- endfor %}
         <AdditionalReference>
-          <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-          <type>{{ type02 }}</type>
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <referenceNumber>{{ referenceNumber03 }}</referenceNumber>
-          {%- endfor %}
+            <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+            <type>{{ type }}</type>
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <referenceNumber>{{ referenceNumber }}</referenceNumber>
+            {%- endfor %}
         </AdditionalReference>
         {%- endfor %}
-        {#- 0 to 99 repetitions: #}
-        {%- for i in range(0, 0) %}
         <AdditionalInformation>
-          <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-          <code>{{ code }}</code>
-          {#- Optional: #}
-          {%- for i in range(0, 0) %}
-          <text>{{ text }}</text>
-          {%- endfor %}
+            <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+            <code>{{ code }}</code>
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <text>{{ text }}</text>
+            {%- endfor %}
         </AdditionalInformation>
         {%- endfor %}
         {#- Optional: #}
         {%- for i in range(0, 0) %}
         <TransportCharges>
-          <methodOfPayment>{{ methodOfPayment }}</methodOfPayment>
+            <methodOfPayment>{{ methodOfPayment }}</methodOfPayment>
         </TransportCharges>
         {%- endfor %}
-      </ConsignmentItem>
-      {%- endfor %}
+        {#- 1 to 999 repetitions: #}
+        {%- for i in range(0, 1) %}
+        <ConsignmentItem>
+            <goodsItemNumber>{{ goodsItemNumber }}</goodsItemNumber>
+            <declarationGoodsItemNumber>{{ declarationGoodsItemNumber }}</declarationGoodsItemNumber>
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <declarationType>{{ declarationType }}</declarationType>
+            {%- endfor %}
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <countryOfDispatch>{{ countryOfDispatch }}</countryOfDispatch>
+            {%- endfor %}
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <countryOfDestination>{{ countryOfDestination }}</countryOfDestination>
+            {%- endfor %}
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <referenceNumberUCR>{{ referenceNumberUCR }}</referenceNumberUCR>
+            {%- endfor %}
+            {#- Optional: #}
+            {%- for i in range(0, 0) %}
+            <Consignee>
+                {#- Optional: #}
+                {%- for i in range(0, 0) %}
+                <identificationNumber>{{ identificationNumber }}</identificationNumber>
+                {%- endfor %}
+                {#- Optional: #}
+                {%- for i in range(0, 0) %}
+                <name>{{ name }}</name>
+                {%- endfor %}
+                {#- Optional: #}
+                {%- for i in range(0, 0) %}
+                <Address>
+                    <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
+                    <postcode>{{ postcode }}</postcode>
+                    <city>{{ city }}</city>
+                    <country>{{ country }}</country>
+                </Address>
+                {%- endfor %}
+            </Consignee>
+            {%- endfor %}
+            {#- 0 to 99 repetitions: #}
+            {%- for i in range(0, 0) %}
+            <AdditionalSupplyChainActor>
+                <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+                <role>{{ role }}</role>
+                <identificationNumber>{{ identificationNumber }}</identificationNumber>
+            </AdditionalSupplyChainActor>
+            {%- endfor %}
+            <Commodity>
+              <descriptionOfGoods>{{ descriptionOfGoods }}</descriptionOfGoods>
+              {#- Optional: #}
+              {%- for i in range(0, 0) %}
+              <cusCode>{{ cusCode }}</cusCode>
+              {%- endfor %}
+              {#- Optional: #}
+              {%- for i in range(0, 0) %}
+              <CommodityCode>{{ CommodityCode }}</CommodityCode>
+              {%- endfor %}
+              {#- 0 to 99 repetitions: #}
+              {%- for i in range(0, 0) %}
+              <DangerousGoods>{{ DangerousGoods }}</DangerousGoods>
+              {%- endfor %}
+              {#- Optional: #}
+              {%- for i in range(0, 0) %}
+              <GoodsMeasure>{{ GoodsMeasure }}</GoodsMeasure>
+              {%- endfor %}
+            </Commodity>
+            {#- 1 to 99 repetitions: #}
+            {%- for i in range(0, 1) %}
+            <Packaging>
+                <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+                <typeOfPackages>{{ typeOfPackages }}</typeOfPackages>
+                {#- Optional: #}
+                {%- for i in range(0, 0) %}
+                <numberOfPackages>{{ numberOfPackages }}</numberOfPackages>
+                {%- endfor %}
+                {#- Optional: #}
+                {%- for i in range(0, 0) %}
+                <shippingMarks>{{ shippingMarks }}</shippingMarks>
+                {%- endfor %}
+            </Packaging>
+            {%- endfor %}
+            {#- 0 to 99 repetitions: #}
+            {%- for i in range(0, 0) %}
+            <PreviousDocument>
+                <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+                <type>{{ type }}</type>
+                <referenceNumber>{{ referenceNumber }}</referenceNumber>
+                {#- Optional: #}
+                {%- for i in range(0, 0) %}
+                <goodsItemNumber>{{ goodsItemNumber }}</goodsItemNumber>
+                {%- endfor %}
+                {#- Optional: #}
+                {%- for i in range(0, 0) %}
+                <typeOfPackages>{{ typeOfPackages }}</typeOfPackages>
+                {%- endfor %}
+                {#- Optional: #}
+                {%- for i in range(0, 0) %}
+                <numberOfPackages>{{ numberOfPackages }}</numberOfPackages>
+                {%- endfor %}
+                {#- Optional: #}
+                {%- for i in range(0, 0) %}
+                <measurementUnitAndQualifier>{{ measurementUnitAndQualifier }}</measurementUnitAndQualifier>
+                {%- endfor %}
+                {#- Optional: #}
+                {%- for i in range(0, 0) %}
+                <quantity>{{ quantity }}</quantity>
+                {%- endfor %}
+                {#- Optional: #}
+                {%- for i in range(0, 0) %}
+                <complementOfInformation>{{ complementOfInformation }}</complementOfInformation>
+                {%- endfor %}
+            </PreviousDocument>
+            {%- endfor %}
+            {#- 0 to 99 repetitions: #}
+            {%- for i in range(0, 0) %}
+            <SupportingDocument>
+                 <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+                 <type>{{ type }}</type>
+                 <referenceNumber>{{ referenceNumber }}</referenceNumber>
+                 {#- Optional: #}
+                 {%- for i in range(0, 0) %}
+                 <documentLineItemNumber>{{ documentLineItemNumber }}</documentLineItemNumber>
+                 {%- endfor %}
+                 {#- Optional: #}
+                 {%- for i in range(0, 0) %}
+                 <complementOfInformation>{{ complementOfInformation }}</complementOfInformation>
+                 {%- endfor %}
+            </SupportingDocument>
+            {%- endfor %}
+             {#- 0 to 99 repetitions: #}
+             {%- for i in range(0, 0) %}
+             <TransportDocument>
+                <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+                <type>{{ type }}</type>
+                <referenceNumber>{{ referenceNumber }}</referenceNumber>
+             </TransportDocument>
+             {%- endfor %}
+             {#- 0 to 99 repetitions: #}
+             {%- for i in range(0, 0) %}
+             <AdditionalReference>
+                <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+                <type>{{ type }}</type>
+                {#- Optional: #}
+                {%- for i in range(0, 0) %}
+                <referenceNumber>{{ referenceNumber }}</referenceNumber>
+                {%- endfor %}
+             </AdditionalReference>
+             {%- endfor %}
+             {#- 0 to 99 repetitions: #}
+             {%- for i in range(0, 0) %}
+             <AdditionalInformation>
+                <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+                <code>{{ code }}</code>
+                {#- Optional: #}
+                {%- for i in range(0, 0) %}
+                <text>{{ text }}</text>
+                {%- endfor %}
+             </AdditionalInformation>
+             {%- endfor %}
+             {#- Optional: #}
+             {%- for i in range(0, 0) %}
+             <TransportCharges>
+                <methodOfPayment>{{ methodOfPayment }}</methodOfPayment>
+             </TransportCharges>
+             {%- endfor %}
+        </ConsignmentItem>
     </HouseConsignment>
     {%- endfor %}
   </Consignment>

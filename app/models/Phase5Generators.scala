@@ -33,13 +33,11 @@ object Phase5Generators extends TemplateArgGenerators {
   val dateFormatter     = DateTimeFormatter.ISO_LOCAL_DATE
 
   def messageFieldsGen(messageType: String): ArgGen = for {
-    messageSender         <- alphaNum(35)
     messageRecipient      <- alphaNum(35)
     dateTime              <- arbitrary[LocalDateTime].map(_.withYear(2021))
     messageIdentification <- alphaNum(35)
     correlationIdentifier <- alphaNum(35)
   } yield Json.obj(
-    "messageSender"          -> messageSender,
     "messageRecipient"       -> messageRecipient,
     "preparationDateAndTime" -> dateTimeFormatter.format(dateTime),
     "messageIdentification"  -> messageIdentification,
@@ -55,30 +53,33 @@ object Phase5Generators extends TemplateArgGenerators {
     "SynVerNumMES2" -> synVerNumMES2
   )
 
-  val transitOperation08FieldsGen: ArgGen = for {
+  val TransitOperationType06: ArgGen = for {
     lrn                       <- alphaNum(22)
     declarationType           <- alphaNum(5)
     additionalDeclarationType <- alphaExactly(1)
     tirCarnetNumber <- RegexpGen.from(
       "([1-9][0-9]{0,6}|(1[0-9]|2[0-4])[0-9]{0,6}|25000000|(X[A-Z]|[A-Z]X)(2[5-9]|[3-9][0-9]|[1-9][0-9][0-9])[0-9]{6})"
     )
-    security                         <- num(1)
-    reducedDatasetIndicator          <- indicator
-    specificCircumstanceIndicator    <- alphaNum(3)
-    communicationLanguageAtDeparture <- alphaExactly(2)
-    bindingItinerary                 <- indicator
-    date                             <- arbitrary[LocalDate].map(_.withYear(2021))
+    presentationOfTheGoodsDateAndTimeContentType <- arbitrary[LocalDateTime].map(_.withYear(2022))
+    security                                     <- num(1)
+    reducedDatasetIndicator                      <- indicator
+    specificCircumstanceIndicator                <- alphaNum(3)
+    communicationLanguageAtDeparture             <- alphaExactly(2)
+    bindingItinerary                             <- indicator
+    limitDate                                    <- arbitrary[LocalDate].map(_.withYear(2022))
   } yield Json.obj(
-    "LRN"                              -> lrn,
-    "declarationType"                  -> declarationType,
-    "additionalDeclarationType"        -> additionalDeclarationType,
-    "TIRCarnetNumber"                  -> tirCarnetNumber,
+    "LRN"                       -> lrn,
+    "declarationType"           -> declarationType,
+    "additionalDeclarationType" -> additionalDeclarationType,
+    "TIRCarnetNumber"           -> tirCarnetNumber,
+    "presentationOfTheGoodsDateAndTime" -> dateTimeFormatter
+      .format(presentationOfTheGoodsDateAndTimeContentType),
     "security"                         -> security,
     "reducedDatasetIndicator"          -> reducedDatasetIndicator,
     "specificCircumstanceIndicator"    -> specificCircumstanceIndicator,
     "communicationLanguageAtDeparture" -> communicationLanguageAtDeparture,
     "bindingItinerary"                 -> bindingItinerary,
-    "date"                             -> dateFormatter.format(date)
+    "limitDate"                        -> dateFormatter.format(limitDate)
   )
 
   val transitOperationType04: ArgGen = for {
@@ -219,6 +220,8 @@ object Phase5Generators extends TemplateArgGenerators {
     "amountToBeCovered" -> amountToBeCoveredContentType,
     "currency"          -> currencyContentType
   )
+
+  val GuaranteeType02 = GuaranteeType01
 
   val GuaranteeType01: ArgGen = for {
     sequenceNumberContentType            <- num(5)
@@ -780,38 +783,20 @@ object Phase5Generators extends TemplateArgGenerators {
     )
 
   val cc015cGen: ArgGen = for {
-    messageFields                 <- messageFieldsGen("CC015C")
-    transitOperation08Fields      <- transitOperation08FieldsGen
-    addressFields                 <- addressFieldsGen
-    postcodeAddressFields         <- postcodeAddressFieldsGen
-    contactPersonFields           <- contactPersonFieldsGen
-    guarantee03Fields             <- guarantee03FieldsGen
-    consignment14Fields           <- consignment14FieldsGen
-    sequenceNumber                <- num(5)
-    type01                        <- alphaNum(4)
-    type02                        <- alphaNumExactly(4)
-    referenceNumber01             <- RegexpGen.from("[A-Z]{2}[A-Z0-9]{6}")
-    referenceNumber02             <- alphaNum(35)
-    referenceNumber03             <- alphaNum(70)
-    identificationNumber01        <- alphaNum(17)
-    identificationNumber02        <- alphaNum(35)
-    tirHolderIdentificationNumber <- alphaNum(17)
-    status02                      <- num(1)
-    identifier                    <- alphaNum(20)
-  } yield messageFields ++ transitOperation08Fields ++ addressFields ++ postcodeAddressFields ++ contactPersonFields ++ guarantee03Fields ++ consignment14Fields ++ Json
-    .obj(
-      "sequenceNumber"                -> sequenceNumber,
-      "type01"                        -> type01,
-      "type02"                        -> type02,
-      "referenceNumber01"             -> referenceNumber01,
-      "referenceNumber02"             -> referenceNumber02,
-      "referenceNumber03"             -> referenceNumber03,
-      "identificationNumber01"        -> identificationNumber01,
-      "identificationNumber02"        -> identificationNumber02,
-      "TIRHolderIdentificationNumber" -> tirHolderIdentificationNumber,
-      "status02"                      -> status02,
-      "identifier"                    -> identifier
-    )
+    messageFields                               <- messageFieldsGen("CC015C")
+    transitOperation06Fields                    <- TransitOperationType06
+    authorisationType03                         <- authorisationType03
+    customsOfficeOfDepartureType03              <- CustomsOfficeOfDepartureType03
+    customsOfficeOfDestinationDeclaredType01    <- CustomsOfficeOfDestinationDeclaredType01
+    customsOfficeOfTransitDeclaredType03        <- CustomsOfficeOfTransitDeclaredType03
+    customsOfficeOfExitForTransitDeclaredType02 <- CustomsOfficeOfExitForTransitDeclaredType02
+    holderOfTheTransitProcedureType14           <- HolderOfTheTransitProcedureType14
+    representativeType05                        <- RepresentativeType05
+    guaranteeType02                             <- GuaranteeType02
+    consignment                                 <- ConsignmentType20
+  } yield messageFields ++ transitOperation06Fields ++ authorisationType03 ++ customsOfficeOfDepartureType03 ++ customsOfficeOfDestinationDeclaredType01 ++
+    customsOfficeOfTransitDeclaredType03 ++ customsOfficeOfExitForTransitDeclaredType02 ++ holderOfTheTransitProcedureType14 ++ representativeType05 ++
+    guaranteeType02 ++ consignment
 
   val cc044cGen: ArgGen = for {
     synIdeMES1    <- Gen.const("UNOC")
