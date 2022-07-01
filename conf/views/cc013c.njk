@@ -1,5 +1,4 @@
 <ncts:CC013C PhaseID="NCTS5.0" xmlns:ncts="http://ncts.dgtaxud.ec">
-  <messageSender>{{ messageSender }}</messageSender>
   <messageRecipient>{{ messageRecipient }}</messageRecipient>
   <preparationDateAndTime>{{ preparationDateAndTime }}</preparationDateAndTime>
   <messageIdentification>{{ messageIdentification }}</messageIdentification>
@@ -224,6 +223,7 @@
         </ContactPerson>
         {%- endfor %}
     </Consignor>
+    {%- endfor %}
     {#- Optional: #}
     {%- for i in range(0, 0) %}
     <Consignee>
@@ -503,8 +503,8 @@
          <methodOfPayment>{{ methodOfPayment }}</methodOfPayment>
     </TransportCharges>
     {%- endfor %}
-    {#- 0 to 99 repetitions: #}
-    {%- for i in range(0, 0) %}
+    {#- 1 to 99 repetitions: #}
+    {%- for i in range(0, 1) %}
     <HouseConsignment>
         <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
         {#- Optional: #}
@@ -630,6 +630,8 @@
             <referenceNumber>{{ referenceNumber }}</referenceNumber>
         </TransportDocument>
         {%- endfor %}
+        {#- 0 to 99 repetitions: #}
+        {%- for i in range(0, 0) %}
         <AdditionalReference>
             <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
             <type>{{ type }}</type>
@@ -639,6 +641,8 @@
             {%- endfor %}
         </AdditionalReference>
         {%- endfor %}
+        {#- 0 to 99 repetitions: #}
+        {%- for i in range(0, 0) %}
         <AdditionalInformation>
             <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
             <code>{{ code }}</code>
@@ -690,7 +694,10 @@
                 {%- for i in range(0, 0) %}
                 <Address>
                     <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
+                    {#- Optional: #}
+                    {%- for i in range(0, 0) %}
                     <postcode>{{ postcode }}</postcode>
+                    {%- endfor %}
                     <city>{{ city }}</city>
                     <country>{{ country }}</country>
                 </Address>
@@ -824,6 +831,7 @@
              </TransportCharges>
              {%- endfor %}
         </ConsignmentItem>
+        {%- endfor %}
     </HouseConsignment>
     {%- endfor %}
   </Consignment>

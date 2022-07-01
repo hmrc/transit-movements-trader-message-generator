@@ -34,7 +34,7 @@ object Phase5Generators extends TemplateArgGenerators {
 
   def messageFieldsGen(messageType: String): ArgGen = for {
     messageRecipient      <- alphaNum(35)
-    dateTime              <- arbitrary[LocalDateTime].map(_.withYear(2021))
+    dateTime              <- arbitrary[LocalDateTime].map(_.withYear(2022))
     messageIdentification <- alphaNum(35)
     correlationIdentifier <- alphaNum(35)
   } yield Json.obj(
@@ -649,8 +649,11 @@ object Phase5Generators extends TemplateArgGenerators {
     additionalReferenceType05               <- AdditionalReferenceType05
     additionalInformationType03             <- AdditionalInformationType03
     transportChargesType                    <- TransportChargesType
-  } yield consigneeType02 ++ additionalSupplyChainActorType ++ commodityType06 ++ packagingType03 ++ previousDocumentType08 ++ supportingDocumentType05 ++ transportDocumentType04 ++ additionalReferenceType05 ++ additionalInformationType03 ++ transportChargesType ++ Json
-    .obj(
+  } yield consigneeType02 ++ additionalSupplyChainActorType ++
+    commodityType06 ++ packagingType03 ++ previousDocumentType08 ++
+    supportingDocumentType05 ++ transportDocumentType04 ++
+    additionalReferenceType05 ++ additionalInformationType03 ++
+    transportChargesType ++ Json.obj(
       "goodsItemNumber"            -> goodsItemNumberContentType02,
       "declarationGoodsItemNumber" -> declarationGoodsItemNumberContentType01,
       "declarationType"            -> declarationTypeContentType02,
@@ -676,8 +679,10 @@ object Phase5Generators extends TemplateArgGenerators {
     transportChargesType            <- TransportChargesType
     consignmentItemType09           <- ConsignmentItemType09
 
-  } yield consignorType07 ++ consigneeType05 ++ additionalSupplyChainActorType ++ departureTransportMeansType05 ++ previousDocumentType10 ++ supportingDocumentType05 ++ transportDocumentType04 ++ additionalReferenceType06 ++ additionalInformationType03 ++ transportChargesType ++ consignmentItemType09 ++ Json
-    .obj(
+  } yield consignorType07 ++ consigneeType05 ++ additionalSupplyChainActorType ++
+    departureTransportMeansType05 ++ previousDocumentType10 ++ supportingDocumentType05 ++
+    transportDocumentType04 ++ additionalReferenceType06 ++ additionalInformationType03 ++
+    transportChargesType ++ consignmentItemType09 ++ Json.obj(
       "sequenceNumber"     -> sequenceNumberContentType,
       "countryOfDispatch"  -> countryOfDispatchContentType,
       "grossMass"          -> grossMassContentType01,
