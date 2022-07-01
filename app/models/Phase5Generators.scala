@@ -221,8 +221,6 @@ object Phase5Generators extends TemplateArgGenerators {
     "currency"          -> currencyContentType
   )
 
-  val GuaranteeType02 = GuaranteeType01
-
   val GuaranteeType01: ArgGen = for {
     sequenceNumberContentType            <- num(5)
     guaranteeTypeContentType             <- alphaNum(1)
@@ -233,6 +231,8 @@ object Phase5Generators extends TemplateArgGenerators {
     "guaranteeType"           -> guaranteeTypeContentType,
     "otherGuaranteeReference" -> otherGuaranteeReferenceContentType02
   )
+
+  val GuaranteeType02 = GuaranteeType01
 
   val guarantee03FieldsGen: ArgGen = for {
     sequenceNumberContentType <- num(5)
