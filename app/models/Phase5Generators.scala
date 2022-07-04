@@ -122,15 +122,15 @@ object Phase5Generators extends TemplateArgGenerators {
     typeContentType04            <- alphaNum(4)
     referenceNumberContentType03 <- alphaNum(35)
   } yield Json.obj(
-    "sequenceNumber"  -> sequenceNumber,
-    "type"            -> typeContentType04,
-    "referenceNumber" -> referenceNumberContentType03
+    "sequenceNumber"               -> sequenceNumber,
+    "type"                         -> typeContentType04,
+    "referenceNumberAuthorisation" -> referenceNumberContentType03
   )
 
   val CustomsOfficeOfDepartureType03: ArgGen = for {
-    referenceNumberContentType05 <- RegexpGen.from("[A-Z]{2}[A-Z0-9]{6}")
+    referenceNumberContentType05 <- RegexpGen.from("""[A-Z]{2}[A-Z0-9]{6}""")
   } yield Json.obj(
-    "referenceNumber" -> referenceNumberContentType05
+    "referenceNumberDeparture" -> referenceNumberContentType05
   )
 
   val CustomsOfficeOfDestinationDeclaredType01 = CustomsOfficeOfDepartureType03
@@ -140,8 +140,8 @@ object Phase5Generators extends TemplateArgGenerators {
     referenceNumberContentType05           <- RegexpGen.from("[A-Z]{2}[A-Z0-9]{6}")
     arrivalDateAndTimeEstimatedContentType <- arbitrary[LocalDateTime].map(_.withYear(2022))
   } yield Json.obj(
-    "sequenceNumber"  -> sequenceNumber,
-    "referenceNumber" -> referenceNumberContentType05,
+    "sequenceNumber"         -> sequenceNumber,
+    "referenceNumberTransit" -> referenceNumberContentType05,
     "arrivalDateAndTimeEstimated" -> dateTimeFormatter
       .format(arrivalDateAndTimeEstimatedContentType)
   )
@@ -150,8 +150,8 @@ object Phase5Generators extends TemplateArgGenerators {
     sequenceNumber               <- num(5)
     referenceNumberContentType05 <- RegexpGen.from("[A-Z]{2}[A-Z0-9]{6}")
   } yield Json.obj(
-    "sequenceNumber"  -> sequenceNumber,
-    "referenceNumber" -> referenceNumberContentType05
+    "sequenceNumber"         -> sequenceNumber,
+    "referenceNumberTransit" -> referenceNumberContentType05
   )
 
   val contactPersonFieldsGen: ArgGen = for {
@@ -265,7 +265,7 @@ object Phase5Generators extends TemplateArgGenerators {
   val CustomsOfficeType02: ArgGen = for {
     referenceNumberContentType05 <- RegexpGen.from("[A-Z]{2}[A-Z0-9]{6}")
   } yield Json.obj(
-    "referenceNumber" -> referenceNumberContentType05
+    "referenceNumberCustoms" -> referenceNumberContentType05
   )
 
   val GNSSType: ArgGen = for {
@@ -494,10 +494,10 @@ object Phase5Generators extends TemplateArgGenerators {
     referenceNumberContentType04         <- alphaNum(70)
     complementOfInformationContentType02 <- alphaNum(35)
   } yield Json.obj(
-    "sequenceNumber"          -> sequenceNumberContentType,
-    "type"                    -> typeContentType02,
-    "referenceNumber"         -> referenceNumberContentType04,
-    "complementOfInformation" -> complementOfInformationContentType02
+    "sequenceNumber"                  -> sequenceNumberContentType,
+    "type"                            -> typeContentType02,
+    "referenceNumberPreviousDocument" -> referenceNumberContentType04,
+    "complementOfInformation"         -> complementOfInformationContentType02
   )
 
   val SupportingDocumentType05: ArgGen = for {
@@ -507,11 +507,11 @@ object Phase5Generators extends TemplateArgGenerators {
     documentLineItemNumberContentType    <- num(5)
     complementOfInformationContentType02 <- alphaNum(35)
   } yield Json.obj(
-    "sequenceNumber"          -> sequenceNumberContentType,
-    "type"                    -> typeContentType02,
-    "referenceNumber"         -> referenceNumberContentType04,
-    "documentLineItemNumber"  -> documentLineItemNumberContentType,
-    "complementOfInformation" -> complementOfInformationContentType02
+    "sequenceNumber"                    -> sequenceNumberContentType,
+    "type"                              -> typeContentType02,
+    "referenceNumberSupportingDocument" -> referenceNumberContentType04,
+    "documentLineItemNumber"            -> documentLineItemNumberContentType,
+    "complementOfInformation"           -> complementOfInformationContentType02
   )
 
   val TransportDocumentType04: ArgGen = for {
@@ -519,9 +519,9 @@ object Phase5Generators extends TemplateArgGenerators {
     typeContentType02            <- alphaNum(4)
     referenceNumberContentType04 <- alphaNum(70)
   } yield Json.obj(
-    "sequenceNumber"  -> sequenceNumberContentType,
-    "type"            -> typeContentType02,
-    "referenceNumber" -> referenceNumberContentType04
+    "sequenceNumber"                   -> sequenceNumberContentType,
+    "type"                             -> typeContentType02,
+    "referenceNumberTransportDocument" -> referenceNumberContentType04
   )
 
   val AdditionalReferenceType06 = TransportDocumentType04
@@ -617,15 +617,15 @@ object Phase5Generators extends TemplateArgGenerators {
     complementOfInformationContentType02   <- alphaNum(35)
 
   } yield Json.obj(
-    "sequenceNumber"              -> sequenceNumberContentType,
-    "type"                        -> typeContentType02,
-    "referenceNumber"             -> referenceNumberContentType04,
-    "goodsItemNumber"             -> goodsItemNumberContentType01,
-    "typeOfPackages"              -> typeOfPackagesContentType,
-    "numberOfPackages"            -> numberOfPackagesContentType02,
-    "measurementUnitAndQualifier" -> measurementUnitAndQualifierContentType,
-    "quantity"                    -> quantityContentType,
-    "complementOfInformation"     -> complementOfInformationContentType02
+    "sequenceNumber"                -> sequenceNumberContentType,
+    "type"                          -> typeContentType02,
+    "referenceNumberPreviousType08" -> referenceNumberContentType04,
+    "goodsItemNumber"               -> goodsItemNumberContentType01,
+    "typeOfPackages"                -> typeOfPackagesContentType,
+    "numberOfPackages"              -> numberOfPackagesContentType02,
+    "measurementUnitAndQualifier"   -> measurementUnitAndQualifierContentType,
+    "quantity"                      -> quantityContentType,
+    "complementOfInformation"       -> complementOfInformationContentType02
   )
 
   val ConsigneeType02 = ConsigneeType05

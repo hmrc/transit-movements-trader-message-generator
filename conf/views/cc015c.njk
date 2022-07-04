@@ -40,20 +40,20 @@
   <Authorisation>
     <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
     <type>{{ type }}</type>
-    <referenceNumber>{{ referenceNumber }}</referenceNumber>
+    <referenceNumber>{{ referenceNumberAuthorisation }}</referenceNumber>
   </Authorisation>
   {%- endfor %}
   <CustomsOfficeOfDeparture>
-    <referenceNumber>{{ referenceNumber }}</referenceNumber>
+    <referenceNumber>{{ referenceNumberDeparture }}</referenceNumber>
   </CustomsOfficeOfDeparture>
   <CustomsOfficeOfDestinationDeclared>
-    <referenceNumber>{{ referenceNumber }}</referenceNumber>
+    <referenceNumber>{{ referenceNumberDeparture }}</referenceNumber>
   </CustomsOfficeOfDestinationDeclared>
   {#- 0 to 9 repetitions: #}
   {%- for i in range(0, 0) %}
   <CustomsOfficeOfTransitDeclared>
     <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-    <referenceNumber>{{ referenceNumber }}</referenceNumber>
+    <referenceNumber>{{ referenceNumberTransit }}</referenceNumber>
     <arrivalDateAndTimeEstimated>{{ arrivalDateAndTimeEstimated }}</arrivalDateAndTimeEstimated>
   </CustomsOfficeOfTransitDeclared>
   {%- endfor %}
@@ -61,7 +61,7 @@
   {%- for i in range(0, 0) %}
   <CustomsOfficeOfExitForTransitDeclared>
     <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-    <referenceNumber>{{ referenceNumber }}</referenceNumber>
+    <referenceNumber>{{ referenceNumberTransit }}</referenceNumber>
   </CustomsOfficeOfExitForTransitDeclared>
   {%- endfor %}
   <HolderOfTheTransitProcedure>
@@ -294,7 +294,7 @@
         {#- Optional: #}
         {%- for i in range(0, 0) %}
         <CustomsOffice>
-            <referenceNumber>{{ referenceNumber }}</referenceNumber>
+            <referenceNumber>{{ referenceNumberCustoms }}</referenceNumber>
         </CustomsOffice>
         {%- endfor %}
         {#- Optional: #}
@@ -436,7 +436,7 @@
     <PreviousDocument>
        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
        <type>{{ type }}</type>
-       <referenceNumber>{{ referenceNumber }}</referenceNumber>
+       <referenceNumber>{{ referenceNumberPreviousType08 }}</referenceNumber>
        {#- Optional: #}
        {%- for i in range(0, 0) %}
        <complementOfInformation>{{ complementOfInformation }}</complementOfInformation>
@@ -464,7 +464,7 @@
     <TransportDocument>
         <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
         <type>{{ type }}</type>
-        <referenceNumber>{{ referenceNumber }}</referenceNumber>
+        <referenceNumber>{{ referenceNumberTransportDocument }}</referenceNumber>
     </TransportDocument>
     {%- endfor %}
     {#- 0 to 99 repetitions: #}
@@ -603,7 +603,7 @@
         <SupportingDocument>
               <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
               <type>{{ type }}</type>
-              <referenceNumber>{{ referenceNumber }}</referenceNumber>
+              <referenceNumber>{{ referenceNumberSupportingDocument }}</referenceNumber>
               {#- Optional: #}
               {%- for i in range(0, 0) %}
               <documentLineItemNumber>{{ documentLineItemNumber }}</documentLineItemNumber>
@@ -743,7 +743,7 @@
             <PreviousDocument>
                 <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
                 <type>{{ type }}</type>
-                <referenceNumber>{{ referenceNumber }}</referenceNumber>
+                <referenceNumber>{{ referenceNumberPreviousDocument }}</referenceNumber>
                 {#- Optional: #}
                 {%- for i in range(0, 0) %}
                 <goodsItemNumber>{{ goodsItemNumber }}</goodsItemNumber>
