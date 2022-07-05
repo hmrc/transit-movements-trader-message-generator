@@ -589,8 +589,8 @@ object Phase5Generators extends TemplateArgGenerators {
     dangerousGoodsType01            <- DangerousGoodsType01
     goodsMeasureType02              <- GoodsMeasureType02
   } yield commodityCodeType02 ++ dangerousGoodsType01 ++ goodsMeasureType02 ++ Json.obj(
-    "descriptionOfGoods" -> descriptionOfGoodsContentType02,
-    "cusCode"            -> cusCodeContentType
+    "descriptionOfGoodsCommodity" -> descriptionOfGoodsContentType02,
+    "cusCode"                     -> cusCodeContentType
   )
 
   val PackagingType03: ArgGen = for {
@@ -599,10 +599,10 @@ object Phase5Generators extends TemplateArgGenerators {
     numberOfPackagesContentType01 <- num(8)
     shippingMarksContentType02    <- alphaNum(512)
   } yield Json.obj(
-    "sequenceNumber"   -> sequenceNumberContentType,
-    "typeOfPackages"   -> typeOfPackagesContentType,
-    "numberOfPackages" -> numberOfPackagesContentType01,
-    "shippingMarks"    -> shippingMarksContentType02
+    "sequenceNumber"            -> sequenceNumberContentType,
+    "typeOfPackagesConsignment" -> typeOfPackagesContentType,
+    "numberOfPackages"          -> numberOfPackagesContentType01,
+    "shippingMarks"             -> shippingMarksContentType02
   )
 
   val PreviousDocumentType08: ArgGen = for {
@@ -634,7 +634,7 @@ object Phase5Generators extends TemplateArgGenerators {
 
   val ConsignmentItemType09: ArgGen = for {
     goodsItemNumberContentType02            <- num(5)
-    declarationGoodsItemNumberContentType01 <- num(5)
+    declarationGoodsItemNumberContentType01 <- RegexpGen.from("[1-9][0-9]{0,2}|[1][0-9]{3}")
     declarationTypeContentType02            <- alphaNum(5)
     countryOfDispatchContentType            <- alphaExactly(2)
     countryOfDestinationContentType         <- alphaExactly(2)

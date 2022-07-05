@@ -705,7 +705,7 @@
             </AdditionalSupplyChainActor>
             {%- endfor %}
             <Commodity>
-              <descriptionOfGoods>{{ descriptionOfGoods }}</descriptionOfGoods>
+              <descriptionOfGoods>{{descriptionOfGoodsCommodity}}</descriptionOfGoods>
               {#- Optional: #}
               {%- for i in range(0, 0) %}
               <cusCode>{{ cusCode }}</cusCode>
@@ -727,7 +727,7 @@
             {%- for i in range(0, 1) %}
             <Packaging>
                 <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-                <typeOfPackages>{{ typeOfPackages }}</typeOfPackages>
+                <typeOfPackages>{{ typeOfPackagesConsignment }}</typeOfPackages>
                 {#- Optional: #}
                 {%- for i in range(0, 0) %}
                 <numberOfPackages>{{ numberOfPackages }}</numberOfPackages>
