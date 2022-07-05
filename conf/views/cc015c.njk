@@ -65,10 +65,8 @@
   </CustomsOfficeOfExitForTransitDeclared>
   {%- endfor %}
   <HolderOfTheTransitProcedure>
-    {#- Optional: #}
-    {%- for i in range(0, 0) %}
-    <identificationNumber>{{ identificationNumber }}</identificationNumber>
-    {%- endfor %}
+    <identificationNumber>{{ identificationNumberTransitProcedure01 }}</identificationNumber>
+
     {#- Optional: #}
     {%- for i in range(0, 0) %}
     <TIRHolderIdentificationNumber>{{ TIRHolderIdentificationNumber }}</TIRHolderIdentificationNumber>
@@ -166,7 +164,7 @@
     {#- Optional: #}
     {%- for i in range(0, 0) %}
     <Carrier>
-        <identificationNumber>{{ identificationNumber }}</identificationNumber>
+        <identificationNumber>{{ identificationNumberCarrier }}</identificationNumber>
         {#- Optional: #}
         {%- for i in range(0, 0) %}
         <ContactPerson>
@@ -185,7 +183,7 @@
     <Consignor>
         {#- Optional: #}
         {%- for i in range(0, 0) %}
-        <identificationNumber>{{ identificationNumber }}</identificationNumber>
+        <identificationNumber>{{ identificationNumberConsignor }}</identificationNumber>
         {%- endfor %}
         {#- Optional: #}
         {%- for i in range(0, 0) %}
@@ -221,7 +219,7 @@
     <Consignee>
         {#- Optional: #}
         {%- for i in range(0, 0) %}
-        <identificationNumber>{{ identificationNumber }}</identificationNumber>
+        <identificationNumber>{{ identificationNumberConsignee }}</identificationNumber>
         {%- endfor %}
         {#- Optional: #}
         {%- for i in range(0, 0) %}
@@ -246,7 +244,7 @@
     <AdditionalSupplyChainActor>
         <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
         <role>{{ role }}</role>
-        <identificationNumber>{{ identificationNumber }}</identificationNumber>
+        <identificationNumber>{{ identificationNumberAdditionalSupply }}</identificationNumber>
     </AdditionalSupplyChainActor>
     {%- endfor %}
     {#- 0 to 9999 repetitions: #}
@@ -356,7 +354,7 @@
         {%- endfor %}
         {#- Optional: #}
         {%- for i in range(0, 0) %}
-        <identificationNumber>{{ identificationNumber }}</identificationNumber>
+        <identificationNumber>{{ identificationNumberDepartureTransport03 }}</identificationNumber>
         {%- endfor %}
         {#- Optional: #}
         {%- for i in range(0, 0) %}
@@ -385,7 +383,7 @@
         {%- endfor %}
         {#- Optional: #}
         {%- for i in range(0, 0) %}
-        <identificationNumber>{{ identificationNumber }}</identificationNumber>
+        <identificationNumber>{{ identificationNumberActiveBorder }}</identificationNumber>
         {%- endfor %}
         {#- Optional: #}
         {%- for i in range(0, 0) %}
@@ -582,7 +580,7 @@
         <DepartureTransportMeans>
             <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
             <typeOfIdentification>{{ typeOfIdentification }}</typeOfIdentification>
-            <identificationNumber>{{ identificationNumber }}</identificationNumber>
+            <identificationNumber>{{ identificationNumberDepartureTransport05 }}</identificationNumber>
             <nationality>{{ nationality }}</nationality>
         </DepartureTransportMeans>
         {%- endfor %}
@@ -705,7 +703,7 @@
             </AdditionalSupplyChainActor>
             {%- endfor %}
             <Commodity>
-              <descriptionOfGoods>{{descriptionOfGoodsCommodity}}</descriptionOfGoods>
+              <descriptionOfGoods>{{ descriptionOfGoodsCommodity }}</descriptionOfGoods>
               {#- Optional: #}
               {%- for i in range(0, 0) %}
               <cusCode>{{ cusCode }}</cusCode>

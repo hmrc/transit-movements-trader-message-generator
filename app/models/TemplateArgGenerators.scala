@@ -29,6 +29,11 @@ abstract class TemplateArgGenerators {
     str <- Gen.stringOfN(len, Gen.alphaNumChar)
   } yield str
 
+  def alphaNumCapital(maxLen: Int, minLen: Int = 1) = for {
+    len <- Gen.choose(minLen, maxLen)
+    str <- Gen.stringOfN(len, Gen.alphaNumChar)
+  } yield str
+
   def alpha(maxLen: Int, minLen: Int = 1) = for {
     len <- Gen.choose(minLen, maxLen)
     str <- Gen.stringOfN(len, Gen.alphaChar)

@@ -17,6 +17,7 @@
 package models
 
 import cats.syntax.all._
+import models.Phase5Generators.ArgGen
 import org.scalacheck.Arbitrary.arbitrary
 import org.scalacheck.Gen
 import org.scalacheck.cats.implicits._
@@ -169,8 +170,8 @@ object Phase5Generators extends TemplateArgGenerators {
     statusContentType03               <- num(1)
     contactPersonType05               <- contactPersonFieldsGen
   } yield contactPersonType05 ++ Json.obj(
-    "identificationNumber" -> identificationNumberContentType01,
-    "status"               -> statusContentType03
+    "identificationNumberRepresentative01" -> identificationNumberContentType01,
+    "status"                               -> statusContentType03
   )
 
   val addressFieldsGen: ArgGen = for {
@@ -192,9 +193,9 @@ object Phase5Generators extends TemplateArgGenerators {
     addressType17                            <- addressFieldsGen
     contactPersonType05                      <- contactPersonFieldsGen
   } yield addressType17 ++ contactPersonType05 ++ Json.obj(
-    "identificationNumber"          -> identificationNumberContentType01,
-    "TIRHolderIdentificationNumber" -> tirHolderIdentificationNumberContentType,
-    "name"                          -> nameContentType02
+    "identificationNumberTransitProcedure01" -> identificationNumberContentType01,
+    "TIRHolderIdentificationNumber"          -> tirHolderIdentificationNumberContentType,
+    "name"                                   -> nameContentType02
   )
 
   val postcodeAddressFieldsGen: ArgGen = for {
@@ -232,7 +233,16 @@ object Phase5Generators extends TemplateArgGenerators {
     "otherGuaranteeReference" -> otherGuaranteeReferenceContentType02
   )
 
-  val GuaranteeType02 = GuaranteeType01
+  val GuaranteeType02: ArgGen = for {
+    sequenceNumberContentType            <- num(5)
+    guaranteeTypeContentType             <- alphaNumCapital(1)
+    otherGuaranteeReferenceContentType02 <- alphaNum(35)
+    guaranteeReferenceType03             <- GuaranteeReferenceType03
+  } yield guaranteeReferenceType03 ++ Json.obj(
+    "sequenceNumber"          -> sequenceNumberContentType,
+    "guaranteeType"           -> guaranteeTypeContentType,
+    "otherGuaranteeReference" -> otherGuaranteeReferenceContentType02
+  )
 
   val guarantee03FieldsGen: ArgGen = for {
     sequenceNumberContentType <- num(5)
@@ -281,7 +291,7 @@ object Phase5Generators extends TemplateArgGenerators {
   val EconomicOperatorType03: ArgGen = for {
     identificationNumberContentType01 <- alphaNum(17)
   } yield Json.obj(
-    "identificationNumber" -> identificationNumberContentType01
+    "identificationNumber01" -> identificationNumberContentType01
   )
 
   val AddressType14 = addressFieldsGen
@@ -356,7 +366,7 @@ object Phase5Generators extends TemplateArgGenerators {
     contactPersonType05               <- contactPersonFieldsGen
 
   } yield contactPersonType05 ++ Json.obj(
-    "identificationNumber" -> identificationNumberContentType02
+    "identificationNumberCarrier" -> identificationNumberContentType02
   )
 
   val ConsignorType07: ArgGen = for {
@@ -365,8 +375,8 @@ object Phase5Generators extends TemplateArgGenerators {
     addressType17                     <- addressFieldsGen
     contactPersonType05               <- contactPersonFieldsGen
   } yield addressType17 ++ contactPersonType05 ++ Json.obj(
-    "identificationNumber" -> identificationNumberContentType01,
-    "name"                 -> nameContentType02
+    "identificationNumberConsignor" -> identificationNumberContentType01,
+    "name"                          -> nameContentType02
   )
 
   val ConsigneeType05: ArgGen = for {
@@ -374,8 +384,8 @@ object Phase5Generators extends TemplateArgGenerators {
     nameContentType02                 <- alphaNum(70)
     addressType17                     <- addressFieldsGen
   } yield addressType17 ++ Json.obj(
-    "identificationNumber" -> identificationNumberContentType01,
-    "name"                 -> nameContentType02
+    "identificationNumberConsignee" -> identificationNumberContentType01,
+    "name"                          -> nameContentType02
   )
 
   val AdditionalSupplyChainActorType: ArgGen = for {
@@ -383,9 +393,9 @@ object Phase5Generators extends TemplateArgGenerators {
     roleContentType01                 <- alphaExactly(3)
     identificationNumberContentType02 <- alphaNum(17)
   } yield Json.obj(
-    "sequenceNumber"       -> sequenceNumberContentType,
-    "role"                 -> roleContentType01,
-    "identificationNumber" -> identificationNumberContentType02
+    "sequenceNumber"                       -> sequenceNumberContentType,
+    "role"                                 -> roleContentType01,
+    "identificationNumberAdditionalSupply" -> identificationNumberContentType02
   )
 
   val SealType05: ArgGen = for {
@@ -443,13 +453,13 @@ object Phase5Generators extends TemplateArgGenerators {
   val DepartureTransportMeansType03: ArgGen = for {
     sequenceNumberContentType         <- num(5)
     typeOfIdentificationContentType   <- num(2)
-    identificationNumberContentType02 <- alphaNum(35)
+    identificationNumberContentType06 <- alphaNum(35)
     nationalityContentType            <- alphaExactly(2)
   } yield Json.obj(
-    "sequenceNumber"       -> sequenceNumberContentType,
-    "typeOfIdentification" -> typeOfIdentificationContentType,
-    "identificationNumber" -> identificationNumberContentType02,
-    "nationality"          -> nationalityContentType
+    "sequenceNumber"                           -> sequenceNumberContentType,
+    "typeOfIdentification"                     -> typeOfIdentificationContentType,
+    "identificationNumberDepartureTransport03" -> identificationNumberContentType06,
+    "nationality"                              -> nationalityContentType
   )
 
   val CountryOfRoutingOfConsignmentType01: ArgGen = for {
@@ -471,7 +481,7 @@ object Phase5Generators extends TemplateArgGenerators {
     "sequenceNumber"                       -> sequenceNumberContentType,
     "customsOfficeAtBorderReferenceNumber" -> customsOfficeAtBorderReferenceNumberContentType,
     "typeOfIdentification"                 -> typeOfIdentificationContentType,
-    "identificationNumber"                 -> identificationNumberContentType06,
+    "identificationNumberActiveBorder"     -> identificationNumberContentType06,
     "nationality"                          -> nationalityContentType,
     "conveyanceReferenceNumber"            -> conveyanceReferenceNumberContentType02
   )
@@ -548,10 +558,10 @@ object Phase5Generators extends TemplateArgGenerators {
     identificationNumberContentType06 <- alphaNum(35)
     nationalityContentType            <- alphaExactly(2)
   } yield Json.obj(
-    "sequenceNumber"       -> sequenceNumberContentType,
-    "typeOfIdentification" -> typeOfIdentificationContentType,
-    "identificationNumber" -> identificationNumberContentType06,
-    "nationality"          -> nationalityContentType
+    "sequenceNumber"                           -> sequenceNumberContentType,
+    "typeOfIdentification"                     -> typeOfIdentificationContentType,
+    "identificationNumberDepartureTransport05" -> identificationNumberContentType06,
+    "nationality"                              -> nationalityContentType
   )
 
   val PreviousDocumentType10 = PreviousDocumentType09
