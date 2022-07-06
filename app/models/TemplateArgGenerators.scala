@@ -32,7 +32,7 @@ abstract class TemplateArgGenerators {
   def alphaNumCapital(maxLen: Int, minLen: Int = 1) = for {
     len <- Gen.choose(minLen, maxLen)
     str <- Gen.stringOfN(len, Gen.alphaNumChar)
-  } yield str
+  } yield str.toUpperCase()
 
   def alpha(maxLen: Int, minLen: Int = 1) = for {
     len <- Gen.choose(minLen, maxLen)

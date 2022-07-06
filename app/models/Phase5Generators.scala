@@ -235,12 +235,12 @@ object Phase5Generators extends TemplateArgGenerators {
 
   val GuaranteeType02: ArgGen = for {
     sequenceNumberContentType            <- num(5)
-    guaranteeTypeContentType             <- alphaNumCapital(1)
+    guaranteeTypeContentType02           <- alphaNumCapital(1)
     otherGuaranteeReferenceContentType02 <- alphaNum(35)
     guaranteeReferenceType03             <- GuaranteeReferenceType03
   } yield guaranteeReferenceType03 ++ Json.obj(
     "sequenceNumber"          -> sequenceNumberContentType,
-    "guaranteeType"           -> guaranteeTypeContentType,
+    "guaranteeType02"         -> guaranteeTypeContentType02,
     "otherGuaranteeReference" -> otherGuaranteeReferenceContentType02
   )
 
