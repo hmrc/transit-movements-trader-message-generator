@@ -605,7 +605,7 @@ object Phase5Generators extends TemplateArgGenerators {
 
   val PackagingType03: ArgGen = for {
     sequenceNumberContentType     <- num(5)
-    typeOfPackagesContentType     <- alphaNum(2)
+    typeOfPackagesContentType     <- alphaNum(2, 2)
     numberOfPackagesContentType01 <- num(8)
     shippingMarksContentType02    <- alphaNum(512)
   } yield Json.obj(
