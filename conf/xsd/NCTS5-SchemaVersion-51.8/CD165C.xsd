@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ncts.dgtaxud.ec" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" targetNamespace="http://ncts.dgtaxud.ec" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="51.8.0" vc:minVersion="1.1">
+  <!--================================================================================-->
+  <!--===== IE165: C_AXR_RSP                                                          -->
+  <!--===== ANTICIPATED EXIT FOR TRANSIT RECORD RESPONSE                              -->
+  <!--===== NCTS P5 Phase Definition                                                  -->
+  <!--===== XSD Version 51.8.0                                                        -->
+  <!--================================================================================-->
+  <!--================================================================================-->
+  <!--===== Includes                                                                  -->
+  <!--================================================================================-->
+  <xs:include schemaLocation="ctypes.xsd" />
+  <xs:include schemaLocation="htypes.xsd" />
+  <!--================================================================================-->
+  <!--===== Root Element                                                              -->
+  <!--================================================================================-->
+  <xs:element name="CD165C" type="CD165CType" />
+  <!--================================================================================-->
+  <!--===== Root Element Content                                                      -->
+  <!--================================================================================-->
+  <xs:complexType name="CD165CType">
+    <xs:sequence>
+      <xs:group ref="MESSAGE" />
+      <xs:element name="TransitOperation" type="TransitOperationType41">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="TRANSIT OPERATION" />
+            <optionality value="R" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CustomsOfficeOfDeparture" minOccurs="0" type="CustomsOfficeOfDepartureType02">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="CUSTOMS OFFICE OF DEPARTURE" />
+            <optionality value="D" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CustomsOfficeOfDestinationDeclared" minOccurs="0" type="CustomsOfficeOfDestinationDeclaredType02">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="CUSTOMS OFFICE OF DESTINATION (DECLARED)" />
+            <optionality value="D" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CustomsOfficeOfTransitDeclared" minOccurs="0" maxOccurs="9" type="CustomsOfficeOfTransitDeclaredType03">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="CUSTOMS OFFICE OF TRANSIT (DECLARED)" />
+            <optionality value="D" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CustomsOfficeOfExitForTransitDeclared" minOccurs="0" maxOccurs="9" type="CustomsOfficeOfExitForTransitDeclaredType02">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="CUSTOMS OFFICE OF EXIT FOR TRANSIT (DECLARED)" />
+            <optionality value="D" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CustomsOfficeOfExitForTransitActual" type="CustomsOfficeOfExitForTransitActualType02">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="CUSTOMS OFFICE OF EXIT FOR TRANSIT (ACTUAL)" />
+            <optionality value="R" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="HolderOfTheTransitProcedure" minOccurs="0" type="HolderOfTheTransitProcedureType18">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="HOLDER OF THE TRANSIT PROCEDURE" />
+            <optionality value="D" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ControlResult" minOccurs="0" type="ControlResultType07">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="CONTROL RESULT" />
+            <optionality value="D" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RiskAnalysisIdentification" minOccurs="0" type="RiskAnalysisIdentificationType">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="RISK ANALYSIS IDENTIFICATION" />
+            <optionality value="D" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Consignment" minOccurs="0" type="ConsignmentType19">
+        <xs:annotation>
+          <xs:documentation>
+            <description value="CONSIGNMENT" />
+            <optionality value="D" />
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="PhaseID" type="phaseIDtype" />
+  </xs:complexType>
+</xs:schema>
