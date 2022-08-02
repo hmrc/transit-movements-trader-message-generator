@@ -44,6 +44,8 @@ object MessageType {
 
   case object CC013C extends MessageType("CC013C", "CC013C.njk", Phase5Generators.cc013cGen)
 
+  case object CC009C extends MessageType("CC009C", "cc009c.njk", Phase5Generators.cc009cGen)
+
   val values: Set[MessageType] = ListSet(
     CC007A,
     CC007C,
@@ -53,13 +55,13 @@ object MessageType {
     CC044C,
     CD034A,
     CD037A,
-    CC013C
+    CC013C,
+    CC009C
   )
 
   implicit val messageTypePathBindable: PathBindable[MessageType] = new PathBindable.Parsing(
     parse = rootNode => values.find(_.rootNode == rootNode).get,
     serialize = _.rootNode,
-    (rootNode, _) =>
-      s"${rootNode} is not a valid message type. Known message types: ${values.map(_.rootNode).mkString(", ")}"
+    (rootNode, _) => s"$rootNode is not a valid message type. Known message types: ${values.map(_.rootNode).mkString(", ")}"
   )
 }
