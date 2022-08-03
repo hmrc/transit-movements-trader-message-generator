@@ -17,11 +17,9 @@
 package models
 
 import cats.syntax.all._
-import models.Phase5Generators.ArgGen
 import org.scalacheck.Arbitrary.arbitrary
 import org.scalacheck.Gen
 import org.scalacheck.cats.implicits._
-import play.api.data.Forms.date
 import play.api.libs.json.Json
 import wolfendale.scalacheck.regexp.RegexpGen
 
@@ -83,7 +81,7 @@ object Phase5Generators extends TemplateArgGenerators {
     "limitDate"                        -> dateFormatter.format(limitDate)
   )
 
-  val transitOperationType04: ArgGen = for {
+  val TransitOperationType04: ArgGen = for {
     lrn <- alphaNum(22)
     mrn <- RegexpGen.from(
       "([2][4-9]|[3-9][0-9])[A-Z]{2}[A-Z0-9]{12}[J-M][0-9]"
@@ -128,7 +126,9 @@ object Phase5Generators extends TemplateArgGenerators {
     "MRN" -> mrn
   )
 
-  val authorisationType03: ArgGen = for {
+  val TransitOperationType05 = TransitOperationType03
+
+  val AuthorisationType03: ArgGen = for {
     sequenceNumber               <- num(5)
     typeContentType04            <- alphaNum(4)
     referenceNumberContentType03 <- alphaNum(35)
@@ -208,6 +208,8 @@ object Phase5Generators extends TemplateArgGenerators {
     "name"                          -> name
   )
 
+  val HolderOfTheTransitProcedureType02 = HolderOfTheTransitProcedureType13
+
   val HolderOfTheTransitProcedureType14: ArgGen = for {
     identificationNumberContentType01        <- alphaNum(17)
     tirHolderIdentificationNumberContentType <- alphaNum(17)
@@ -266,7 +268,7 @@ object Phase5Generators extends TemplateArgGenerators {
     "otherGuaranteeReference" -> otherGuaranteeReferenceContentType02
   )
 
-  val guarantee03FieldsGen: ArgGen = for {
+  val Guarantee03FieldsGen: ArgGen = for {
     sequenceNumberContentType <- num(5)
     guaranteeType             <- alphaNum(1)
     otherGuaranteeReference   <- alphaNum(35)
@@ -284,7 +286,7 @@ object Phase5Generators extends TemplateArgGenerators {
     "currency"                -> currency
   )
 
-  val transportEquipment02FieldsGen: ArgGen = for {
+  val TransportEquipment02FieldsGen: ArgGen = for {
     containerIdentificationNumber <- alphaNum(17)
     numberOfSeals                 <- num1(4)
     declarationGoodsItemNumber    <- num(5)
@@ -328,7 +330,7 @@ object Phase5Generators extends TemplateArgGenerators {
     "country"     -> countryContentType
   )
 
-  val activeBorderTransportMeans01FieldsGen: ArgGen = for {
+  val ActiveBorderTransportMeans01FieldsGen: ArgGen = for {
     customsOfficeAtBorderReferenceNumber <- alphaNumExactly(8)
     conveyanceReferenceNumber            <- alphaNum(17)
   } yield Json.obj(
@@ -350,7 +352,9 @@ object Phase5Generators extends TemplateArgGenerators {
     "justification"       -> justification
   )
 
-  val additionalInformation02FieldsGen: ArgGen = for {
+  val InvalidationType02 = InvalidationType01
+
+  val AditionalInformation02FieldsGen: ArgGen = for {
     code <- alphaNumExactly(5)
     text <- alphaNum(512)
   } yield Json.obj(
@@ -358,7 +362,7 @@ object Phase5Generators extends TemplateArgGenerators {
     "text" -> text
   )
 
-  val packaging02FieldsGen: ArgGen = for {
+  val Packaging02FieldsGen: ArgGen = for {
     typeOfPackages   <- alphaNumExactly(2)
     numberOfPackages <- num(8)
     shippingMarks    <- alphaNum(512)
@@ -368,8 +372,8 @@ object Phase5Generators extends TemplateArgGenerators {
     "shippingMarks"    -> shippingMarks
   )
 
-  val houseConsignment04FieldsGen: ArgGen = for {
-    packaging02Fields              <- packaging02FieldsGen
+  val HouseConsignment04FieldsGen: ArgGen = for {
+    packaging02Fields              <- Packaging02FieldsGen
     countryOfDispatch              <- alphaExactly(2)
     countryOfDestination           <- alphaExactly(2)
     goodsItemNumber                <- num(5)
@@ -773,7 +777,7 @@ object Phase5Generators extends TemplateArgGenerators {
       "referenceNumberUCR"         -> referenceNumberUCRContentType02
     )
 
-  val locationOfGoods01FieldsGen: ArgGen = for {
+  val LocationOfGoods01FieldsGen: ArgGen = for {
     typeOfLocation            <- alphaExactly(1)
     qualifierOfIdentification <- alphaExactly(1)
     authorisationNumber       <- alphaNum(35)
@@ -791,12 +795,12 @@ object Phase5Generators extends TemplateArgGenerators {
     "longitude"                 -> longitude
   )
 
-  val consignment14FieldsGen: ArgGen = for {
-    transportEquipment02Fields         <- transportEquipment02FieldsGen
-    locationOfGoods01Fields            <- locationOfGoods01FieldsGen
-    activeBorderTransportMeans01Fields <- activeBorderTransportMeans01FieldsGen
-    additionalInformation02Fields      <- additionalInformation02FieldsGen
-    houseConsignment04Fields           <- houseConsignment04FieldsGen
+  val Consignment14FieldsGen: ArgGen = for {
+    transportEquipment02Fields         <- TransportEquipment02FieldsGen
+    locationOfGoods01Fields            <- LocationOfGoods01FieldsGen
+    activeBorderTransportMeans01Fields <- ActiveBorderTransportMeans01FieldsGen
+    additionalInformation02Fields      <- AditionalInformation02FieldsGen
+    houseConsignment04Fields           <- HouseConsignment04FieldsGen
     countryOfDispatch                  <- alphaExactly(2)
     countryOfDestination               <- alphaExactly(2)
     containerIndicator                 <- num(1)
@@ -836,7 +840,7 @@ object Phase5Generators extends TemplateArgGenerators {
   val cc015cGen: ArgGen = for {
     messageFields                               <- messageFieldsGen("CC015C")
     transitOperation06Fields                    <- TransitOperationType06
-    authorisationType03                         <- authorisationType03
+    authorisationType03                         <- AuthorisationType03
     customsOfficeOfDepartureType03              <- CustomsOfficeOfDepartureType03
     customsOfficeOfDestinationDeclaredType01    <- CustomsOfficeOfDestinationDeclaredType01
     customsOfficeOfTransitDeclaredType03        <- CustomsOfficeOfTransitDeclaredType03
@@ -859,8 +863,8 @@ object Phase5Generators extends TemplateArgGenerators {
 
   val cc013cGen: ArgGen = for {
     messageFields                         <- messageFieldsGen("CC013C")
-    transitOperation                      <- transitOperationType04
-    authorisation                         <- authorisationType03
+    transitOperation                      <- TransitOperationType04
+    authorisation                         <- AuthorisationType03
     customsOfficeOfDeparture              <- CustomsOfficeOfDepartureType03
     customsOfficeOfDestinationDeclared    <- CustomsOfficeOfDestinationDeclaredType01
     customsOfficeOfTransitDeclared        <- CustomsOfficeOfTransitDeclaredType03
@@ -874,9 +878,17 @@ object Phase5Generators extends TemplateArgGenerators {
   val cc009cGen: ArgGen = for {
     messageFields               <- messageFieldsGen("CC009C")
     transitOperation            <- TransitOperationType03
-    invalidationType            <- InvalidationType01
+    invalidation                <- InvalidationType01
     customsOfficeOfDeparture    <- CustomsOfficeOfDepartureType03
     holderOfTheTransitProcedure <- HolderOfTheTransitProcedureType13
-  } yield messageFields ++ transitOperation ++ invalidationType ++ customsOfficeOfDeparture ++ holderOfTheTransitProcedure
+  } yield messageFields ++ transitOperation ++ invalidation ++ customsOfficeOfDeparture ++ holderOfTheTransitProcedure
+
+  val cc014cGen: ArgGen = for {
+    messageFields               <- messageFieldsGen("CC014C")
+    transitOperation            <- TransitOperationType05
+    invalidation                <- InvalidationType02
+    customsOfficeOfDeparture    <- CustomsOfficeOfDepartureType03
+    holderOfTheTransitProcedure <- HolderOfTheTransitProcedureType02
+  } yield messageFields ++ transitOperation ++ invalidation ++ customsOfficeOfDeparture ++ holderOfTheTransitProcedure
 
 }
