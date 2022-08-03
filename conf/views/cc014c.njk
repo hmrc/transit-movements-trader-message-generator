@@ -1,0 +1,79 @@
+<ncts:CC014C PhaseID="NCTS5.0" xmlns:ncts="http://ncts.dgtaxud.ec">
+  <messageRecipient>{{ messageRecipient }}</messageRecipient>
+  <preparationDateAndTime>{{ preparationDateAndTime }}</preparationDateAndTime>
+  <messageIdentification>{{ messageIdentification }}</messageIdentification>
+  <messageType>{{ messageType }}</messageType>
+  {#- Optional: #}
+  {%- for i in range(0, 0) %}
+  <correlationIdentifier>{{ correlationIdentifier }}</correlationIdentifier>
+  {%- endfor %}
+ <TransitOperation>
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <LRN>{{ LRN }}</LRN>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <MRN>{{ MRN }}</MRN>
+    {%- endfor %}
+  </TransitOperation>
+  <Invalidation>
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <requestDateAndTime>{{ requestDateAndTime }}</requestDateAndTime>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <decisionDateAndTime>{{ decisionDateAndTime }}</decisionDateAndTime>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <decision>{{ decision }}</decision>
+    {%- endfor %}
+    <initiatedByCustoms>{{ initiatedByCustoms }}</initiatedByCustoms>
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <justification>{{ justification }}</justification>
+    {%- endfor %}
+  </Invalidation>
+  <CustomsOfficeOfDeparture>
+    <referenceNumber>{{ referenceNumberDeparture }}</referenceNumber>
+  </CustomsOfficeOfDeparture>
+  <HolderOfTheTransitProcedure>
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <identificationNumber>{{ identificationNumber }}</identificationNumber>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 1) %}
+    <TIRHolderIdentificationNumber>{{ TIRHolderIdentificationNumber }}</TIRHolderIdentificationNumber>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <name>{{ name }}</name>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <Address>
+        <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <postcode>{{ postcode }}</postcode>
+        {%- endfor %}
+        <city>{{ city }}</city>
+        <country>{{ country }}</country>
+    </Address>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 0) %}
+    <ContactPerson>
+        <name>{{ name }}</name>
+        <phoneNumber>{{ phoneNumber }}</phoneNumber>
+        {#- Optional: #}
+        {%- for i in range(0, 0) %}
+        <eMailAddress>{{ eMailAddress }}</eMailAddress>
+        {%- endfor %}
+    </ContactPerson>
+    {%- endfor %}
+  </HolderOfTheTransitProcedure>
+</ncts:CC014C>
