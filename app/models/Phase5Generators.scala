@@ -126,6 +126,20 @@ object Phase5Generators extends TemplateArgGenerators {
     "MRN" -> mrn
   )
 
+  val TransitOperationType01: ArgGen = for {
+    lrn <- alphaNum(22)
+    mrn <- RegexpGen.from(
+      "([2][4-9]|[3-9][0-9])[A-Z]{2}[A-Z0-9]{12}[J-M][0-9]"
+    )
+    amendmentSubmissionDateAndTime <- arbitrary[LocalDateTime].map(_.withYear(2022))
+    amendmentAcceptanceDateAndTime <- arbitrary[LocalDateTime].map(_.withYear(2022))
+  } yield Json.obj(
+    "LRN"                            -> lrn,
+    "MRN"                            -> mrn,
+    "amendmentSubmissionDateAndTime" -> amendmentSubmissionDateAndTime,
+    "amendmentAcceptanceDateAndTime" -> amendmentAcceptanceDateAndTime
+  )
+
   val TransitOperationType05 = TransitOperationType03
 
   val AuthorisationType03: ArgGen = for {
@@ -194,6 +208,17 @@ object Phase5Generators extends TemplateArgGenerators {
     "postcode"        -> postcodeContentType02,
     "city"            -> cityContentType03,
     "country"         -> countryContentType
+  )
+
+  val HolderOfTheTransitProcedureType20: ArgGen = for {
+    identificationNumber          <- alphaNum(17)
+    tirHolderIdentificationNumber <- alphaNum(17)
+    name                          <- alphaNum(70)
+    address                       <- addressFieldsGen
+  } yield address ++ Json.obj(
+    "identificationNumber"          -> identificationNumber,
+    "TIRHolderIdentificationNumber" -> tirHolderIdentificationNumber,
+    "name"                          -> name
   )
 
   val HolderOfTheTransitProcedureType13: ArgGen = for {
@@ -890,5 +915,12 @@ object Phase5Generators extends TemplateArgGenerators {
     customsOfficeOfDeparture    <- CustomsOfficeOfDepartureType03
     holderOfTheTransitProcedure <- HolderOfTheTransitProcedureType02
   } yield messageFields ++ transitOperation ++ invalidation ++ customsOfficeOfDeparture ++ holderOfTheTransitProcedure
+
+  val cc004cGen: ArgGen = for {
+    messageFields               <- messageFieldsGen("CC004C")
+    transitOperation            <- TransitOperationType01
+    customsOfficeOfDeparture    <- CustomsOfficeOfDepartureType03
+    holderOfTheTransitProcedure <- HolderOfTheTransitProcedureType20
+  } yield messageFields ++ transitOperation ++ customsOfficeOfDeparture ++ holderOfTheTransitProcedure
 
 }
