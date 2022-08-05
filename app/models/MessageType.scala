@@ -30,6 +30,8 @@ sealed abstract class MessageType(
     with Serializable
 
 object MessageType {
+  case object CC004C extends MessageType("CC004C", "cc004c.njk", Phase5Generators.cc004cGen)
+
   case object CC007A extends MessageType("CC007A", "cc007a.njk", Phase4Generators.cc007aGen)
   case object CC007C extends MessageType("CC007C", "cc007c.njk", Phase5Generators.cc007cGen)
 
@@ -49,6 +51,7 @@ object MessageType {
   case object CC044C extends MessageType("CC044C", "cc044c.njk", Phase5Generators.cc044cGen)
 
   val values: Set[MessageType] = ListSet(
+    CC004C,
     CC007A,
     CC007C,
     CC015B,
