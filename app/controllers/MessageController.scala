@@ -16,7 +16,10 @@
 
 package controllers
 
+import connector.ConverterConnector
 import models.MessageType
+import play.api.http.HeaderNames
+import play.api.http.MimeTypes
 import play.api.mvc.ControllerComponents
 import uk.gov.hmrc.nunjucks.NunjucksRenderer
 import uk.gov.hmrc.play.bootstrap.backend.controller.BackendController
@@ -27,6 +30,7 @@ import scala.concurrent.Future
 
 class MessageController @Inject() (
   renderer: NunjucksRenderer,
+  converterConnector: ConverterConnector,
   cc: ControllerComponents
 )(implicit ec: ExecutionContext)
     extends BackendController(cc) {
@@ -36,7 +40,19 @@ class MessageController @Inject() (
 
     templateArgs
       .map { args =>
-        renderer.render(`type`.templateFile, args).map(Ok(_))
+        renderer.render(`type`.templateFile, args)
+      }
+      .map { result =>
+        request.headers.get(HeaderNames.ACCEPT) match {
+          case Some(MimeTypes.JSON) =>
+            result
+              .flatMap(x => converterConnector.convert(`type`, x.body).value)
+              .map {
+                  case Right(source) => Ok.chunked(source)
+                  case Left(err)     => Status(err.statusCode)(err.message)
+              }
+          case _ => result.map(Ok(_))
+        }
       }
       .getOrElse {
         Future.successful(InternalServerError("Unable to generate template arguments"))

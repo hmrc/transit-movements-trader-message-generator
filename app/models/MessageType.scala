@@ -25,7 +25,8 @@ import scala.collection.immutable.ListSet
 sealed abstract class MessageType(
   val rootNode: String,
   val templateFile: String,
-  val templateArgGen: Gen[JsObject]
+  val templateArgGen: Gen[JsObject],
+  val converterType: Option[String] = None
 ) extends Product
     with Serializable
 
@@ -42,7 +43,7 @@ object MessageType {
   case object CC014C extends MessageType("CC014C", "cc014c.njk", Phase5Generators.cc014cGen)
 
   case object CC015B extends MessageType("CC015B", "cc015b.njk", Phase4Generators.cc015bGen)
-  case object CC015C extends MessageType("CC015C", "cc015c.njk", Phase5Generators.cc015cGen)
+  case object CC015C extends MessageType("CC015C", "cc015c.njk", Phase5Generators.cc015cGen, Some("IE015"))
 
   case object CD034A extends MessageType("CD034A", "cd034a.njk", Phase4Generators.cd034aGen)
   case object CD037A extends MessageType("CD037A", "cd037a.njk", Phase4Generators.cd037aGen)

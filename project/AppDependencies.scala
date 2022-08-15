@@ -3,7 +3,7 @@ import sbt._
 
 object AppDependencies {
   val compile: Seq[ModuleID] = Seq(
-    "uk.gov.hmrc"          %% "bootstrap-backend-play-28" % "5.16.0",
+    "uk.gov.hmrc"          %% "bootstrap-backend-play-28" % "6.3.0",
     "uk.gov.hmrc"          %% "play-nunjucks"             % "0.33.0-play-28",
     "org.typelevel"        %% "cats-core"                 % "2.6.1",
     "org.scalacheck"       %% "scalacheck"                % "1.15.4",
