@@ -23,6 +23,7 @@ import play.api.libs.json.Json
 import wolfendale.scalacheck.regexp.RegexpGen
 
 object Phase4Generators extends TemplateArgGenerators {
+
   val date8 = RegexpGen.from(
     """[1-2][0-9]{3}[0][1-9][0][1-9]|[1-2][0-9]{3}[0][1-9](1|2)[0-9]|[1-2][0-9]{3}[0][1-9][3](0|1)|[1-2][0-9]{3}[1][0-2][0][1-9]|[1-2][0-9]{3}[1][0-2](1|2)[0-9]|(1-2][0-9]{3}[1][0-2][3][0|1)"""
   )
@@ -77,8 +78,9 @@ object Phase4Generators extends TemplateArgGenerators {
   def phase4CommonFieldsGen(senderPrefix: String): ArgGen = for {
     SynIdeMES1    <- Gen.const("UNOC")
     SynVerNumMES2 <- Gen.const("3")
-    MesSenMES3 <- (num(4), num(1)).mapN { case (movementNum, correlationId) =>
-      s"MDTP-$senderPrefix-${leftPad(movementNum, 23, '0')}-${leftPad(correlationId, 2, '0')}"
+    MesSenMES3 <- (num(4), num(1)).mapN {
+      case (movementNum, correlationId) =>
+        s"MDTP-$senderPrefix-${leftPad(movementNum, 23, '0')}-${leftPad(correlationId, 2, '0')}"
     }
     SenIdeCodQuaMES4  <- alphaNum(4)
     MesRecMES6        <- alphaNum(35)
@@ -233,7 +235,7 @@ object Phase4Generators extends TemplateArgGenerators {
   )
 
   val pacGs2FieldsGen: ArgGen = for {
-    MarNumOfPacGS21    <- alphaNumCSV(21,2)
+    MarNumOfPacGS21    <- alphaNumCSV()
     MarNumOfPacGS21LNG <- alphaExactly(2)
     KinOfPacGS23       <- alphaNum(3)
     NumOfPacGS24       <- Gen.const(2)
@@ -871,7 +873,7 @@ object Phase4Generators extends TemplateArgGenerators {
     RefNumEPR1    <- alphaNumExactly(8)
     RefNumSIM1    <- alphaNumExactly(8)
     RefNumRCV1    <- alphaNumExactly(8)
-    AccCodCOD729 <- alphaExactly(4)
+    AccCodCOD729  <- alphaExactly(4)
   } yield commonFields ++ guaRef2Fields ++ Json.obj(
     "TINRC159"     -> TINRC159,
     "CouCodGRT764" -> CouCodGRT764,
