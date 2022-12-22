@@ -19,16 +19,12 @@ lazy val microservice = Project(appName, file("."))
 
 lazy val commonSettings = Def.settings(
   majorVersion := 0,
-  scalaVersion := "2.12.12"
+  scalaVersion := "2.13.8"
 )
 
 lazy val scalacSettings = Def.settings(
   // Disable warnings arising from generated routing code
-  // scalacOptions += "-Wconf:src=routes/.*:silent",
-  // Disable fatal warnings and warnings from discarding values
-  scalacOptions ~= { opts =>
-    opts.filterNot(Set("-Xfatal-warnings", "-Ywarn-value-discard"))
-  }
+  scalacOptions += "-Wconf:src=routes/.*:s"
 )
 
 lazy val scoverageSettings = Def.settings(
