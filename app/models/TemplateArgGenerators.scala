@@ -39,7 +39,7 @@ abstract class TemplateArgGenerators {
     str <- Gen.stringOfN(len, Gen.alphaChar)
   } yield str
 
-  def alphaNumCSV(maxLen: Int, maxListLength: Int, minLen: Int = 1): Gen[String] =
+  def alphaNumCSV(): Gen[String] =
     Gen.oneOf(Seq("15501523082774,15501523082773"))
 
   def alphaNumExactly(len: Int) =
