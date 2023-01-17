@@ -1,4 +1,5 @@
 <ncts:CC015C PhaseID="NCTS5.0" xmlns:ncts="http://ncts.dgtaxud.ec">
+  <messageSender>{{ messageRecipient }}</messageSender>
   <messageRecipient>{{ messageRecipient }}</messageRecipient>
   <preparationDateAndTime>{{ preparationDateAndTime }}</preparationDateAndTime>
   <messageIdentification>{{ messageIdentification }}</messageIdentification>
@@ -244,7 +245,7 @@
     <AdditionalSupplyChainActor>
         <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
         <role>{{ role }}</role>
-        <identificationNumber>{{ identificationNumberAdditionalSupply }}</identificationNumber>
+        <identificationNumber>{{ identificationNumberContentType02 }}</identificationNumber>
     </AdditionalSupplyChainActor>
     {%- endfor %}
     {#- 0 to 9999 repetitions: #}
@@ -354,7 +355,7 @@
         {%- endfor %}
         {#- Optional: #}
         {%- for i in range(0, 0) %}
-        <identificationNumber>{{ identificationNumberDepartureTransport03 }}</identificationNumber>
+        <identificationNumber>{{ identificationNumberContentType06 }}</identificationNumber>
         {%- endfor %}
         {#- Optional: #}
         {%- for i in range(0, 0) %}
@@ -494,7 +495,7 @@
     </TransportCharges>
     {%- endfor %}
     {#- 1 to 99 repetitions: #}
-    {%- for i in range(0, 1) %}
+    {%- for i in range(0, 60) %}
     <HouseConsignment>
         <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
         {#- Optional: #}
@@ -510,15 +511,15 @@
         {%- for i in range(0, 0) %}
         <Consignor>
             {#- Optional: #}
-            {%- for i in range(0, 0) %}
+            {%- for i in range(0, 1) %}
             <identificationNumber>{{ identificationNumber }}</identificationNumber>
             {%- endfor %}
             {#- Optional: #}
-            {%- for i in range(0, 0) %}
+            {%- for i in range(0, 1) %}
             <name>{{ name }}</name>
             {%- endfor %}
             {#- Optional: #}
-            {%- for i in range(0, 0) %}
+            {%- for i in range(0, 1) %}
             <Address>
                 <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
                 {#- Optional: #}
@@ -530,7 +531,7 @@
             </Address>
             {%- endfor %}
             {#- Optional: #}
-            {%- for i in range(0, 0) %}
+            {%- for i in range(0, 1) %}
             <ContactPerson>
                 <name>{{ name }}</name>
                 <phoneNumber>{{ phoneNumber }}</phoneNumber>
@@ -543,10 +544,10 @@
         </Consignor>
         {%- endfor %}
         {#- Optional: #}
-        {%- for i in range(0, 0) %}
+        {%- for i in range(0, 1) %}
         <Consignee>
            {#- Optional: #}
-           {%- for i in range(0, 0) %}
+           {%- for i in range(0, 1) %}
            <identificationNumber>{{ identificationNumber }}</identificationNumber>
            {%- endfor %}
            {#- Optional: #}
@@ -554,7 +555,7 @@
            <name>{{ name }}</name>
            {%- endfor %}
            {#- Optional: #}
-           {%- for i in range(0, 0) %}
+           {%- for i in range(0, 1) %}
            <Address>
             <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
             {#- Optional: #}
@@ -568,27 +569,27 @@
         </Consignee>
         {%- endfor %}
         {#- 0 to 99 repetitions: #}
-        {%- for i in range(0, 0) %}
+        {%- for i in range(0, 10) %}
         <AdditionalSupplyChainActor>
             <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
             <role>{{ role }}</role>
-            <identificationNumber>{{ identificationNumber }}</identificationNumber>
+            <identificationNumber>{{ identificationNumberContentType02 }}</identificationNumber>
         </AdditionalSupplyChainActor>
         {%- endfor %}
         {#- 0 to 999 repetitions: #}
-        {%- for i in range(0, 0) %}
+        {%- for i in range(0, 200) %}
         <DepartureTransportMeans>
             <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
             <typeOfIdentification>{{ typeOfIdentification }}</typeOfIdentification>
-            <identificationNumber>{{ identificationNumberDepartureTransport05 }}</identificationNumber>
+            <identificationNumber>{{ identificationNumberContentType06 }}</identificationNumber>
             <nationality>{{ nationality }}</nationality>
         </DepartureTransportMeans>
         {%- endfor %}
         {#- 0 to 99 repetitions: #}
-        {%- for i in range(0, 0) %}
+        {%- for i in range(0, 99) %}
         <PreviousDocument>
             <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-            <type>{{ type }}</type>
+            <type>{{ typeContentType02 }}</type>
             <referenceNumber>{{ referenceNumber }}</referenceNumber>
             {#- Optional: #}
             {%- for i in range(0, 0) %}
@@ -597,10 +598,10 @@
         </PreviousDocument>
         {%- endfor %}
         {#- 0 to 99 repetitions: #}
-        {%- for i in range(0, 0) %}
+        {%- for i in range(0, 10) %}
         <SupportingDocument>
               <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-              <type>{{ type }}</type>
+              <type>{{ typeContentType02 }}</type>
               <referenceNumber>{{ referenceNumberSupportingDocument }}</referenceNumber>
               {#- Optional: #}
               {%- for i in range(0, 0) %}
@@ -616,15 +617,15 @@
         {%- for i in range(0, 0) %}
         <TransportDocument>
             <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-            <type>{{ type }}</type>
+            <type>{{ typeContentType02 }}</type>
             <referenceNumber>{{ referenceNumber }}</referenceNumber>
         </TransportDocument>
         {%- endfor %}
         {#- 0 to 99 repetitions: #}
-        {%- for i in range(0, 0) %}
+        {%- for i in range(0, 10) %}
         <AdditionalReference>
             <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
-            <type>{{ type }}</type>
+            <type>{{ typeContentType02 }}</type>
             {#- Optional: #}
             {%- for i in range(0, 0) %}
             <referenceNumber>{{ referenceNumber }}</referenceNumber>
@@ -649,7 +650,7 @@
         </TransportCharges>
         {%- endfor %}
         {#- 1 to 999 repetitions: #}
-        {%- for i in range(0, 1) %}
+        {%- for i in range(0, 10) %}
         <ConsignmentItem>
             <goodsItemNumber>{{ goodsItemNumber }}</goodsItemNumber>
             <declarationGoodsItemNumber>{{ declarationGoodsItemNumber }}</declarationGoodsItemNumber>
@@ -699,7 +700,7 @@
             <AdditionalSupplyChainActor>
                 <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
                 <role>{{ role }}</role>
-                <identificationNumber>{{ identificationNumber }}</identificationNumber>
+                <identificationNumber>{{ identificationNumberContentType02 }}</identificationNumber>
             </AdditionalSupplyChainActor>
             {%- endfor %}
             <Commodity>
