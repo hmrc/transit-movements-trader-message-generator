@@ -1,3 +1,3 @@
 # microservice specific routes
 
-POST /messages/:id controllers.MessageController.generateMessage(id: MessageType)
+POST /messages/:id controllers.MessageController.generateMessage(id: MessageType, goodsCount: Int ?= 1)

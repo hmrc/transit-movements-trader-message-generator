@@ -400,13 +400,14 @@ object Phase5Generators extends TemplateArgGenerators with Phase5SimpleGenerator
   )
 
   val HouseConsignment04FieldsGen: ArgGen = for {
+    goodsCount <- Gen.const(3)
     packaging02Fields              <- Packaging02FieldsGen
     countryOfDispatch              <- alphaExactly(2)
     countryOfDestination           <- alphaExactly(2)
     goodsItemNumber                <- num(5)
     declarationGoodsItemNumber     <- num(5)
     declarationType                <- alphaNum(5)
-    descriptionOfGoods             <- alphaNum(512)
+    descriptionOfGoods             <- alphaNum(280)  //changed from 512 to match max p4 GooDesGDS23
     cusCode                        <- alphaNumExactly(9)
     harmonizedSystemSubHeadingCode <- alphaNumExactly(6)
     combinedNomenclatureCode       <- alphaNumExactly(2)
@@ -414,6 +415,7 @@ object Phase5Generators extends TemplateArgGenerators with Phase5SimpleGenerator
     measurementUnitAndQualifier    <- alphaNum(4)
     quantity                       <- (num1(10), num(6)).mapN(_ + "." + _)
   } yield packaging02Fields ++ Json.obj(
+    "goodsCount" -> goodsCount,
     "countryOfDispatch"              -> countryOfDispatch,
     "countryOfDestination"           -> countryOfDestination,
     "goodsItemNumber"                -> goodsItemNumber,
@@ -711,7 +713,7 @@ object Phase5Generators extends TemplateArgGenerators with Phase5SimpleGenerator
 
   val ConsignmentItemType09: ArgGen = for {
     goodsItemNumberContentType02            <- num(5)
-    declarationGoodsItemNumberContentType01 <- RegexpGen.from("[1-9][0-9]{0,2}|[1][0-9]{3}")
+    declarationGoodsItemNumberContentType01 <- Gen.const(RegexpGen.from("[1-9][0-9]{0,2}|[1][0-9]{3}").sample.get)
     declarationTypeContentType02            <- alphaNum(5)
     countryOfDispatchContentType            <- alphaExactly(2)
     countryOfDestinationContentType         <- alphaExactly(2)

@@ -31,7 +31,7 @@ class MessageController @Inject() (
 )(implicit ec: ExecutionContext)
     extends BackendController(cc) {
 
-  def generateMessage(`type`: MessageType) = Action.async { implicit request =>
+  def generateMessage(`type`: MessageType, goodsCount: Int) = Action.async { implicit request =>
     val templateArgs = `type`.templateArgGen.sample
 
     templateArgs

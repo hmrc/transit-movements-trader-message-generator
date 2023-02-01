@@ -464,7 +464,7 @@ object Phase4Generators extends TemplateArgGenerators {
     "RefNumRES1"             -> RefNumRES1
   )
 
-  val cc015bGen: ArgGen = for {
+  def cc015bGen(goodsCount: Int): ArgGen = for {
     commonFields             <- phase4CommonFieldsGen("DEP")
     traPriPc1Fields          <- traPriPc1FieldsGen
     traConCo1Fields          <- traConCo1FieldsGen
@@ -543,8 +543,10 @@ object Phase4Generators extends TemplateArgGenerators {
     UNDanGooCodGDI1          <- alphaNumExactly(4)
     ConNumNR21               <- alphaNum(17)
     CouOfRouCodITI1          <- alphaExactly(2)
+    goodsCount <- Gen.const(goodsCount)
   } yield commonFields ++ traPriPc1Fields ++ traConCo1Fields ++ traConCe1Fields ++ seaInfSliFields ++ guaGuaFields ++ preAdmRefAr2Fields ++ proDocDc2Fields ++ speMentMt2Fields ++ traConCo2Fields ++ traConCe2Fields ++ pacGs2Fields ++ sgiCodSd2Fields ++ traCorSecGoo021Fields ++ traConSecGoo013Fields ++ carTra100Fields ++ traCorSec037Fields ++ traConSec029Fields ++ Json
     .obj(
+      "goodsCount" -> goodsCount,
       "RefNumHEA4"               -> RefNumHEA4,
       "TypOfDecHEA24"            -> TypOfDecHEA24,
       "CouOfDesCodHEA30"         -> CouOfDesCodHEA30,
