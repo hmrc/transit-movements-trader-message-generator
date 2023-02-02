@@ -495,7 +495,7 @@
     </TransportCharges>
     {%- endfor %}
     {#- 1 to 99 repetitions: #}
-    {%- for i in range(0, 60) %}
+    {%- for i in range(0, 999) %}
     <HouseConsignment>
         <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
         {#- Optional: #}
@@ -569,7 +569,7 @@
         </Consignee>
         {%- endfor %}
         {#- 0 to 99 repetitions: #}
-        {%- for i in range(0, 10) %}
+        {%- for i in range(0, 0) %}
         <AdditionalSupplyChainActor>
             <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
             <role>{{ role }}</role>
@@ -577,7 +577,7 @@
         </AdditionalSupplyChainActor>
         {%- endfor %}
         {#- 0 to 999 repetitions: #}
-        {%- for i in range(0, 200) %}
+        {%- for i in range(0, 0) %}
         <DepartureTransportMeans>
             <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
             <typeOfIdentification>{{ typeOfIdentification }}</typeOfIdentification>
@@ -586,7 +586,7 @@
         </DepartureTransportMeans>
         {%- endfor %}
         {#- 0 to 99 repetitions: #}
-        {%- for i in range(0, 99) %}
+        {%- for i in range(0, 0) %}
         <PreviousDocument>
             <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
             <type>{{ typeContentType02 }}</type>
@@ -598,7 +598,7 @@
         </PreviousDocument>
         {%- endfor %}
         {#- 0 to 99 repetitions: #}
-        {%- for i in range(0, 10) %}
+        {%- for i in range(0, 0) %}
         <SupportingDocument>
               <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
               <type>{{ typeContentType02 }}</type>
@@ -622,7 +622,7 @@
         </TransportDocument>
         {%- endfor %}
         {#- 0 to 99 repetitions: #}
-        {%- for i in range(0, 10) %}
+        {%- for i in range(0, 0) %}
         <AdditionalReference>
             <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
             <type>{{ typeContentType02 }}</type>
@@ -650,7 +650,7 @@
         </TransportCharges>
         {%- endfor %}
         {#- 1 to 999 repetitions: #}
-        {%- for i in range(0, 10) %}
+        {%- for i in range(0, 1) %}
         <ConsignmentItem>
             <goodsItemNumber>{{ goodsItemNumber }}</goodsItemNumber>
             <declarationGoodsItemNumber>{{ declarationGoodsItemNumber }}</declarationGoodsItemNumber>
