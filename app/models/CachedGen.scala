@@ -21,7 +21,7 @@ import org.scalacheck.Gen
 object CachedGen {
   def oneOf(strings: Seq[String]): String = strings.head
 
-  def choose(m: Int, n: Int): Gen[Int] = Gen.const(5)
+  def choose(m: Int, n: Int): Gen[Int] = if (m < n) Gen.const(n) else Gen.const(m)
 
   var cacheStringOfAlphaNumeric = collection.immutable.Map.empty[String, Gen[String]]
 

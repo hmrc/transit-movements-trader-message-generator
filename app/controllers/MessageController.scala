@@ -39,7 +39,7 @@ class MessageController @Inject() (
         renderer.render(`type`.templateFile, args).map(Ok(_))
       }
       .getOrElse {
-        Future.successful(InternalServerError("Unable to generate template arguments"))
+        Future.successful(InternalServerError(s"Unable to generate template arguments $goodsCount"))
       }
   }
 }

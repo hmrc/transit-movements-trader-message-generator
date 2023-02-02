@@ -17,6 +17,7 @@
 package generators
 
 import cats.implicits.catsSyntaxTuple2Semigroupal
+import models.CachedGen
 import org.scalacheck.Gen
 import org.scalacheck.cats.implicits.genInstances
 import play.api.libs.json.JsObject
@@ -25,25 +26,25 @@ abstract class TemplateArgGenerators {
   type ArgGen = Gen[JsObject]
 
   def alphaNum(maxLen: Int, minLen: Int = 1) = for {
-    len <- Gen.choose(minLen, maxLen)
-    str <- Gen.stringOfN(len, Gen.alphaNumChar)
+    len <- CachedGen.choose(minLen, maxLen)
+    str <- CachedGen.stringOfNumbers(len, CachedGen.numChar)
   } yield str
 
   def alphaNumCapital(maxLen: Int, minLen: Int = 1) = for {
-    len <- Gen.choose(minLen, maxLen)
-    str <- Gen.stringOfN(len, Gen.alphaNumChar)
+    len <- CachedGen.choose(minLen, maxLen)
+    str <- CachedGen.stringOfNumbers(len, CachedGen.numChar)
   } yield str.toUpperCase()
 
   def alpha(maxLen: Int, minLen: Int = 1) = for {
-    len <- Gen.choose(minLen, maxLen)
-    str <- Gen.stringOfN(len, Gen.alphaChar)
+    len <- CachedGen.choose(minLen, maxLen)
+    str <- CachedGen.stringOfNumbers(len, CachedGen.numChar)
   } yield str
 
   def alphaNumCSV(): Gen[String] =
-    Gen.oneOf(Seq("15501523082774,15501523082773"))
+    CachedGen.oneOf(Seq("15501523082774,15501523082773"))
 
   def alphaNumExactly(len: Int) =
-    Gen.stringOfN(len, Gen.alphaNumChar)
+    CachedGen.stringOfNumbers(len, CachedGen.numChar)
 
   def alphaExactly(len: Int) =
     alpha(len, len)
@@ -55,19 +56,19 @@ abstract class TemplateArgGenerators {
     (num1(totalDigits - fractionDigits), num(fractionDigits)).mapN(_ + "." + _)
 
   def num(len: Int) =
-    Gen.stringOfN(len, Gen.numChar)
+    CachedGen.stringOfNumbers(len, CachedGen.numChar)
 
-  val indicator = Gen.oneOf("0", "1")
+  val indicator = Gen.const("5")
 
   def num1(len: Int) =
     if (len <= 0)
       Gen.const("")
     else if (len <= 1)
-      Gen.choose(1, 9).map(_.toString)
+      CachedGen.choose(1, 9).map(_.toString)
     else
       for {
-        initChar  <- Gen.choose(1, 9).map(_.toString)
-        restChars <- Gen.stringOfN(len - 1, Gen.numChar)
+        initChar  <- CachedGen.choose(1, 9).map(_.toString)
+        restChars <- CachedGen.stringOfNumbers(len - 1, CachedGen.numChar)
       } yield initChar + restChars
 
   def leftPad(str: String, len: Int, paddingChar: Char) =
