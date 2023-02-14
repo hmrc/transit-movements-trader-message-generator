@@ -258,14 +258,14 @@ object Phase5Generators extends TemplateArgGenerators with Phase5SimpleGenerator
   )
 
   val HolderOfTheTransitProcedureType19: ArgGen = for {
-    identificationNumber <- alphaNum(17)
+    identificationNumber          <- alphaNum(17)
     tirHolderIdentificationNumber <- alphaNum(17)
-    name <- alphaNum(70)
-    address <- addressFieldsGen
+    name                          <- alphaNum(70)
+    address                       <- addressFieldsGen
   } yield address ++ Json.obj(
-    "identificationNumber" -> identificationNumber,
-    "TIRHolderIdentificationNumber" -> tirHolderIdentificationNumber,
-    "name" -> name
+    "identificationNumber"    -> identificationNumber,
+    "TIRHolderIdentificationNumber"  -> tirHolderIdentificationNumber,
+    "name"                           -> name
   )
 
   val postcodeAddressFieldsGen: ArgGen = for {
