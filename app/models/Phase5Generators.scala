@@ -136,7 +136,7 @@ object Phase5Generators extends TemplateArgGenerators with Phase5SimpleGenerator
     amendmentSubmissionDateAndTime <- arbitrary[LocalDateTime].map(_.withYear(2022))
     amendmentAcceptanceDateAndTime <- arbitrary[LocalDateTime].map(_.withYear(2022))
   } yield Json.obj(
-    "LRN"                     -> lrn,
+    "LRN"                       -> lrn,
     "MRN"                            -> mrn,
     "amendmentSubmissionDateAndTime" -> amendmentSubmissionDateAndTime,
     "amendmentAcceptanceDateAndTime" -> amendmentAcceptanceDateAndTime
@@ -145,11 +145,11 @@ object Phase5Generators extends TemplateArgGenerators with Phase5SimpleGenerator
   val TransitOperationType05 = TransitOperationType03
 
   val TransitOperationType24: ArgGen = for {
-    lrn <- alphaNum(22)
-    limitDate <- arbitrary[LocalDate].map(_.withYear(2022))
+    lrn         <- alphaNum(22)
+    limitDate   <- arbitrary[LocalDate].map(_.withYear(2022))
   } yield Json.obj(
-    "LRN" -> lrn,
-    "limitDate" -> dateFormatter.format(limitDate)
+    "LRN"  -> lrn,
+    "limitDate"   -> dateFormatter.format(limitDate)
   )
 
   val AuthorisationType03: ArgGen = for {
