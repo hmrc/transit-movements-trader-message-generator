@@ -49,7 +49,7 @@ object MessageType {
 
   case object CC044A extends MessageType("CC044A", "cc044a.njk", Phase4Generators.cc044aGen)
   case object CC044C extends MessageType("CC044C", "cc044c.njk", Phase5Generators.cc044cGen)
-
+  case object CC170C extends MessageType("CC170C", "cc170c.njk", Phase5Generators.cc170cGen)
   val values: Set[MessageType] = ListSet(
     CC004C,
     CC007A,
@@ -62,7 +62,8 @@ object MessageType {
     CD037A,
     CC013C,
     CC009C,
-    CC014C
+    CC014C,
+    CC170C
   )
 
   implicit val messageTypePathBindable: PathBindable[MessageType] = new PathBindable.Parsing(
