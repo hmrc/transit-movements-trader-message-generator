@@ -1,0 +1,252 @@
+<ncts:CC170C PhaseID="NCTS5.0" xmlns:ncts="http://ncts.dgtaxud.ec">
+  <messageSender>{{ messageRecipient }}</messageSender>
+  <messageRecipient>{{ messageRecipient }}</messageRecipient>
+  <preparationDateAndTime>{{ preparationDateAndTime }}</preparationDateAndTime>
+  <messageIdentification>{{ messageIdentification }}</messageIdentification>
+  <messageType>{{ messageType }}</messageType>
+  {#- Optional: #}
+  {%- for i in range(0, 1) %}
+  <correlationIdentifier>{{ correlationIdentifier }}</correlationIdentifier>
+  {%- endfor %}
+  <TransitOperation>
+    <LRN>{{ LRN }}</LRN>
+    {#- Optional: #}
+    {%- for i in range(0, 1) %}
+    <limitDate>{{ limitDate }}</limitDate>
+    {%- endfor %}
+  </TransitOperation>
+  <CustomsOfficeOfDeparture>
+    <referenceNumber>{{ referenceNumberDeparture }}</referenceNumber>
+  </CustomsOfficeOfDeparture>
+  <HolderOfTheTransitProcedure>
+    <identificationNumber>{{ identificationNumber }}</identificationNumber>
+    {#- Optional: #}
+    {%- for i in range(0, 1) %}
+    <TIRHolderIdentificationNumber>{{ TIRHolderIdentificationNumber }}</TIRHolderIdentificationNumber>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 1) %}
+    <name>{{ name }}</name>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 1) %}
+    <Address>
+        <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <postcode>{{ postcode }}</postcode>
+        {%- endfor %}
+        <city>{{ city }}</city>
+        <country>{{ country }}</country>
+    </Address>
+    {%- endfor %}
+  </HolderOfTheTransitProcedure>
+  {#- Optional: #}
+  {%- for i in range(0, 1) %}
+  <Representative>
+    <identificationNumber>{{ identificationNumber }}</identificationNumber>
+    <status>{{ status }}</status>
+    {#- Optional: #}
+    {%- for i in range(0, 1) %}
+    <ContactPerson>
+        <name>{{ name }}</name>
+        <phoneNumber>{{ phoneNumber }}</phoneNumber>
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <eMailAddress>{{ eMailAddress }}</eMailAddress>
+        {%- endfor %}
+    </ContactPerson>
+    {%- endfor %}
+  </Representative>
+  {%- endfor %}
+  <Consignment>
+  {#- Optional: #}
+    {%- for i in range(0, 1) %}
+    <containerIndicator>{{ containerIndicator }}</containerIndicator>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 1) %}
+    <inlandModeOfTransport>{{ inlandModeOfTransport }}</inlandModeOfTransport>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 1) %}
+    <modeOfTransportAtTheBorder>{{ modeOfTransportAtTheBorder }}</modeOfTransportAtTheBorder>
+    {%- endfor %}
+    {#- Optional: #}
+    {#- 0 to 9999 repetitions: #}
+    {%- for i in range(0, 1) %}
+    <TransportEquipment>
+        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <containerIdentificationNumber>{{ containerIdentificationNumber }}</containerIdentificationNumber>
+        {%- endfor %}
+        <numberOfSeals>{{ numberOfSeals }}</numberOfSeals>
+        {#- 0 to 99 repetitions: #}
+        {%- for i in range(0, 1) %}
+        <Seal>
+           <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+           <identifier>{{ identifier }}</identifier>
+        </Seal>
+        {%- endfor %}
+        {#- 0 to 9999 repetitions: #}
+        {%- for i in range(0, 1) %}
+        <GoodsReference>
+            <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+            <declarationGoodsItemNumber>{{ declarationGoodsItemNumber }}</declarationGoodsItemNumber>
+        </GoodsReference>
+        {%- endfor %}
+    </TransportEquipment>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 1) %}
+    <LocationOfGoods>
+        <typeOfLocation>{{ typeOfLocation }}</typeOfLocation>
+        <qualifierOfIdentification>{{ qualifierOfIdentification }}</qualifierOfIdentification>
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <authorisationNumber>{{ authorisationNumber }}</authorisationNumber>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+         <additionalIdentifier>{{ additionalIdentifier }}</additionalIdentifier>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <UNLocode>{{ UNLocode }}</UNLocode>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <CustomsOffice>
+            <referenceNumber>{{ referenceNumberCustoms }}</referenceNumber>
+        </CustomsOffice>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <GNSS>
+            <latitude>{{ latitude }}</latitude>
+            <longitude>{{ longitude }}</longitude>
+        </GNSS>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <EconomicOperator>
+            <identificationNumber>{{ identificationNumber }}</identificationNumber>
+        </EconomicOperator>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <Address>
+            <streetAndNumber>{{ streetAndNumber }}</streetAndNumber>
+            {#- Optional: #}
+            {%- for i in range(0, 1) %}
+            <postcode>{{ postcode }}</postcode>
+            {%- endfor %}
+            <city>{{ city }}</city>
+            <country>{{ country }}</country>
+        </Address>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <PostcodeAddress>
+            {#- Optional: #}
+            {%- for i in range(0, 1) %}
+            <houseNumber>{{ houseNumber }}</houseNumber>
+            {%- endfor %}
+            <postcode>{{ postcode }}</postcode>
+            <country>{{ country }}</country>
+        </PostcodeAddress>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <ContactPerson>
+            <name>{{ name }}</name>
+            <phoneNumber>{{ phoneNumber }}</phoneNumber>
+            {#- Optional: #}
+            {%- for i in range(0, 1) %}
+            <eMailAddress>{{ eMailAddress }}</eMailAddress>
+            {%- endfor %}
+        </ContactPerson>
+        {%- endfor %}
+    </LocationOfGoods>
+    {%- endfor %}
+    {#- 0 to 999 repetitions: #}
+    {%- for i in range(0, 1) %}
+    <DepartureTransportMeans>
+        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <typeOfIdentification>{{ typeOfIdentification }}</typeOfIdentification>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <identificationNumber>{{ identificationNumberContentType06 }}</identificationNumber>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <nationality>{{ nationality }}</nationality>
+        {%- endfor %}
+    </DepartureTransportMeans>
+    {%- endfor %}
+    {#- 0 to 9 repetitions: #}
+    {%- for i in range(0, 1) %}
+    <ActiveBorderTransportMeans>
+        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <customsOfficeAtBorderReferenceNumber>{{ customsOfficeAtBorderReferenceNumber }}</customsOfficeAtBorderReferenceNumber>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <typeOfIdentification>{{ typeOfIdentification }}</typeOfIdentification>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <identificationNumber>{{ identificationNumberActiveBorder }}</identificationNumber>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <nationality>{{ nationality }}</nationality>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <conveyanceReferenceNumber>{{ conveyanceReferenceNumber }}</conveyanceReferenceNumber>
+        {%- endfor %}
+    </ActiveBorderTransportMeans>
+    {%- endfor %}
+    {#- Optional: #}
+    {%- for i in range(0, 1) %}
+    <PlaceOfLoading>
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <UNLocode>{{ UNLocode }}</UNLocode>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <country>{{ country }}</country>
+        {%- endfor %}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <location>{{ location }}</location>
+        {%- endfor %}
+    </PlaceOfLoading>
+    {%- endfor %}
+    {#- Optional: #}
+    {#- 1 to 99 repetitions: #}
+    {%- for i in range(0, 1) %}
+    <HouseConsignment>
+        <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+        {#- 0 to 999 repetitions: #}
+        {#- Optional: #}
+        {%- for i in range(0, 1) %}
+        <DepartureTransportMeans>
+            <sequenceNumber>{{ sequenceNumber }}</sequenceNumber>
+            <typeOfIdentification>{{ typeOfIdentification }}</typeOfIdentification>
+            <identificationNumber>{{ identificationNumberContentType06 }}</identificationNumber>
+            <nationality>{{ nationality }}</nationality>
+        </DepartureTransportMeans>
+        {%- endfor %}
+    </HouseConsignment>
+    {%- endfor %}
+  </Consignment>
+</ncts:CC170C>
